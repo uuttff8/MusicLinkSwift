@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5eI-dc-2N6">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--History-->
+        <scene sceneID="aXh-s6-BDP">
+            <objects>
+                <viewController id="rV7-qa-hHW" customClass="HistoryViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9L9-bL-oP7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2dW-PZ-tkS"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="History" image="settings" landscapeImage="settings" selectedImage="settings" id="ScW-Kv-mqr"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kr3-fC-Fv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1106" y="443"/>
+        </scene>
+        <!--Convert-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ConvertViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Paste Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc8-PD-u8e">
+                                <rect key="frame" x="60" y="84" width="255" height="318.66666666666669"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="89"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-ep-yAe" customClass="LoadingButton" customModule="Music_Link" customModuleProvider="target">
+                                <rect key="frame" x="60" y="615" width="255" height="47"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="bML-Un-HgI"/>
+                                </constraints>
+                                <state key="normal" title="Paste">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="pasteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E0a-hN-Y3e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GSN-ep-yAe" secondAttribute="bottom" constant="67" id="2aq-va-aqb"/>
+                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3nF-CN-9S2"/>
+                            <constraint firstAttribute="trailing" secondItem="Zc8-PD-u8e" secondAttribute="trailing" constant="60" id="3ux-hm-fdo"/>
+                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="6Pf-Y0-1bL"/>
+                            <constraint firstItem="GSN-ep-yAe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cof-f7-u5j"/>
+                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="LH6-yA-gze"/>
+                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GSN-ep-yAe" secondAttribute="trailing" id="Ohe-l7-ftH"/>
+                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="leading" secondItem="GSN-ep-yAe" secondAttribute="leading" id="dNT-UR-tNF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Convert" image="itunes" landscapeImage="itunes" selectedImage="itunes" id="WdO-Vy-KGi"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pasteButton" destination="GSN-ep-yAe" id="ig2-ep-kEm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1105.7971014492755" y="-267.1875"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qf7-e6-oGG">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5eI-dc-2N6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p0T-V7-Fcj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hYM-1H-znX"/>
+                        <segue destination="rV7-qa-hHW" kind="relationship" relationship="viewControllers" id="IIb-5v-eSa"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1sd-uy-cBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="itunes" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="settings" width="42.666667938232422" height="42.666667938232422"/>
+    </resources>
+</document>
