@@ -16,6 +16,7 @@ class ConvertViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.hidesBottomBarWhenPushed = true
         presenter.onCreate(view: self)
     }
     
@@ -52,6 +53,6 @@ extension ConvertViewController: ConvertView {
     }
     
     func onConvertedLink(links: LinksResponse) {
-        self.present(ScreenRouter.shared.getInfoController(links: links), animated: true, completion: nil)
+        self.navigationController?.pushViewController(ScreenRouter.shared.getInfoController(links: links), animated: true)
     }
 }

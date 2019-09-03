@@ -9,13 +9,18 @@
 import UIKit
 
 class ConvertPresenter: BasePresenter<ConvertView> {
-    
     func startConvertingToLink() {
-        guard let url = UIPasteboard.general.getUrlFromPasteboard() else {
-            self.presenterView?.showError(text: "Invalid copied link")
-            self.presenterView?.hidePasteButtonLoading()
-            return
-        }
+        
+        /*guard let url = UIPasteboard.general.getUrlFromPasteboard() else {
+         self.presenterView?.showError(text: "Invalid copied link")
+         self.presenterView?.hidePasteButtonLoading()
+         return
+         }*/
+        
+        
+        //let url = "https://music.apple.com/ru/album/pink-phloyd/1257008616?i=1257009042&l=en"
+        let url = "https://music.apple.com/ru/album/symphony-no-7-in-a-major-op-92-ii-allegretto/1439271019?i=1439271033&l=en"
+        
         let locale = Locale(identifier: "LocaleNewId")
         
         NetManager.shared.getLinks(url: url, userCountry: locale.regionCode ?? "").execute(onSubscribe: {
@@ -39,7 +44,7 @@ class ConvertPresenter: BasePresenter<ConvertView> {
         }, onError: { (e: Error) in
             self.presenterView?.showError(text: e.localizedDescription)
         })
-        .disposed(by: disposableBag)
+            .disposed(by: disposableBag)
         
     }
     

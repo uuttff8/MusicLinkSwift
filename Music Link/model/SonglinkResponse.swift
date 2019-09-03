@@ -14,6 +14,15 @@ struct LinksResponse: Codable {
     let pageUrl: String
     let entitiesByUniqueId: Dictionary<String, EntitiesByUniqueId>
     let linksByPlatform: LinksByPlatform
+    
+    
+    func getThumbnailUrl() -> String {
+        return (entitiesByUniqueId[entityUniqueId]?.thumbnailUrl ?? "")
+    }
+    
+    func getTitleAndArtistName() -> String {
+        return "\(entitiesByUniqueId[entityUniqueId]?.title ?? "") - \(entitiesByUniqueId[entityUniqueId]?.artistName ?? "")"
+    }
 }
 
 struct EntitiesByUniqueId: Codable {

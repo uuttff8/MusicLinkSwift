@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */; };
+		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
 		4E705FAE231821EC00D1CE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FAD231821EC00D1CE56 /* AppDelegate.swift */; };
 		4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FB6231821EC00D1CE56 /* Music_Link.xcdatamodeld */; };
 		4E705FBA231821F100D1CE56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FB9231821F100D1CE56 /* Assets.xcassets */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		1155CAF09E01A3737A982E34 /* Pods_Music_Link.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Link.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B240C37FABB2CF95992D26 /* Pods-Music Link.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Link.release.xcconfig"; path = "Target Support Files/Pods-Music Link/Pods-Music Link.release.xcconfig"; sourceTree = "<group>"; };
+		4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServiceCollectionViewCell.swift; sourceTree = "<group>"; };
+		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
 		4E705FAA231821EC00D1CE56 /* Music Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E705FAD231821EC00D1CE56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E705FB7231821EC00D1CE56 /* Music_Link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music_Link.xcdatamodel; sourceTree = "<group>"; };
@@ -76,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E52CD47231EB5BD00C51BD1 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		4E705FA1231821EC00D1CE56 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +184,7 @@
 				4E705FD023195F0D00D1CE56 /* Pasteboard.swift */,
 				4E705FE7231A606300D1CE56 /* Extensions.swift */,
 				4E705FF2231A9F9300D1CE56 /* ScreenRouter.swift */,
+				4E52CD4A231EBC6800C51BD1 /* Imager.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -188,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				4E705FEF231A98AA00D1CE56 /* other */,
+				4E52CD47231EB5BD00C51BD1 /* cells */,
 				4E705FED231A98A400D1CE56 /* InfoViewController.swift */,
 				4E705FF6231AA08800D1CE56 /* Info.storyboard */,
 			);
@@ -276,7 +290,7 @@
 				};
 			};
 			buildConfigurationList = 4E705FA5231821EC00D1CE56 /* Build configuration list for PBXProject "Music Link" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -360,6 +374,7 @@
 				4E705FD82319619F00D1CE56 /* BasePresenter.swift in Sources */,
 				4E705FF1231A98C300D1CE56 /* InfoPresenter.swift in Sources */,
 				4E705FEE231A98A400D1CE56 /* InfoViewController.swift in Sources */,
+				4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */,
 				4E705FCB23182D9D00D1CE56 /* Button.swift in Sources */,
 				4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */,
 				4E705FCD2318457900D1CE56 /* ConvertViewController.swift in Sources */,
@@ -369,6 +384,7 @@
 				4E705FE5231A5EDE00D1CE56 /* Constants.swift in Sources */,
 				4E705FE8231A606300D1CE56 /* Extensions.swift in Sources */,
 				4E705FF3231A9F9300D1CE56 /* ScreenRouter.swift in Sources */,
+				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
 				4E705FDA2319645100D1CE56 /* BaseView.swift in Sources */,
 				4E705FAE231821EC00D1CE56 /* AppDelegate.swift in Sources */,
 				4E705FC82318254C00D1CE56 /* HistoryViewController.swift in Sources */,
@@ -498,17 +514,19 @@
 			baseConfigurationReference = D3BFE2FA4685625287DC11BD /* Pods-Music Link.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uuttff8.Music-Link";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -519,17 +537,19 @@
 			baseConfigurationReference = 21B240C37FABB2CF95992D26 /* Pods-Music Link.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uuttff8.Music-Link";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

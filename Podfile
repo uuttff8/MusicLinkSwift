@@ -9,5 +9,6 @@ target 'Music Link' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'RxAlamofire'
+  pod 'SDWebImage', '~> 5.0'
 
 end
