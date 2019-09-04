@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */; };
 		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
+		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
 		4E705FAE231821EC00D1CE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FAD231821EC00D1CE56 /* AppDelegate.swift */; };
 		4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FB6231821EC00D1CE56 /* Music_Link.xcdatamodeld */; };
 		4E705FBA231821F100D1CE56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FB9231821F100D1CE56 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		21B240C37FABB2CF95992D26 /* Pods-Music Link.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Link.release.xcconfig"; path = "Target Support Files/Pods-Music Link/Pods-Music Link.release.xcconfig"; sourceTree = "<group>"; };
 		4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
+		4E52CD4C231FF3EC00C51BD1 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4E705FAA231821EC00D1CE56 /* Music Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E705FAD231821EC00D1CE56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E705FB7231821EC00D1CE56 /* Music_Link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music_Link.xcdatamodel; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				4E705FEA231A847D00D1CE56 /* SonglinkResponse.swift */,
+				4E52CD4C231FF3EC00C51BD1 /* Services.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				4E705FD123195F0D00D1CE56 /* Pasteboard.swift in Sources */,
 				4E705FE1231A5E9B00D1CE56 /* NetManager.swift in Sources */,
 				4E705FEB231A847D00D1CE56 /* SonglinkResponse.swift in Sources */,
+				4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */,
 				4E705FD82319619F00D1CE56 /* BasePresenter.swift in Sources */,
 				4E705FF1231A98C300D1CE56 /* InfoPresenter.swift in Sources */,
 				4E705FEE231A98A400D1CE56 /* InfoViewController.swift in Sources */,

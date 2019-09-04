@@ -6,4 +6,9 @@
 //  Copyright © 2019 uuttff8. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+struct Services {
+    let response: LinksResponse
+    var images: [UIImage]
+}

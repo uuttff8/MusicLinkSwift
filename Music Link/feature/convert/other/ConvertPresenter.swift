@@ -19,7 +19,9 @@ class ConvertPresenter: BasePresenter<ConvertView> {
         
         
         //let url = "https://music.apple.com/ru/album/pink-phloyd/1257008616?i=1257009042&l=en"
-        let url = "https://music.apple.com/ru/album/symphony-no-7-in-a-major-op-92-ii-allegretto/1439271019?i=1439271033&l=en"
+        //let url = "https://music.apple.com/ru/album/drugstyle-feat-lil-krystalll/1475657096?i=1475657106&l=en"
+        //let url = "https://music.apple.com/ru/album/symphony-no-7-in-a-major-op-92-ii-allegretto/1439271019?i=1439271033&l=en"
+        let url = "https://music.apple.com/us/album/kitchen/1443108737?i=1443109064&uo=4&app=music&ls=1&at=1000lHKX"
         
         let locale = Locale(identifier: "LocaleNewId")
         

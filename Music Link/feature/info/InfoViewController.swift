@@ -30,7 +30,6 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         
         longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized))
         collectionView.addGestureRecognizer(longpress)
-
         
         setupFirstOpen()
     }
@@ -54,7 +53,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     }
     
     let identifier = InfoServiceCollectionViewCell.identifier
-    var items: Array<UIImage?> = [UIImage(named: "apple_music"), UIImage(named: "spotify")]
+    var items: [UIImage] = []
     
     // MARK: - UICollectionViewDataSource protocol
     
@@ -78,7 +77,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -94,12 +93,50 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
 extension InfoViewController: InfoView {
     
-    func onCheckAllServices(links: LinksResponse) -> [GenericPlatform] {
-        let servicesToListen: Array<GenericPlatform?> = [links.linksByPlatform.appleMusic, links.linksByPlatform.amazonMusic, links.linksByPlatform.deezer, links.linksByPlatform.google, links.linksByPlatform.napster, links.linksByPlatform.pandora, links.linksByPlatform.spotify, links.linksByPlatform.tidal, links.linksByPlatform.yandex, links.linksByPlatform.youtube, links.linksByPlatform.youtubeMusic]
+    func onCheckAllServices() -> [UIImage] {
+        // let servicesToListen: Array<GenericPlatform?> = [links.linksByPlatform.appleMusic, links.linksByPlatform.amazonMusic, links.linksByPlatform.deezer, links.linksByPlatform.google, links.linksByPlatform.napster, links.linksByPlatform.pandora, links.linksByPlatform.spotify, links.linksByPlatform.tidal, links.linksByPlatform.yandex, links.linksByPlatform.youtube, links.linksByPlatform.youtubeMusic]
+        // let mapServicesToListen = servicesToListen.filter { $0 != nil } as! [GenericPlatform]
         
-        let mapServicesToListen = servicesToListen.filter { $0 != nil } as! [GenericPlatform]
-        debugPrint(mapServicesToListen)
-        return mapServicesToListen
+        var images: Array<UIImage> = []
+        
+        if links.linksByPlatform.appleMusic != nil {
+            images.append(UIImage(named: "apple_music")!)
+        }
+        if links.linksByPlatform.amazonMusic != nil {
+            images.append(UIImage(named: "amazon_music")!)
+        }
+        if links.linksByPlatform.deezer != nil {
+            images.append(UIImage(named: "deezer")!)
+        }
+        if links.linksByPlatform.google != nil {
+            images.append(UIImage(named: "google_music")!)
+        }
+        if links.linksByPlatform.napster != nil {
+            images.append(UIImage(named: "napster")!)
+        }
+        if links.linksByPlatform.pandora != nil {
+            images.append(UIImage(named: "pandora")!)
+        }
+        if links.linksByPlatform.spotify != nil {
+            images.append(UIImage(named: "spotify")!)
+        }
+        if links.linksByPlatform.tidal != nil {
+            images.append(UIImage(named: "tidal")!)
+        }
+        if links.linksByPlatform.yandex != nil {
+            images.append(UIImage(named: "yandex_music")!)
+        }
+        if links.linksByPlatform.youtube != nil {
+            images.append(UIImage(named: "yt")!)
+        }
+        if links.linksByPlatform.youtubeMusic != nil {
+            images.append(UIImage(named: "yt_music")!)
+        }
+        
+        print("\n")
+        debugPrint(images)
+        print("\n")
+        return images
     }
     
 }
