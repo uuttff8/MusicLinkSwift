@@ -13,5 +13,5 @@ class InfoPresenter: BasePresenter<InfoView> {
 }
 
 protocol InfoView {
-    func onCheckAllServices()
+    func onCheckAllServices(links: LinksResponse) -> [GenericPlatform]
 }

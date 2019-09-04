@@ -16,8 +16,13 @@ class ConvertViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.hidesBottomBarWhenPushed = true
+        
         presenter.onCreate(view: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     deinit {
@@ -38,7 +43,7 @@ class ConvertViewController: BaseViewController {
 }
 
 // MARK: - Extension
-extension ConvertViewController: ConvertView {
+extension ConvertViewController: ConvertView {    
     func showError(text: String) {
         let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

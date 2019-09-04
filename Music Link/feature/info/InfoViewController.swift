@@ -12,20 +12,25 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var imageSong: UIImageView!
     @IBOutlet weak var labelSong: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var links: LinksResponse!
     
     private var presenter = InfoPresenter()
+    private var longpress = UILongPressGestureRecognizer()
     
     fileprivate func setupFirstOpen() {
-        onCheckAllServices()
         bind(data: links)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
-        self.tabBarController?.tabBar.isHidden = true
+        longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized))
+        collectionView.addGestureRecognizer(longpress)
+
         
         setupFirstOpen()
     }
@@ -34,9 +39,22 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         presenter.onDestroy()
     }
     
-    let reuseIdentifier = "InfoServiceCollectionViewCell"
-    var items = [UIImage(named: "apple_music"), UIImage(named: "soundcloud")]
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
+    @objc func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
+        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
+        if longPress.state == UIGestureRecognizer.State.began {
+            let locationInTableView = longPress.location(in: collectionView)
+            let indexPath = collectionView.indexPathForItem(at: locationInTableView)
+            print(indexPath?.row ?? "-0")
+        }
+    }
+    
+    let identifier = InfoServiceCollectionViewCell.identifier
+    var items: Array<UIImage?> = [UIImage(named: "apple_music"), UIImage(named: "spotify")]
     
     // MARK: - UICollectionViewDataSource protocol
     
@@ -47,14 +65,12 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        // get a reference to our storyboard cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! InfoServiceCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier,
+                                                      for: indexPath as IndexPath) as! InfoServiceCollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        cell.imageViewService.image = self.items[indexPath.item]
-        cell.backgroundColor = UIColor.cyan // make cell more visible in our example project
         
+        cell.imageViewService.image = self.items[indexPath.item]
         return cell
     }
     
@@ -77,12 +93,13 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
 
 extension InfoViewController: InfoView {
-    func onCheckAllServices() {
-        let servicesToListen: Array<GenericPlatform?> = [links.linksByPlatform.appleMusic, links.linksByPlatform.amazonMusic, links.linksByPlatform.deezer, links.linksByPlatform.google, links.linksByPlatform.itunes, links.linksByPlatform.napster, links.linksByPlatform.pandora, links.linksByPlatform.spotify, links.linksByPlatform.tidal, links.linksByPlatform.yandex, links.linksByPlatform.youtube, links.linksByPlatform.youtubeMusic]
-        
-        let mapServicesToListen = servicesToListen.filter { $0 != nil }
-        debugPrint(mapServicesToListen)
-    }
     
+    func onCheckAllServices(links: LinksResponse) -> [GenericPlatform] {
+        let servicesToListen: Array<GenericPlatform?> = [links.linksByPlatform.appleMusic, links.linksByPlatform.amazonMusic, links.linksByPlatform.deezer, links.linksByPlatform.google, links.linksByPlatform.napster, links.linksByPlatform.pandora, links.linksByPlatform.spotify, links.linksByPlatform.tidal, links.linksByPlatform.yandex, links.linksByPlatform.youtube, links.linksByPlatform.youtubeMusic]
+        
+        let mapServicesToListen = servicesToListen.filter { $0 != nil } as! [GenericPlatform]
+        debugPrint(mapServicesToListen)
+        return mapServicesToListen
+    }
     
 }
