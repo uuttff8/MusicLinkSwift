@@ -40,6 +40,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        services = onCheckAllServices()
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -48,18 +49,22 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         if longPress.state == UIGestureRecognizer.State.began {
             let locationInTableView = longPress.location(in: collectionView)
             let indexPath = collectionView.indexPathForItem(at: locationInTableView)
+            
+            let url = URL(string: services.links[indexPath!.item])
+            let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+            self.present(activityVC, animated: true, completion: nil)
             print(indexPath?.row ?? "-0")
         }
     }
     
     let identifier = InfoServiceCollectionViewCell.identifier
-    var items: [UIImage] = []
+    var services: Services = Services()
     
     // MARK: - UICollectionViewDataSource protocol
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.items.count
+        return self.services.images.count
     }
     
     // make a cell for each cell index path
@@ -69,7 +74,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
-        cell.imageViewService.image = self.items[indexPath.item]
+        cell.imageViewService.image = services.images[indexPath.item]
         return cell
     }
     
@@ -77,7 +82,11 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        
+        let url = URL(string: services.links[indexPath.item])!
+        UIApplication.shared.open(url)
+        debugPrint("\n")
+        NSLog("\(url)")
+        debugPrint("\n")
     }
     
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
@@ -93,50 +102,64 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
 
 extension InfoViewController: InfoView {
     
-    func onCheckAllServices() -> [UIImage] {
-        // let servicesToListen: Array<GenericPlatform?> = [links.linksByPlatform.appleMusic, links.linksByPlatform.amazonMusic, links.linksByPlatform.deezer, links.linksByPlatform.google, links.linksByPlatform.napster, links.linksByPlatform.pandora, links.linksByPlatform.spotify, links.linksByPlatform.tidal, links.linksByPlatform.yandex, links.linksByPlatform.youtube, links.linksByPlatform.youtubeMusic]
-        // let mapServicesToListen = servicesToListen.filter { $0 != nil } as! [GenericPlatform]
+    func onCheckAllServices() -> Services {
+        var services = Services()
         
         var images: Array<UIImage> = []
+        var linker: Array<String> = []
         
-        if links.linksByPlatform.appleMusic != nil {
+        if let appleMusic = links.linksByPlatform.appleMusic {
             images.append(UIImage(named: "apple_music")!)
+            linker.append(appleMusic.url)
         }
-        if links.linksByPlatform.amazonMusic != nil {
+        if let amazonMusic = links.linksByPlatform.amazonMusic {
             images.append(UIImage(named: "amazon_music")!)
+            linker.append(amazonMusic.url)
         }
-        if links.linksByPlatform.deezer != nil {
+        if let deezer = links.linksByPlatform.deezer {
             images.append(UIImage(named: "deezer")!)
+            linker.append(deezer.url)
         }
-        if links.linksByPlatform.google != nil {
+        if let googleMusic = links.linksByPlatform.google {
             images.append(UIImage(named: "google_music")!)
+            linker.append(googleMusic.url)
         }
-        if links.linksByPlatform.napster != nil {
+        if let napster = links.linksByPlatform.napster {
             images.append(UIImage(named: "napster")!)
+            linker.append(napster.url)
         }
-        if links.linksByPlatform.pandora != nil {
+        if let pandora = links.linksByPlatform.pandora {
             images.append(UIImage(named: "pandora")!)
+            linker.append(pandora.url)
         }
-        if links.linksByPlatform.spotify != nil {
+        if let spotify = links.linksByPlatform.spotify {
             images.append(UIImage(named: "spotify")!)
+            linker.append(spotify.url)
         }
-        if links.linksByPlatform.tidal != nil {
+        if let tidal = links.linksByPlatform.tidal {
             images.append(UIImage(named: "tidal")!)
+            linker.append(tidal.url)
         }
-        if links.linksByPlatform.yandex != nil {
+        if let yandex = links.linksByPlatform.yandex {
             images.append(UIImage(named: "yandex_music")!)
+            linker.append(yandex.url)
         }
-        if links.linksByPlatform.youtube != nil {
+        if let yt = links.linksByPlatform.youtube {
             images.append(UIImage(named: "yt")!)
+            linker.append(yt.url)
         }
-        if links.linksByPlatform.youtubeMusic != nil {
+        if let yt_music = links.linksByPlatform.youtubeMusic {
             images.append(UIImage(named: "yt_music")!)
+            linker.append(yt_music.url)
         }
+        services.response = links
+        services.links = linker
+        services.images = images
         
         print("\n")
         debugPrint(images)
         print("\n")
-        return images
+        return services
     }
     
 }

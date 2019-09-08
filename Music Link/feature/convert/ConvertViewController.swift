@@ -10,12 +10,16 @@ import UIKit
 
 class ConvertViewController: BaseViewController {
     private var presenter = ConvertPresenter()
-    private var isActiveLoading = false
     
     @IBOutlet weak var pasteButton: LoadingButton!
+    @IBOutlet weak var justLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (Display.typeIsLike == DisplayType.iphone5) {
+            justLabel.font = justLabel.font.withSize(70)
+        }
         
         presenter.onCreate(view: self)
     }
@@ -30,15 +34,9 @@ class ConvertViewController: BaseViewController {
     }
     
     @IBAction func pasteButtonPressed(_ sender: LoadingButton) {
-        if (!isActiveLoading) {
-           sender.showLoading()
-            isActiveLoading = true
-
-            presenter.startConvertingToLink()
-        } else {
-            sender.hideLoading()
-            isActiveLoading = false
-        }
+        pasteButton.isEnabled = false
+        sender.showLoading()
+        presenter.startConvertingToLink()
     }
 }
 
@@ -55,6 +53,7 @@ extension ConvertViewController: ConvertView {
     
     func hidePasteButtonLoading() {
         pasteButton.hideLoading()
+        pasteButton.isEnabled = true
     }
     
     func onConvertedLink(links: LinksResponse) {

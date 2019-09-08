@@ -20,6 +20,7 @@ class ScreenRouter {
         // Main
         case CONVERT = "ConvertViewController"
         case HISTORY = "HistoryViewController"
+        case TAB_BAR = "MainTabBarController"
         
         // Info
         case INFO = "InfoViewController"
@@ -30,6 +31,15 @@ class ScreenRouter {
         controller.links = links
         return controller
     }
+    
+    func getConvertController() -> ConvertViewController {
+        return initiate(board: getStoryboard(board: .MAIN), name: .CONVERT) as! ConvertViewController
+    }
+    
+    func getMainTabBarController() -> MainTabBarController {
+        return initiate(board: getStoryboard(board: .MAIN), name: .TAB_BAR) as! MainTabBarController
+    }
+    
     
     private func getStoryboard(board: STORYBOARDS) -> UIStoryboard {
         return UIStoryboard(name: board.rawValue, bundle: nil)

@@ -9,6 +9,7 @@
 import UIKit
 
 struct Services {
-    let response: LinksResponse
-    var images: [UIImage]
+    var response: LinksResponse!
+    var images: [UIImage]!
+    var links: [String]!
 }

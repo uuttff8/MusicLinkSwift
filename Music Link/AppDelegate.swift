@@ -13,11 +13,51 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var orientationLock = UIInterfaceOrientationMask.portrait
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        initDeepLinks(application: application)
+        initControllers(application: application)
+        
+        
         return true
     }
+    
+    //deep link handling
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.webpageURL != nil {
+            if(userActivity.activityType == NSUserActivityTypeBrowsingWeb) {
+                let _ = userActivity.webpageURL
+            }
+        }
+        return false
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return self.orientationLock
+    }
+    
+    private func initDeepLinks(application: UIApplication) {
+        if userActivity?.activityType == NSUserActivityTypeBrowsingWeb {
+            if (userActivity?.webpageURL) != nil {
+                print(userActivity?.webpageURL ?? "")
+            }
+        }
+    }
+    
+    private func initControllers(application: UIApplication) {
+        if UIApplication.isFirstLaunch() {
+            // TODO(uuttff8): build splash screen
+            // window?.rootViewController = ScreenRouter.shared
+        } else {
+            window?.rootViewController = ScreenRouter.shared.getMainTabBarController()
+        }
+        
+        window?.makeKeyAndVisible()
+    }
+    
+    
 
     // MARK: - Core Data stack
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5eI-dc-2N6">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,9 +13,9 @@
         <!--History-->
         <scene sceneID="aXh-s6-BDP">
             <objects>
-                <viewController id="rV7-qa-hHW" customClass="HistoryViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HistoryViewController" id="rV7-qa-hHW" customClass="HistoryViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9L9-bL-oP7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2dW-PZ-tkS"/>
@@ -30,19 +30,19 @@
         <!--Convert View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ConvertViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConvertViewController" id="BYZ-38-t0r" customClass="ConvertViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Paste Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc8-PD-u8e">
-                                <rect key="frame" x="60" y="128.00000000000003" width="255" height="318.66666666666674"/>
+                                <rect key="frame" x="60" y="128" width="294" height="319"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="89"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-ep-yAe" customClass="LoadingButton" customModule="Music_Link" customModuleProvider="target">
-                                <rect key="frame" x="60" y="615" width="255" height="47"/>
+                                <rect key="frame" x="60" y="699" width="294" height="47"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="bML-Un-HgI"/>
@@ -76,6 +76,7 @@
                     <navigationItem key="navigationItem" id="IKe-ZA-vcI"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="justLabel" destination="Zc8-PD-u8e" id="2L9-it-43F"/>
                         <outlet property="pasteButton" destination="GSN-ep-yAe" id="ig2-ep-kEm"/>
                     </connections>
                 </viewController>
@@ -83,10 +84,10 @@
             </objects>
             <point key="canvasLocation" x="2047.2" y="-267.48768472906403"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="qf7-e6-oGG">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5eI-dc-2N6" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="5eI-dc-2N6" customClass="MainTabBarController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p0T-V7-Fcj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -109,7 +110,7 @@
                     <tabBarItem key="tabBarItem" title="Convert" image="itunes" landscapeImage="itunes" selectedImage="itunes" id="WdO-Vy-KGi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dUH-lS-xt2">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -25,7 +25,7 @@ class ConvertPresenter: BasePresenter<ConvertView> {
         
         let locale = Locale(identifier: "LocaleNewId")
         
-        NetManager.shared.getLinks(url: url, userCountry: locale.regionCode ?? "").execute(onSubscribe: {
+        NetManager.shared.getLinks(url: url, userCountry: locale.regionCode ?? "RU").execute(onSubscribe: {
             print("onSubs")
         }, onNext: { (response: HTTPURLResponse, data: Data) in
             self.printDada(data: data, response: response)
