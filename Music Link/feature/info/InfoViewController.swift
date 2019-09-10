@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class InfoViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -21,15 +22,18 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     fileprivate func setupFirstOpen() {
         bind(data: links)
+        
+        longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized))
+        collectionView.addGestureRecognizer(longpress)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized))
-        collectionView.addGestureRecognizer(longpress)
+        // Please refer to viewWillAppear to know when collection view cells is updated
         
         setupFirstOpen()
     }
@@ -75,6 +79,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
         cell.imageViewService.image = services.images[indexPath.item]
+        cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
         return cell
     }
     
@@ -96,6 +101,26 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     fileprivate func bind(data: LinksResponse) {
         Imager.shared.loadImage(into: imageSong, link: data.getThumbnailUrl())
         labelSong.text = data.getTitleAndArtistName()
+        
+        writeSongToCoreData(data: data)
+    }
+    
+    
+    fileprivate func writeSongToCoreData(data: LinksResponse) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
+        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        
+        newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
+        newUser.setValue(data.getThumbnailUrl(), forKey: "image")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
     }
 }
 
@@ -156,9 +181,6 @@ extension InfoViewController: InfoView {
         services.links = linker
         services.images = images
         
-        print("\n")
-        debugPrint(images)
-        print("\n")
         return services
     }
     
