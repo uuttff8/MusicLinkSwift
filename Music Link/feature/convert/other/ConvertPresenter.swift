@@ -11,22 +11,21 @@ import UIKit
 class ConvertPresenter: BasePresenter<ConvertView> {
     func startConvertingToLink() {
         
-        /*guard let url = UIPasteboard.general.getUrlFromPasteboard() else {
-         self.presenterView?.showError(text: "Invalid copied link")
-         self.presenterView?.hidePasteButtonLoading()
-         return
-         }*/
+        guard let url = UIPasteboard.general.getUrlFromPasteboard() else {
+            self.presenterView?.showError(text: "Invalid copied link")
+            self.presenterView?.hidePasteButtonLoading()
+            return
+        }
         
         
         //let url = "https://music.apple.com/ru/album/pink-phloyd/1257008616?i=1257009042&l=en"
         //let url = "https://music.apple.com/ru/album/drugstyle-feat-lil-krystalll/1475657096?i=1475657106&l=en"
         //let url = "https://music.apple.com/ru/album/symphony-no-7-in-a-major-op-92-ii-allegretto/1439271019?i=1439271033&l=en"
-        let url = "https://music.apple.com/us/album/kitchen/1443108737?i=1443109064&uo=4&app=music&ls=1&at=1000lHKX"
+        //let url = "https://music.apple.com/us/album/kitchen/1443108737?i=1443109064&uo=4&app=music&ls=1&at=1000lHKX"
         
-        let locale = Locale(identifier: "LocaleNewId")
-        
-        NetManager.shared.getLinks(url: url, userCountry: locale.regionCode ?? "RU").execute(onSubscribe: {
+        NetManager.shared.getLinks(url: url, userCountry: Locale.current.regionCode ?? "RU").execute(onSubscribe: {
             print("onSubs")
+            print(String(describing: Locale.current.regionCode) + " \n")
         }, onNext: { (response: HTTPURLResponse, data: Data) in
             self.printDada(data: data, response: response)
             

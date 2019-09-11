@@ -49,8 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initControllers(application: UIApplication) {
         if UIApplication.isFirstLaunch() {
             // TODO(uuttff8): build splash screen
-            // window?.rootViewController = ScreenRouter.shared
+            print("first run")
+            window?.rootViewController = ScreenRouter.shared.getSplashController()
         } else {
+            print("not first run")
             window?.rootViewController = ScreenRouter.shared.getMainTabBarController()
         }
         

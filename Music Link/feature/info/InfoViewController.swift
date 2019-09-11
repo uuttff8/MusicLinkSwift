@@ -107,8 +107,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     
     fileprivate func writeSongToCoreData(data: LinksResponse) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+        let context = CoreDataManager.context
         
         let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
         let newUser = NSManagedObject(entity: entity!, insertInto: context)
@@ -118,6 +117,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         
         do {
             try context.save()
+            print("\n Saving Core Data context is done. writeSongToCoreData(data:) \n")
         } catch {
             print("Failed saving")
         }

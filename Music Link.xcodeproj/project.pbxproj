@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3A961923297738006B187D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961823297738006B187D /* AboutViewController.swift */; };
+		4E3A961C2329775E006B187D /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961B2329775E006B187D /* AboutPresenter.swift */; };
+		4E3A961E23297A36006B187D /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A961D23297A36006B187D /* About.storyboard */; };
+		4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */; };
+		4E3A962423298A89006B187D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962323298A89006B187D /* SplashViewController.swift */; };
+		4E3A962723298A9B006B187D /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962623298A9B006B187D /* SplashPresenter.swift */; };
+		4E3A962923298B40006B187D /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A962823298B40006B187D /* Splash.storyboard */; };
+		4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962B23298DD2006B187D /* HistoryPresenter.swift */; };
+		4E3A962E23298F7C006B187D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962D23298F7C006B187D /* CoreDataManager.swift */; };
 		4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */; };
 		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
 		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
@@ -42,6 +51,15 @@
 /* Begin PBXFileReference section */
 		1155CAF09E01A3737A982E34 /* Pods_Music_Link.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Link.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21B240C37FABB2CF95992D26 /* Pods-Music Link.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Link.release.xcconfig"; path = "Target Support Files/Pods-Music Link/Pods-Music Link.release.xcconfig"; sourceTree = "<group>"; };
+		4E3A961823297738006B187D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		4E3A961B2329775E006B187D /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
+		4E3A961D23297A36006B187D /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionNumberTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A962323298A89006B187D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		4E3A962623298A9B006B187D /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		4E3A962823298B40006B187D /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		4E3A962B23298DD2006B187D /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		4E3A962D23298F7C006B187D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
 		4E52CD4C231FF3EC00C51BD1 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -88,6 +106,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3A961723297725006B187D /* about */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A96202329841F006B187D /* cells */,
+				4E3A961A2329773D006B187D /* other */,
+				4E3A961823297738006B187D /* AboutViewController.swift */,
+				4E3A961D23297A36006B187D /* About.storyboard */,
+			);
+			path = about;
+			sourceTree = "<group>";
+		};
+		4E3A961A2329773D006B187D /* other */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A961B2329775E006B187D /* AboutPresenter.swift */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		4E3A96202329841F006B187D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		4E3A962523298A8C006B187D /* other */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A962623298A9B006B187D /* SplashPresenter.swift */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		4E3A962A23298DC3006B187D /* other */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A962B23298DD2006B187D /* HistoryPresenter.swift */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
 		4E52CD47231EB5BD00C51BD1 /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +192,7 @@
 		4E705FC4231824FA00D1CE56 /* feature */ = {
 			isa = PBXGroup;
 			children = (
+				4E3A961723297725006B187D /* about */,
 				4EAB22CD232515B9003ECA78 /* splash */,
 				4E705FEC231A988F00D1CE56 /* info */,
 				4E705FD5231960AF00D1CE56 /* base */,
@@ -154,6 +216,7 @@
 		4E705FC62318253800D1CE56 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				4E3A962A23298DC3006B187D /* other */,
 				4E705FC72318254C00D1CE56 /* HistoryViewController.swift */,
 			);
 			path = history;
@@ -197,6 +260,7 @@
 				4E52CD4A231EBC6800C51BD1 /* Imager.swift */,
 				4EF3CB0F2320335D005A18B6 /* Device.swift */,
 				4EF3CB1123203501005A18B6 /* Display.swift */,
+				4E3A962D23298F7C006B187D /* CoreDataManager.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -251,6 +315,9 @@
 		4EAB22CD232515B9003ECA78 /* splash */ = {
 			isa = PBXGroup;
 			children = (
+				4E3A962523298A8C006B187D /* other */,
+				4E3A962323298A89006B187D /* SplashViewController.swift */,
+				4E3A962823298B40006B187D /* Splash.storyboard */,
 			);
 			path = splash;
 			sourceTree = "<group>";
@@ -284,6 +351,7 @@
 				4E705FA7231821EC00D1CE56 /* Frameworks */,
 				4E705FA8231821EC00D1CE56 /* Resources */,
 				094D36D02ABF6AEA7958856F /* [CP] Embed Pods Frameworks */,
+				4E3A961F232981B8006B187D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -336,6 +404,8 @@
 				4E705FBA231821F100D1CE56 /* Assets.xcassets in Resources */,
 				4E705FFB231AA4E800D1CE56 /* LaunchScreen.storyboard in Resources */,
 				4E705FF7231AA08800D1CE56 /* Info.storyboard in Resources */,
+				4E3A961E23297A36006B187D /* About.storyboard in Resources */,
+				4E3A962923298B40006B187D /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +451,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4E3A961F232981B8006B187D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash    \nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -388,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3A962423298A89006B187D /* SplashViewController.swift in Sources */,
 				4E705FD123195F0D00D1CE56 /* Pasteboard.swift in Sources */,
 				4E705FE1231A5E9B00D1CE56 /* NetManager.swift in Sources */,
 				4EAB22CF232518E2003ECA78 /* MainTabBarController.swift in Sources */,
@@ -398,20 +486,26 @@
 				4E705FEE231A98A400D1CE56 /* InfoViewController.swift in Sources */,
 				4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */,
 				4E705FCB23182D9D00D1CE56 /* Button.swift in Sources */,
+				4E3A962723298A9B006B187D /* SplashPresenter.swift in Sources */,
 				4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */,
 				4E705FCD2318457900D1CE56 /* ConvertViewController.swift in Sources */,
+				4E3A962E23298F7C006B187D /* CoreDataManager.swift in Sources */,
 				4E705FE3231A5E9B00D1CE56 /* MLApiTarget.swift in Sources */,
 				4E705FD4231960A500D1CE56 /* BaseViewController.swift in Sources */,
+				4E3A961C2329775E006B187D /* AboutPresenter.swift in Sources */,
 				4E705FDC2319654C00D1CE56 /* ConvertPresenter.swift in Sources */,
 				4E705FE5231A5EDE00D1CE56 /* Constants.swift in Sources */,
 				4E705FE8231A606300D1CE56 /* Extensions.swift in Sources */,
 				4E705FF3231A9F9300D1CE56 /* ScreenRouter.swift in Sources */,
 				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
+				4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */,
 				4E705FDA2319645100D1CE56 /* BaseView.swift in Sources */,
 				4E705FAE231821EC00D1CE56 /* AppDelegate.swift in Sources */,
 				4E705FC82318254C00D1CE56 /* HistoryViewController.swift in Sources */,
 				4EF3CB102320335D005A18B6 /* Device.swift in Sources */,
+				4E3A961923297738006B187D /* AboutViewController.swift in Sources */,
 				4EF3CB1223203501005A18B6 /* Display.swift in Sources */,
+				4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */,
 				4E705FE2231A5E9B00D1CE56 /* MLApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

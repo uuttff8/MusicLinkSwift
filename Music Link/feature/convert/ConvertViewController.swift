@@ -14,19 +14,21 @@ class ConvertViewController: BaseViewController {
     @IBOutlet weak var pasteButton: LoadingButton!
     @IBOutlet weak var justLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    fileprivate func setupContraints() {
         if (Display.typeIsLike == DisplayType.iphone5) {
             justLabel.font = justLabel.font.withSize(70)
         }
-        
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         presenter.onCreate(view: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
+        self.setupContraints()
     }
     
     deinit {
@@ -38,13 +40,17 @@ class ConvertViewController: BaseViewController {
         sender.showLoading()
         presenter.startConvertingToLink()
     }
+    
+    @IBAction func gearNavBarActionPressed(_ sender: UIBarButtonItem) {
+        let vc = ScreenRouter.shared.getAboutController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - Extension
 extension ConvertViewController: ConvertView {    
     func showError(text: String) {
-        let alert = UIAlertController(title: text, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let alert = UIAlertController.createOkAlert(text: text)
         self.present(alert, animated: true, completion: nil)
     }
     func showLoading(isLoading: Bool) {

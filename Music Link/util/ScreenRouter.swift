@@ -14,6 +14,8 @@ class ScreenRouter {
     private enum STORYBOARDS: String {
         case MAIN = "Main"
         case INFO = "Info"
+        case ABOUT = "About"
+        case SPLASH = "Splash"
     }
     
     public enum CONTROLLERS: String {
@@ -24,6 +26,12 @@ class ScreenRouter {
         
         // Info
         case INFO = "InfoViewController"
+        
+        // Settings
+        case ABOUT = "AboutViewController"
+        
+        // Splash
+        case SPLASH = "SplashViewController"
     }
     
     func getInfoController(links: LinksResponse?) -> InfoViewController {
@@ -40,6 +48,13 @@ class ScreenRouter {
         return initiate(board: getStoryboard(board: .MAIN), name: .TAB_BAR) as! MainTabBarController
     }
     
+    func getAboutController() -> AboutViewController {
+        return initiate(board: getStoryboard(board: .ABOUT), name: .ABOUT) as! AboutViewController
+    }
+    
+    func getSplashController() -> SplashViewController {
+        return initiate(board: getStoryboard(board: .SPLASH), name: .SPLASH) as! SplashViewController
+    }
     
     private func getStoryboard(board: STORYBOARDS) -> UIStoryboard {
         return UIStoryboard(name: board.rawValue, bundle: nil)

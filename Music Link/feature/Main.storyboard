@@ -73,7 +73,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IKe-ZA-vcI"/>
+                    <navigationItem key="navigationItem" id="IKe-ZA-vcI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="about" landscapeImage="about" largeContentSizeImage="about" id="52N-8D-71J">
+                            <connections>
+                                <action selector="gearNavBarActionPressed:" destination="BYZ-38-t0r" id="cM9-SR-Sa4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="justLabel" destination="Zc8-PD-u8e" id="2L9-it-43F"/>
@@ -124,6 +130,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="24" height="24"/>
         <image name="format_list_bulleted" width="25" height="25"/>
         <image name="itunes" width="25" height="25"/>
     </resources>
