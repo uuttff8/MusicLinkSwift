@@ -27,8 +27,19 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.addGestureRecognizer(longpress)
     }
     
+    @objc fileprivate func showAlertWithAllLinks() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "Copy all links in pasteboard", style: .default) { (alert) in
+            print("called all links")
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: nil, action: #selector(showAlertWithAllLinks))
         
         collectionView.delegate = self
         collectionView.dataSource = self

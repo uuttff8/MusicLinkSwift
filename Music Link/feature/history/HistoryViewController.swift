@@ -13,6 +13,8 @@ class HistoryViewController: BaseViewController {
     
     private var presenter = HistoryPresenter()
     
+    var items: Array<String> = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,19 +25,17 @@ class HistoryViewController: BaseViewController {
         let context = CoreDataManager.context
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
         request.returnsObjectsAsFaults = false
+        
         do {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "name") as! String)
+                print("\n new value from core data:" + String(data.value(forKey: "name") as! String) + "\n")
+                items.append(data.value(forKey: "name") as! String)
+                print(items)
             }
-            
-            
         } catch {
-            
             print("Failed")
         }
- 
-        
     }
 }
 

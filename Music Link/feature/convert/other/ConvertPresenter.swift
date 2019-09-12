@@ -37,18 +37,14 @@ class ConvertPresenter: BasePresenter<ConvertView> {
                 }
             } else if (response.statusCode == 404) {
                 self.presenterView?.showError(text: "Invalid copied link")
-            } else {
-                self.presenterView?.showError(text: "Check your internet connection")
             }
             
             self.presenterView?.hidePasteButtonLoading()
         }, onError: { (e: Error) in
             self.presenterView?.showError(text: e.localizedDescription)
-        })
-            .disposed(by: disposableBag)
-        
+            self.presenterView?.hidePasteButtonLoading()
+        }).disposed(by: disposableBag)
     }
-    
 }
 
 protocol ConvertView: NetView {
