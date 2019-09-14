@@ -1,0 +1,6 @@
+framework module Pods_Music_Link___Sharing_Streams {
+  umbrella header "Pods-Music Link - Sharing Streams-umbrella.h"
+
+  export *
+  module * { export * }
+}

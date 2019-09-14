@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "81A6BCB29BB91E67D2C158861CEC0A30"
-               BuildableName = "Pods_Music_Link.framework"
-               BlueprintName = "Pods-Music Link"
+               BlueprintIdentifier = "C13D9AA07696A338FCC1005147A56B76"
+               BuildableName = "Pods_Music_Link___Sharing_Streams.framework"
+               BlueprintName = "Pods-Music Link - Sharing Streams"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "81A6BCB29BB91E67D2C158861CEC0A30"
-            BuildableName = "Pods_Music_Link.framework"
-            BlueprintName = "Pods-Music Link"
+            BlueprintIdentifier = "C13D9AA07696A338FCC1005147A56B76"
+            BuildableName = "Pods_Music_Link___Sharing_Streams.framework"
+            BlueprintName = "Pods-Music Link - Sharing Streams"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

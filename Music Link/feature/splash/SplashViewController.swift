@@ -32,7 +32,9 @@ class SplashViewController: BaseViewController {
     }
 
     @IBAction func continueButtonPressed(_ sender: RoundButton) {
-        navigationController?.popToRootViewController(animated: true)
+       let vc = ScreenRouter.shared.getMainTabBarController()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = vc
     }
     
     @IBAction func videoButtonPressed(_ sender: UIButton) {

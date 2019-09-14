@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Music_LinkVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Music_LinkVersionString[];
+FOUNDATION_EXPORT double Pods_Music_Link___Sharing_StreamsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Music_Link___Sharing_StreamsVersionString[];
 

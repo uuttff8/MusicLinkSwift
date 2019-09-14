@@ -1,6 +1,0 @@
-framework module Pods_Music_Link {
-  umbrella header "Pods-Music Link-umbrella.h"
-
-  export *
-  module * { export * }
-}
