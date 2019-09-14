@@ -32,11 +32,8 @@
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-3P-IOq">
-                                <rect key="frame" x="20" y="188" width="280" height="238"/>
+                                <rect key="frame" x="20" y="221" width="280" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="238" id="jLq-P2-xXN"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1VC-oX-fwg">
                                     <size key="itemSize" width="64" height="64"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -68,17 +65,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LISTEN / BUY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPR-yI-Enu">
+                                <rect key="frame" x="20" y="184" width="104" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sKT-gC-uOr" firstAttribute="leading" secondItem="V3q-Ie-hi8" secondAttribute="leading" constant="20" id="Cf2-pD-dbi"/>
+                            <constraint firstItem="V3q-Ie-hi8" firstAttribute="bottom" secondItem="Yoi-3P-IOq" secondAttribute="bottom" constant="16" id="Kgi-00-gpD"/>
+                            <constraint firstItem="jPR-yI-Enu" firstAttribute="leading" secondItem="V3q-Ie-hi8" secondAttribute="leading" constant="20" id="L3u-2Q-igj"/>
+                            <constraint firstItem="Yoi-3P-IOq" firstAttribute="top" secondItem="jPR-yI-Enu" secondAttribute="bottom" constant="16" id="Oma-AJ-RTk"/>
                             <constraint firstItem="wcz-bP-ufz" firstAttribute="leading" secondItem="sKT-gC-uOr" secondAttribute="trailing" constant="20" id="RH7-YK-b74"/>
                             <constraint firstItem="V3q-Ie-hi8" firstAttribute="trailing" secondItem="wcz-bP-ufz" secondAttribute="trailing" constant="20" id="c3R-5p-vXu"/>
                             <constraint firstItem="wcz-bP-ufz" firstAttribute="top" secondItem="V3q-Ie-hi8" secondAttribute="top" constant="20" id="caV-rr-eOB"/>
                             <constraint firstItem="Yoi-3P-IOq" firstAttribute="leading" secondItem="V3q-Ie-hi8" secondAttribute="leading" constant="20" id="dor-Oc-bQ7"/>
-                            <constraint firstItem="Yoi-3P-IOq" firstAttribute="top" secondItem="sKT-gC-uOr" secondAttribute="bottom" constant="20" id="maH-vb-tge"/>
                             <constraint firstItem="sKT-gC-uOr" firstAttribute="top" secondItem="V3q-Ie-hi8" secondAttribute="top" constant="20" id="nf7-pi-Cob"/>
                             <constraint firstItem="V3q-Ie-hi8" firstAttribute="trailing" secondItem="Yoi-3P-IOq" secondAttribute="trailing" constant="20" id="q23-Db-8XX"/>
+                            <constraint firstItem="jPR-yI-Enu" firstAttribute="top" secondItem="sKT-gC-uOr" secondAttribute="bottom" constant="16" id="r4A-K9-opQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="V3q-Ie-hi8"/>
                     </view>
@@ -90,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L7s-yk-SKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="97.767857142857139"/>
+            <point key="canvasLocation" x="-24.375" y="97.183098591549296"/>
         </scene>
     </scenes>
 </document>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,23 +15,65 @@
             <objects>
                 <viewController storyboardIdentifier="SplashViewController" id="xoT-PC-DlN" customClass="SplashViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YKb-m4-XeI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Splash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wW-uT-ivw">
-                                <rect key="frame" x="186" y="310" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play the the video below and you will know how to use this app" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wW-uT-ivw">
+                                <rect key="frame" x="16" y="60" width="343" height="50.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIh-Fi-mAV" customClass="RoundButton" customModule="Music_Link" customModuleProvider="target">
+                                <rect key="frame" x="16" y="570" width="343" height="47"/>
+                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="aQF-2V-p2D"/>
+                                </constraints>
+                                <state key="normal" title="Contnue">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="xoT-PC-DlN" eventType="touchUpInside" id="cPP-SY-rHb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LH-An-HLo">
+                                <rect key="frame" x="16" y="230.5" width="343" height="202"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="202" id="I57-zb-sRx"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="screenshot_video"/>
+                                <connections>
+                                    <action selector="videoButtonPressed:" destination="xoT-PC-DlN" eventType="touchUpInside" id="n5I-xL-qak"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0wW-uT-ivw" firstAttribute="leading" secondItem="is4-sT-YC1" secondAttribute="leading" constant="16" id="49H-Bv-lDt"/>
+                            <constraint firstItem="0wW-uT-ivw" firstAttribute="top" secondItem="is4-sT-YC1" secondAttribute="top" constant="40" id="FbE-eF-Qqr"/>
+                            <constraint firstItem="fIh-Fi-mAV" firstAttribute="leading" secondItem="is4-sT-YC1" secondAttribute="leading" constant="16" id="Fi5-ke-xFK"/>
+                            <constraint firstItem="0LH-An-HLo" firstAttribute="leading" secondItem="is4-sT-YC1" secondAttribute="leading" constant="16" id="T9X-CZ-XmP"/>
+                            <constraint firstItem="0LH-An-HLo" firstAttribute="top" secondItem="0wW-uT-ivw" secondAttribute="bottom" constant="120" id="TYu-Wa-STc"/>
+                            <constraint firstItem="is4-sT-YC1" firstAttribute="bottom" secondItem="fIh-Fi-mAV" secondAttribute="bottom" constant="50" id="Ud3-VJ-fOK"/>
+                            <constraint firstItem="is4-sT-YC1" firstAttribute="trailing" secondItem="fIh-Fi-mAV" secondAttribute="trailing" constant="16" id="Xac-z3-pWm"/>
+                            <constraint firstItem="is4-sT-YC1" firstAttribute="trailing" secondItem="0LH-An-HLo" secondAttribute="trailing" constant="16" id="dE6-K5-VlH"/>
+                            <constraint firstAttribute="trailing" secondItem="0wW-uT-ivw" secondAttribute="trailing" constant="16" id="eoW-Fx-9tZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="is4-sT-YC1"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECj-UX-4wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="23.4375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="screenshot_video" width="516" height="457"/>
+    </resources>
 </document>

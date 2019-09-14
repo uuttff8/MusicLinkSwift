@@ -14,8 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var orientationLock = UIInterfaceOrientationMask.portrait
+    
+    var optionallyStoreTheFirstLaunchFlag = false
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        optionallyStoreTheFirstLaunchFlag = UIApplication.isFirstLaunch()
+
         
         initDeepLinks(application: application)
         initControllers(application: application)
@@ -47,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func initControllers(application: UIApplication) {
-        if UIApplication.isFirstLaunch() {
+        if optionallyStoreTheFirstLaunchFlag {
             // TODO(uuttff8): build splash screen
             print("first run")
             window?.rootViewController = ScreenRouter.shared.getSplashController()

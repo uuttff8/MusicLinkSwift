@@ -41,8 +41,12 @@ class ConvertViewController: BaseViewController {
         presenter.startConvertingToLink()
     }
     
-    @IBAction func gearNavBarActionPressed(_ sender: UIBarButtonItem) {
+    @IBAction func aboutNavBarActionPressed(_ sender: UIBarButtonItem) {
         let vc = ScreenRouter.shared.getAboutController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
+        let vc = ScreenRouter.shared.getSplashController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

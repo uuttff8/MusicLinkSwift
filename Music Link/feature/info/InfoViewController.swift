@@ -27,19 +27,25 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         collectionView.addGestureRecognizer(longpress)
     }
     
-    @objc fileprivate func showAlertWithAllLinks() {
+    @objc func showAlertWithAllLinks() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: "Copy all links in pasteboard", style: .default) { (alert) in
-            print("called all links")
+        let copyAllLinksAction = UIAlertAction(title: "Copy all links in pasteboard", style: .default) { (_) in
+            UIPasteboard.general.string = self.links.pageUrl
+            print("\(self.links.pageUrl) is copied")
         }
-        alert.addAction(action)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(copyAllLinksAction)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
+        
+        print("alert called")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: nil, action: #selector(showAlertWithAllLinks))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: self, action: #selector(showAlertWithAllLinks))
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -188,6 +194,19 @@ extension InfoViewController: InfoView {
             images.append(UIImage(named: "yt_music")!)
             linker.append(yt_music.url)
         }
+        if let itunes = links.linksByPlatform.itunes {
+            images.append(UIImage(named: "itunes_store")!)
+            linker.append(itunes.url)
+        }
+        if let googleStore = links.linksByPlatform.googleStore {
+            images.append(UIImage(named: "google_play_store")!)
+            linker.append(googleStore.url)
+        }
+        if let amazonStore = links.linksByPlatform.amazonStore {
+            images.append(UIImage(named: "amazon")!)
+            linker.append(amazonStore.url)
+        }
+        
         services.response = links
         services.links = linker
         services.images = images

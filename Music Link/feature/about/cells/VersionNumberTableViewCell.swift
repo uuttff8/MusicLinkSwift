@@ -24,7 +24,7 @@ class VersionNumberTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        versionNumberLabel.text = getVersionNumber()
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,8 +33,6 @@ class VersionNumberTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    static var cellReuseIdentifier: String = {
-        return "VersionNumberTableViewCell"
-    }()
+    static var reuseId: String = "VersionNumberTableViewCell"
     
 }

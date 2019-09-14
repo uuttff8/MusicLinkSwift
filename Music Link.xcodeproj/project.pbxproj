@@ -16,6 +16,12 @@
 		4E3A962923298B40006B187D /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A962823298B40006B187D /* Splash.storyboard */; };
 		4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962B23298DD2006B187D /* HistoryPresenter.swift */; };
 		4E3A962E23298F7C006B187D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962D23298F7C006B187D /* CoreDataManager.swift */; };
+		4E3A9633232C08C0006B187D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A9632232C08C0006B187D /* HistoryTableViewCell.swift */; };
+		4E3A9635232C5319006B187D /* AboutContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A9634232C5318006B187D /* AboutContactTableViewCell.swift */; };
+		4E3A9637232C5777006B187D /* AboutRateAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A9636232C5777006B187D /* AboutRateAppTableViewCell.swift */; };
+		4E3A9639232C5797006B187D /* AboutTelegramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */; };
+		4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */; };
+		4E3A963D232C681D006B187D /* start_video.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A963C232C681D006B187D /* start_video.MP4 */; };
 		4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */; };
 		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
 		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
@@ -60,6 +66,12 @@
 		4E3A962823298B40006B187D /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		4E3A962B23298DD2006B187D /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
 		4E3A962D23298F7C006B187D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		4E3A9632232C08C0006B187D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A9634232C5318006B187D /* AboutContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutContactTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A9636232C5777006B187D /* AboutRateAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRateAppTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTelegramTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVkTableViewCell.swift; sourceTree = "<group>"; };
+		4E3A963C232C681D006B187D /* start_video.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start_video.MP4; sourceTree = "<group>"; };
 		4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
 		4E52CD4C231FF3EC00C51BD1 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -129,6 +141,10 @@
 			isa = PBXGroup;
 			children = (
 				4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */,
+				4E3A9634232C5318006B187D /* AboutContactTableViewCell.swift */,
+				4E3A9636232C5777006B187D /* AboutRateAppTableViewCell.swift */,
+				4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */,
+				4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -149,6 +165,14 @@
 			path = other;
 			sourceTree = "<group>";
 		};
+		4E3A9631232C08A1006B187D /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E3A9632232C08C0006B187D /* HistoryTableViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		4E52CD47231EB5BD00C51BD1 /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +184,7 @@
 		4E705FA1231821EC00D1CE56 = {
 			isa = PBXGroup;
 			children = (
+				4E3A963C232C681D006B187D /* start_video.MP4 */,
 				4E705FAC231821EC00D1CE56 /* Music Link */,
 				4E705FAB231821EC00D1CE56 /* Products */,
 				790D7457477DD68DE49B8D91 /* Pods */,
@@ -216,6 +241,7 @@
 		4E705FC62318253800D1CE56 /* history */ = {
 			isa = PBXGroup;
 			children = (
+				4E3A9631232C08A1006B187D /* cells */,
 				4E3A962A23298DC3006B187D /* other */,
 				4E705FC72318254C00D1CE56 /* HistoryViewController.swift */,
 			);
@@ -400,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3A963D232C681D006B187D /* start_video.MP4 in Resources */,
 				4E705FF9231AA4BD00D1CE56 /* Main.storyboard in Resources */,
 				4E705FBA231821F100D1CE56 /* Assets.xcassets in Resources */,
 				4E705FFB231AA4E800D1CE56 /* LaunchScreen.storyboard in Resources */,
@@ -475,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3A9639232C5797006B187D /* AboutTelegramTableViewCell.swift in Sources */,
 				4E3A962423298A89006B187D /* SplashViewController.swift in Sources */,
 				4E705FD123195F0D00D1CE56 /* Pasteboard.swift in Sources */,
 				4E705FE1231A5E9B00D1CE56 /* NetManager.swift in Sources */,
@@ -497,6 +525,9 @@
 				4E705FE5231A5EDE00D1CE56 /* Constants.swift in Sources */,
 				4E705FE8231A606300D1CE56 /* Extensions.swift in Sources */,
 				4E705FF3231A9F9300D1CE56 /* ScreenRouter.swift in Sources */,
+				4E3A9637232C5777006B187D /* AboutRateAppTableViewCell.swift in Sources */,
+				4E3A9635232C5319006B187D /* AboutContactTableViewCell.swift in Sources */,
+				4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */,
 				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
 				4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */,
 				4E705FDA2319645100D1CE56 /* BaseView.swift in Sources */,
@@ -505,6 +536,7 @@
 				4EF3CB102320335D005A18B6 /* Device.swift in Sources */,
 				4E3A961923297738006B187D /* AboutViewController.swift in Sources */,
 				4EF3CB1223203501005A18B6 /* Display.swift in Sources */,
+				4E3A9633232C08C0006B187D /* HistoryTableViewCell.swift in Sources */,
 				4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */,
 				4E705FE2231A5E9B00D1CE56 /* MLApi.swift in Sources */,
 			);

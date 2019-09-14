@@ -10,23 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--History-->
-        <scene sceneID="aXh-s6-BDP">
-            <objects>
-                <viewController storyboardIdentifier="HistoryViewController" id="rV7-qa-hHW" customClass="HistoryViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9L9-bL-oP7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="2dW-PZ-tkS"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="History" image="format_list_bulleted" landscapeImage="format_list_bulleted" selectedImage="format_list_bulleted" id="ScW-Kv-mqr"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kr3-fC-Fv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1106" y="443"/>
-        </scene>
         <!--Convert View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -43,7 +26,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-ep-yAe" customClass="LoadingButton" customModule="Music_Link" customModuleProvider="target">
                                 <rect key="frame" x="60" y="699" width="294" height="47"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="47" id="bML-Un-HgI"/>
                                 </constraints>
@@ -74,9 +57,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="IKe-ZA-vcI">
+                        <barButtonItem key="leftBarButtonItem" title="Start" id="WaZ-cr-nht">
+                            <connections>
+                                <action selector="startNavBarActionPressed:" destination="BYZ-38-t0r" id="GfN-6W-0I0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="about" landscapeImage="about" largeContentSizeImage="about" id="52N-8D-71J">
                             <connections>
-                                <action selector="gearNavBarActionPressed:" destination="BYZ-38-t0r" id="cM9-SR-Sa4"/>
+                                <action selector="aboutNavBarActionPressed:" destination="BYZ-38-t0r" id="Ky6-K1-zAZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -102,12 +90,89 @@
                     </tabBar>
                     <connections>
                         <segue destination="fB0-T7-wh6" kind="relationship" relationship="viewControllers" id="hYM-1H-znX"/>
-                        <segue destination="rV7-qa-hHW" kind="relationship" relationship="viewControllers" id="IIb-5v-eSa"/>
+                        <segue destination="bFR-fa-XKl" kind="relationship" relationship="viewControllers" id="YmC-0T-DRh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sd-uy-cBL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="xNm-Jz-EGe">
+            <objects>
+                <viewController storyboardIdentifier="HistoryViewController" id="bFR-fa-XKl" customClass="HistoryViewController" customModule="Music_Link" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k8Q-zd-q5M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eHc-Qc-jOa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="39I-tq-8vh">
+                                    <rect key="frame" x="0.0" y="124" width="414" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoryTableViewCell" rowHeight="96" id="LpM-Jc-QFK" customClass="HistoryTableViewCell" customModule="Music_Link" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="96"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LpM-Jc-QFK" id="Bef-H9-1ii">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="95.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="5Wh-lg-0qC">
+                                                    <rect key="frame" x="88" y="38" width="306" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bTz-A3-XGS">
+                                                    <rect key="frame" x="16" y="16.5" width="64" height="64"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="4XD-r8-2Q7"/>
+                                                        <constraint firstAttribute="width" constant="64" id="hgR-hj-hZo"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5Wh-lg-0qC" secondAttribute="trailing" id="0lL-PM-GGf"/>
+                                                <constraint firstItem="5Wh-lg-0qC" firstAttribute="leading" secondItem="bTz-A3-XGS" secondAttribute="trailing" constant="8" id="Dja-Xw-TEv"/>
+                                                <constraint firstAttribute="bottom" secondItem="bTz-A3-XGS" secondAttribute="bottom" constant="16" id="KOP-Rt-zvW"/>
+                                                <constraint firstItem="5Wh-lg-0qC" firstAttribute="centerY" secondItem="bTz-A3-XGS" secondAttribute="centerY" id="VsR-SM-7ar"/>
+                                                <constraint firstItem="bTz-A3-XGS" firstAttribute="leading" secondItem="Bef-H9-1ii" secondAttribute="leading" constant="16" id="eV8-gF-yw8"/>
+                                                <constraint firstItem="bTz-A3-XGS" firstAttribute="top" secondItem="Bef-H9-1ii" secondAttribute="top" constant="16" id="myE-AB-0YS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="songImageView" destination="bTz-A3-XGS" id="Qrz-UY-XiO"/>
+                                            <outlet property="songLabel" destination="5Wh-lg-0qC" id="mSb-Ji-d4x"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="bFR-fa-XKl" id="aRl-V5-XH6"/>
+                                    <outlet property="delegate" destination="bFR-fa-XKl" id="XJc-2n-vgY"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eHc-Qc-jOa" firstAttribute="top" secondItem="hdt-Yh-q8k" secondAttribute="top" id="0WR-yR-xvc"/>
+                            <constraint firstItem="eHc-Qc-jOa" firstAttribute="leading" secondItem="hdt-Yh-q8k" secondAttribute="leading" id="Afa-Ug-Vq0"/>
+                            <constraint firstItem="hdt-Yh-q8k" firstAttribute="trailing" secondItem="eHc-Qc-jOa" secondAttribute="trailing" id="Nw6-PY-KiK"/>
+                            <constraint firstItem="hdt-Yh-q8k" firstAttribute="bottom" secondItem="eHc-Qc-jOa" secondAttribute="bottom" id="ipV-HR-W14"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hdt-Yh-q8k"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="History" image="format_list_bulleted" landscapeImage="format_list_bulleted" largeContentSizeImage="format_list_bulleted" id="zrN-2G-7eS"/>
+                    <connections>
+                        <outlet property="tableView" destination="eHc-Qc-jOa" id="O26-Og-pGp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0DF-oe-zwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086.9565217391305" y="426.5625"/>
         </scene>
         <!--Convert-->
         <scene sceneID="vqL-7J-JOA">

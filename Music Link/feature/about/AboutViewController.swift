@@ -12,30 +12,19 @@ enum MyRows: Int {
     case version
 }
 
-class AboutViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class AboutViewController: UITableViewController {
     
     private var presenter = AboutPresenter()
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == MyRows.version.rawValue {
-            let bannerCell = tableView.dequeueReusableCell(withIdentifier: VersionNumberTableViewCell.cellReuseIdentifier) as! VersionNumberTableViewCell
-            
-            return bannerCell
-        }
         
-        return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
