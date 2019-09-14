@@ -20,7 +20,7 @@ class AboutContactTableViewCell: UITableViewCell {
         
         
         if selected {
-            let email = "kuzmich_rust@null.net"
+            let email = "uuttff8@gmail.com"
             if let url = URL(string: "mailto:\(email)") {
                 if #available(iOS 10.0, *) {
                     UIApplication.shared.open(url)
