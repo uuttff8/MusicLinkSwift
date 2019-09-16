@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "ce5be6fbc6f51414c49f56fc8e2b7c99253d9f8e",
+          "version": "4.9.0"
+        }
+      },
+      {
+        "package": "RxAlamofire",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxAlamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "d85e2f0b99c48ea0594943aaff1f58983b961061",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "8ffbe8b8c1348ae49565d3558eb6fc808abf7abd",
+          "version": "5.1.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

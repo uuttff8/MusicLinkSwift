@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,11 @@
 		4E3A9639232C5797006B187D /* AboutTelegramTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */; };
 		4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */; };
 		4E3A963D232C681D006B187D /* start_video.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A963C232C681D006B187D /* start_video.MP4 */; };
+		4E4F1A01232D48E600DD0C57 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4F1A00232D48E600DD0C57 /* RxCocoa */; };
+		4E4F1A03232D48E600DD0C57 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4F1A02232D48E600DD0C57 /* RxRelay */; };
+		4E4F1A05232D48E600DD0C57 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4F1A04232D48E600DD0C57 /* RxSwift */; };
+		4E4F1A09232D48E600DD0C57 /* RxAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4F1A08232D48E600DD0C57 /* RxAlamofire */; };
+		4E4F1A0B232D48E600DD0C57 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4F1A0A232D48E600DD0C57 /* SDWebImage */; };
 		4E52CD49231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */; };
 		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
 		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
@@ -51,11 +56,9 @@
 		4EAB22CF232518E2003ECA78 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */; };
 		4EF3CB102320335D005A18B6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB0F2320335D005A18B6 /* Device.swift */; };
 		4EF3CB1223203501005A18B6 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB1123203501005A18B6 /* Display.swift */; };
-		80AD8F4EC202C75FE4331A7A /* Pods_Music_Link___Sharing_Streams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 060DC051B11CFAD023380161 /* Pods_Music_Link___Sharing_Streams.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		060DC051B11CFAD023380161 /* Pods_Music_Link___Sharing_Streams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_Music_Link___Sharing_Streams.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E3A961823297738006B187D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4E3A961B2329775E006B187D /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
 		4E3A961D23297A36006B187D /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 		4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTelegramTableViewCell.swift; sourceTree = "<group>"; };
 		4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVkTableViewCell.swift; sourceTree = "<group>"; };
 		4E3A963C232C681D006B187D /* start_video.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start_video.MP4; sourceTree = "<group>"; };
+		4E4F19FA232D486800DD0C57 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		4E4F1A0C232D496700DD0C57 /* libswiftXCTest.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftXCTest.tbd; path = usr/lib/swift/libswiftXCTest.tbd; sourceTree = SDKROOT; };
 		4E52CD48231EB69A00C51BD1 /* InfoServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
 		4E52CD4C231FF3EC00C51BD1 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
@@ -102,8 +107,6 @@
 		4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		4EF3CB0F2320335D005A18B6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		4EF3CB1123203501005A18B6 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
-		60E264A7438F3C5C2638D0C2 /* Pods-Music Link - Sharing Streams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Link - Sharing Streams.debug.xcconfig"; path = "Target Support Files/Pods-Music Link - Sharing Streams/Pods-Music Link - Sharing Streams.debug.xcconfig"; sourceTree = "<group>"; };
-		C5E614CA25B7C7C76971194C /* Pods-Music Link - Sharing Streams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Link - Sharing Streams.release.xcconfig"; path = "Target Support Files/Pods-Music Link - Sharing Streams/Pods-Music Link - Sharing Streams.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +114,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80AD8F4EC202C75FE4331A7A /* Pods_Music_Link___Sharing_Streams.framework in Frameworks */,
+				4E4F1A01232D48E600DD0C57 /* RxCocoa in Frameworks */,
+				4E4F1A0B232D48E600DD0C57 /* SDWebImage in Frameworks */,
+				4E4F1A05232D48E600DD0C57 /* RxSwift in Frameworks */,
+				4E4F1A03232D48E600DD0C57 /* RxRelay in Frameworks */,
+				4E4F1A09232D48E600DD0C57 /* RxAlamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +180,15 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
+		4E4F19F9232D486800DD0C57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E4F1A0C232D496700DD0C57 /* libswiftXCTest.tbd */,
+				4E4F19FA232D486800DD0C57 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4E52CD47231EB5BD00C51BD1 /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,8 +203,7 @@
 				4E3A963C232C681D006B187D /* start_video.MP4 */,
 				4E705FAC231821EC00D1CE56 /* Music Link */,
 				4E705FAB231821EC00D1CE56 /* Products */,
-				790D7457477DD68DE49B8D91 /* Pods */,
-				93BAB424EBAB6529FCBB12BF /* Frameworks */,
+				4E4F19F9232D486800DD0C57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -348,23 +363,6 @@
 			path = splash;
 			sourceTree = "<group>";
 		};
-		790D7457477DD68DE49B8D91 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				60E264A7438F3C5C2638D0C2 /* Pods-Music Link - Sharing Streams.debug.xcconfig */,
-				C5E614CA25B7C7C76971194C /* Pods-Music Link - Sharing Streams.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		93BAB424EBAB6529FCBB12BF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				060DC051B11CFAD023380161 /* Pods_Music_Link___Sharing_Streams.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,18 +370,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E705FC1231821F100D1CE56 /* Build configuration list for PBXNativeTarget "Music Link - Sharing Streams" */;
 			buildPhases = (
-				20A1CF5FE28BD683FF9BB9A8 /* [CP] Check Pods Manifest.lock */,
 				4E705FA6231821EC00D1CE56 /* Sources */,
 				4E705FA7231821EC00D1CE56 /* Frameworks */,
 				4E705FA8231821EC00D1CE56 /* Resources */,
-				094D36D02ABF6AEA7958856F /* [CP] Embed Pods Frameworks */,
-				4E3A961F232981B8006B187D /* ShellScript */,
+				4E3A961F232981B8006B187D /* Run Script */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Music Link - Sharing Streams";
+			packageProductDependencies = (
+				4E4F1A00232D48E600DD0C57 /* RxCocoa */,
+				4E4F1A02232D48E600DD0C57 /* RxRelay */,
+				4E4F1A04232D48E600DD0C57 /* RxSwift */,
+				4E4F1A08232D48E600DD0C57 /* RxAlamofire */,
+				4E4F1A0A232D48E600DD0C57 /* SDWebImage */,
+			);
 			productName = "Music Link";
 			productReference = 4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */;
 			productType = "com.apple.product-type.application";
@@ -412,6 +415,11 @@
 				Base,
 			);
 			mainGroup = 4E705FA1231821EC00D1CE56;
+			packageReferences = (
+				4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				4E4F19F3232D464200DD0C57 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
+				4E4F19F6232D466B00DD0C57 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 4E705FAB231821EC00D1CE56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -439,46 +447,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		094D36D02ABF6AEA7958856F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Music Link - Sharing Streams/Pods-Music Link - Sharing Streams-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Music Link - Sharing Streams/Pods-Music Link - Sharing Streams-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Music Link - Sharing Streams/Pods-Music Link - Sharing Streams-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		20A1CF5FE28BD683FF9BB9A8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Music Link - Sharing Streams-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4E3A961F232981B8006B187D /* ShellScript */ = {
+		4E3A961F232981B8006B187D /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -487,6 +456,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -661,20 +631,20 @@
 		};
 		4E705FC2231821F100D1CE56 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60E264A7438F3C5C2638D0C2 /* Pods-Music Link - Sharing Streams.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.uuttff8.Music-Link";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uuttff.musiclink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -684,20 +654,20 @@
 		};
 		4E705FC3231821F100D1CE56 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5E614CA25B7C7C76971194C /* Pods-Music Link - Sharing Streams.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.uuttff8.Music-Link";
+				PRODUCT_BUNDLE_IDENTIFIER = com.uuttff.musiclink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -727,6 +697,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		4E4F19F3232D464200DD0C57 /* XCRemoteSwiftPackageReference "RxAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxAlamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		4E4F19F6232D466B00DD0C57 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E4F1A00232D48E600DD0C57 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4E4F1A02232D48E600DD0C57 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4E4F1A04232D48E600DD0C57 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		4E4F1A08232D48E600DD0C57 /* RxAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19F3232D464200DD0C57 /* XCRemoteSwiftPackageReference "RxAlamofire" */;
+			productName = RxAlamofire;
+		};
+		4E4F1A0A232D48E600DD0C57 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19F6232D466B00DD0C57 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		4E705FB6231821EC00D1CE56 /* Music_Link.xcdatamodeld */ = {
