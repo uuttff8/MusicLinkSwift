@@ -52,13 +52,14 @@ class ConvertViewController: BaseViewController {
 }
 
 // MARK: - Extension
-extension ConvertViewController: ConvertView {    
-    func showError(text: String) {
-        let alert = UIAlertController.createOkAlert(text: text)
+extension ConvertViewController: ConvertView {
+    func showError(title: String, message: String?) {
+        let alert = UIAlertController.createOkAlert(title: title, message: message)
         self.present(alert, animated: true, completion: nil)
     }
-    func showLoading(isLoading: Bool) {
-        print("Loading: ---------")
+    
+    func isLoading(_ isLoading: Bool) {
+        
     }
     
     func hidePasteButtonLoading() {

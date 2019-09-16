@@ -9,10 +9,11 @@
 import UIKit
 
 protocol BaseView {
-    func showError(text: String)
+    func showError(title: String, message: String?)
 }
 
 protocol NetView {
-    func showError(text: String)
-    func showLoading(isLoading: Bool)
+    func showError(title: String, message: String?)
+    func isLoading(_ isLoading: Bool)
 }
+

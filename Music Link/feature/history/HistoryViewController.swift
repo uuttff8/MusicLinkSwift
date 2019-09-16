@@ -132,14 +132,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 }
 
 extension HistoryViewController: HistoryView {
-    func showError(text: String) {
-        let alert = UIAlertController.createOkAlert(text: text)
+    
+    func showError(title: String, message: String?) {
+        let alert = UIAlertController.createOkAlert(title: title, message: message)
         self.present(alert, animated: true)
     }
-    
-    func showLoading(isLoading: Bool) {
-        
-    }
-    
     
 }

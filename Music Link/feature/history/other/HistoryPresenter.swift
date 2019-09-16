@@ -12,5 +12,4 @@ class HistoryPresenter: BasePresenter<HistoryView> {
     
 }
 
-protocol HistoryView: NetView {
-}
+protocol HistoryView: BaseView { }

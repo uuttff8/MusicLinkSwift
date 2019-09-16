@@ -62,6 +62,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="5tM-tS-VSh" id="l26-Xc-iwA"/>
+                                    <outlet property="delegate" destination="5tM-tS-VSh" id="bbX-jx-yob"/>
+                                </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LISTEN / BUY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPR-yI-Enu">
                                 <rect key="frame" x="20" y="164" width="104" height="21"/>

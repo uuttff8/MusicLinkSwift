@@ -12,7 +12,7 @@ class ConvertPresenter: BasePresenter<ConvertView> {
     func startConvertingToLink() {
         
         guard let url = UIPasteboard.general.getUrlFromPasteboard() else {
-            self.presenterView?.showError(text: "Invalid copied link")
+            self.presenterView?.showError(title: "Invalid copied link", message: nil)
             self.presenterView?.hidePasteButtonLoading()
             return
         }
@@ -33,15 +33,15 @@ class ConvertPresenter: BasePresenter<ConvertView> {
                 if let loginResponse: LinksResponse = try? self.jsonDecoder.decode(LinksResponse.self, from: data) {
                     self.presenterView?.onConvertedLink(links: loginResponse)
                 } else {
-                    self.presenterView?.showError(text: "Что-то пошло не так")
+                    self.presenterView?.showError(title: "Что-то пошло не так", message: nil)
                 }
             } else if (response.statusCode == 404) {
-                self.presenterView?.showError(text: "Invalid copied link")
+                self.presenterView?.showError(title: "Invalid copied link", message: nil)
             }
             
             self.presenterView?.hidePasteButtonLoading()
         }, onError: { (e: Error) in
-            self.presenterView?.showError(text: e.localizedDescription)
+            self.presenterView?.showError(title: e.localizedDescription, message: nil)
             self.presenterView?.hidePasteButtonLoading()
         }).disposed(by: disposableBag)
     }

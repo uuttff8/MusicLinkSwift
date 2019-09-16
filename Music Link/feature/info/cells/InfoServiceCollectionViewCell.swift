@@ -11,5 +11,5 @@ import UIKit
 class InfoServiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewService: UIImageView!
     
-    class var identifier: String { return "InfoServiceCollectionViewCell" }
+    static var reuseId: String = "InfoServiceCollectionViewCell"
 }
