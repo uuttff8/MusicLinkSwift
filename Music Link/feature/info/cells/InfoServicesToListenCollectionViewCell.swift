@@ -8,8 +8,8 @@
 
 import UIKit
 
-class InfoServiceCollectionViewCell: UICollectionViewCell {
+class InfoServicesToListenCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewService: UIImageView!
     
-    static var reuseId: String = "InfoServiceCollectionViewCell"
+    static var reuseId: String = "InfoServicesToListenCollectionViewCell"
 }

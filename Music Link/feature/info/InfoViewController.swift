@@ -7,39 +7,27 @@
 //
 
 import UIKit
-import CoreData
 
-class InfoViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class InfoViewController: BaseViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var imageSong: UIImageView!
-    @IBOutlet weak var labelSong: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     var links: LinksResponse!
     
     private var presenter = InfoPresenter()
-    private var longpress = UILongPressGestureRecognizer()
-    private var services  = Services()
-    
-    fileprivate func setupFirstOpen() {
-        bind(data: links)
-        
-        longpress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognized))
-        collectionView.addGestureRecognizer(longpress)
-    }
     
     // MARK: - Controller initialization
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: self, action: #selector(showAlertWithAllLinks))
-                
-        // Please refer to viewWillAppear to know when collection view cells is updated
+        self.tableView.estimatedRowHeight = 640.0; // set to whatever your "average" cell height is
         
-        setupFirstOpen()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: self, action: #selector(showAlertWithAllLinks))
+        
+        // Please refer to viewWillAppear to know when collection view cells is updated
     }
     
     deinit {
@@ -48,15 +36,7 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        services = presenter.checkAllServices(links)
         self.navigationController?.navigationBar.isHidden = false
-    }
-    
-    fileprivate func bind(data: LinksResponse) {
-        Imager.shared.loadImage(into: imageSong, link: data.getThumbnailUrl())
-        labelSong.text = data.getTitleAndArtistName()
-        
-        presenter.writeSongToCoreData(data: data)
     }
     
     // MARK: - Func
@@ -76,48 +56,26 @@ class InfoViewController: BaseViewController, UICollectionViewDataSource, UIColl
         print("alert called")
     }
     
-    @objc func longPressGestureRecognized(gestureRecognizer: UIGestureRecognizer) {
-        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
-        if longPress.state == UIGestureRecognizer.State.began {
-            let locationInTableView = longPress.location(in: collectionView)
-            let indexPath = collectionView.indexPathForItem(at: locationInTableView)
-            
-            let url = URL(string: services.links[indexPath!.item])
-            let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-            self.present(activityVC, animated: true, completion: nil)
-            print(indexPath?.row ?? "-0")
-        }
+
+}
+
+extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-    // MARK: - UICollectionViewDataSource protocol
-    
-    // tell the collection view how many cells to make
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.services.images.count
-    }
-    
-    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoServiceCollectionViewCell.reuseId,
-                                                      for: indexPath as IndexPath) as! InfoServiceCollectionViewCell
-        
-        // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        
-        cell.imageViewService.image = services.images[indexPath.item]
-        cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.reuseId) as! InfoTableViewCell
+        cell.bind(data: links)
+        cell.links = links
+        cell.baseVC = self
         return cell
     }
     
-    // MARK: - UICollectionViewDelegate protocol
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        let url = URL(string: services.links[indexPath.item])!
-        UIApplication.shared.open(url)
-        debugPrint("\n")
-        NSLog("\(url)")
-        debugPrint("\n")
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 640
     }
+    
 }
 
 extension InfoViewController: InfoView {
@@ -125,6 +83,5 @@ extension InfoViewController: InfoView {
         let alert = UIAlertController.createOkAlert(title: title, message: message)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
 }
+

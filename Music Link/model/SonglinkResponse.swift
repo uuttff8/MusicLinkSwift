@@ -21,7 +21,7 @@ struct LinksResponse: Codable {
     }
     
     func getTitleAndArtistName() -> String {
-        return "\(entitiesByUniqueId[entityUniqueId]?.title ?? "") - \(entitiesByUniqueId[entityUniqueId]?.artistName ?? "")"
+        return "\(entitiesByUniqueId[entityUniqueId]?.title ?? "")" + "\n" + "\(entitiesByUniqueId[entityUniqueId]?.artistName ?? "")"
     }
 }
 

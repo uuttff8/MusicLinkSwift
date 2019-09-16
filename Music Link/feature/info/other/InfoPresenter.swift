@@ -11,7 +11,7 @@ import CoreData
 
 class InfoPresenter: BasePresenter<InfoView> {
     
-    func checkAllServices(_ links: LinksResponse) -> Services {
+    func checkListenServices(_ links: LinksResponse) -> Services {
         var services = Services()
         
         var images: Array<UIImage> = []
@@ -61,6 +61,20 @@ class InfoPresenter: BasePresenter<InfoView> {
             images.append(UIImage(named: "yt_music")!)
             linker.append(yt_music.url)
         }
+        
+        services.response = links
+        services.links = linker
+        services.images = images
+        
+        return services
+    }
+    
+    func checkBuyServices(_ links: LinksResponse) -> Services {
+        var services = Services()
+        
+        var images: Array<UIImage> = []
+        var linker: Array<String> = []
+        
         if let itunes = links.linksByPlatform.itunes {
             images.append(UIImage(named: "itunes_store")!)
             linker.append(itunes.url)
@@ -79,23 +93,6 @@ class InfoPresenter: BasePresenter<InfoView> {
         services.images = images
         
         return services
-    }
-    
-    func writeSongToCoreData(data: LinksResponse) {
-        let context = CoreDataManager.context
-        
-        let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
-        
-        newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
-        newUser.setValue(data.getThumbnailUrl(), forKey: "image")
-        
-        do {
-            try context.save()
-            print("\n Saving Core Data context is done. writeSongToCoreData(data:) \n")
-        } catch {
-            print("Failed saving")
-        }
     }
     
 }
