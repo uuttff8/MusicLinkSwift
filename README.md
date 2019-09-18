@@ -1,7 +1,6 @@
 # MusicLinkSwift
 
-App just get reject in AppStore Connect, so this app here. Reject because Guideline 3.1.1 - Business - Payments - In-App Purchase
-
+App just gets reject in AppStore Connect, so this app here. Reject because of Guideline 3.1.1 - Business - Payments - In-App Purchase
 
 # TODO
 
