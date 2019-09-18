@@ -4,18 +4,18 @@ App just gets reject in AppStore Connect, so this app here. Reject because of Gu
 
 # Features
 
-Dark Mode
-Сonvenience show services
-History
-API that uses song.link
+1. Dark Mode
+2. Сonvenience show services
+3. History
+4. API that uses song.link
 
 # TODO
 
 1. Add Much more features, such as adding to global UIActivityController
-1. Refactor
-2. Redesign History tab
-3. Animate
-4. Transfer to MVVM architecture
+2. Refactor
+3. Redesign History tab
+4. Animate
+5. Transfer to MVVM architecture
 
 # Requrements
 
