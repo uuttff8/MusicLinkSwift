@@ -1,0 +1,11 @@
+# MusicLinkSwift
+
+App just get reject in AppStore Connect, so this app here. Reject because Guideline 3.1.1 - Business - Payments - In-App Purchase
+
+
+# TODO
+
+1. Add Much more features
+1. Refactor
+2. Redesign History tab
+3. Transfer to MVVM architecture
