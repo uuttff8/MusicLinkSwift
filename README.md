@@ -9,3 +9,9 @@ App just get reject in AppStore Connect, so this app here. Reject because Guidel
 1. Refactor
 2. Redesign History tab
 3. Transfer to MVVM architecture
+
+# Requrements
+
+1. Xcode 11
+2. Swift 5
+3. SwiftPM
