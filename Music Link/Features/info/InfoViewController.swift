@@ -26,6 +26,7 @@ class InfoViewController: BaseViewController {
         self.tableView.estimatedRowHeight = 640.0; // set to whatever your "average" cell height is
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: self, action: #selector(showAlertWithAllLinks))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissVC))
         
         // Please refer to viewWillAppear to know when collection view cells is updated
     }
@@ -40,6 +41,10 @@ class InfoViewController: BaseViewController {
     }
     
     // MARK: - Func
+    
+    @objc func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @objc func showAlertWithAllLinks() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -73,7 +78,7 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 640
+        return 500
     }
     
 }

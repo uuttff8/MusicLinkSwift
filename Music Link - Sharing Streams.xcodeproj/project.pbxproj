@@ -30,6 +30,9 @@
 		4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4A231EBC6800C51BD1 /* Imager.swift */; };
 		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
 		4E689FD92343B8F900D6377E /* start_video.MP4 in Resources */ = {isa = PBXBuildFile; fileRef = 4E689FD72343B8F900D6377E /* start_video.MP4 */; };
+		4E689FE22343D7CA00D6377E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689FE12343D7CA00D6377E /* ShareViewController.swift */; };
+		4E689FE52343D7CA00D6377E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E689FE32343D7CA00D6377E /* MainInterface.storyboard */; };
+		4E689FE92343D7CA00D6377E /* share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E689FDF2343D7C900D6377E /* share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4E705FAE231821EC00D1CE56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FAD231821EC00D1CE56 /* AppDelegate.swift */; };
 		4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E705FB6231821EC00D1CE56 /* Music_Link.xcdatamodeld */; };
 		4E705FBA231821F100D1CE56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FB9231821F100D1CE56 /* Assets.xcassets */; };
@@ -54,11 +57,40 @@
 		4E705FF9231AA4BD00D1CE56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FF8231AA4BD00D1CE56 /* Main.storyboard */; };
 		4E705FFB231AA4E800D1CE56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FFA231AA4E800D1CE56 /* LaunchScreen.storyboard */; };
 		4EAB22CF232518E2003ECA78 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */; };
+		4EB740DB2343E61700748B8B /* SongLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB740DA2343E61600748B8B /* SongLink.swift */; };
+		4EB740DD2343E63500748B8B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB740DC2343E63500748B8B /* Alerts.swift */; };
+		4EB740DF2343E6F900748B8B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740DE2343E6F900748B8B /* RxCocoa */; };
+		4EB740E12343E6F900748B8B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E02343E6F900748B8B /* RxRelay */; };
+		4EB740E32343E6F900748B8B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E22343E6F900748B8B /* RxSwift */; };
 		4EEC264C232FFB720036627A /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264B232FFB720036627A /* InfoTableViewCell.swift */; };
 		4EEC264E233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264D233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift */; };
 		4EF3CB102320335D005A18B6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB0F2320335D005A18B6 /* Device.swift */; };
 		4EF3CB1223203501005A18B6 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB1123203501005A18B6 /* Display.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4E689FE72343D7CA00D6377E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4E705FA2231821EC00D1CE56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4E689FDE2343D7C900D6377E;
+			remoteInfo = share;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4E689FED2343D7CA00D6377E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4E689FE92343D7CA00D6377E /* share.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4E3A961823297738006B187D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -75,13 +107,15 @@
 		4E3A9636232C5777006B187D /* AboutRateAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRateAppTableViewCell.swift; sourceTree = "<group>"; };
 		4E3A9638232C5797006B187D /* AboutTelegramTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTelegramTableViewCell.swift; sourceTree = "<group>"; };
 		4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVkTableViewCell.swift; sourceTree = "<group>"; };
-		4E4F19FA232D486800DD0C57 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		4E4F1A0C232D496700DD0C57 /* libswiftXCTest.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libswiftXCTest.tbd; path = usr/lib/swift/libswiftXCTest.tbd; sourceTree = SDKROOT; };
 		4E52CD48231EB69A00C51BD1 /* InfoServicesToListenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServicesToListenCollectionViewCell.swift; sourceTree = "<group>"; };
 		4E52CD4A231EBC6800C51BD1 /* Imager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Imager.swift; sourceTree = "<group>"; };
 		4E52CD4C231FF3EC00C51BD1 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		4E689FD72343B8F900D6377E /* start_video.MP4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = start_video.MP4; sourceTree = "<group>"; };
 		4E689FD82343B8F900D6377E /* start_video.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = start_video.gif; sourceTree = "<group>"; };
+		4E689FDF2343D7C900D6377E /* share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E689FE12343D7CA00D6377E /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		4E689FE42343D7CA00D6377E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4E689FE62343D7CA00D6377E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Link - Sharing Streams.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E705FAD231821EC00D1CE56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E705FB7231821EC00D1CE56 /* Music_Link.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music_Link.xcdatamodel; sourceTree = "<group>"; };
@@ -108,6 +142,8 @@
 		4E705FF8231AA4BD00D1CE56 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4E705FFA231AA4E800D1CE56 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4EB740DA2343E61600748B8B /* SongLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLink.swift; sourceTree = "<group>"; };
+		4EB740DC2343E63500748B8B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4EEC264B232FFB720036627A /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		4EEC264D233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServicesToBuyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EF3CB0F2320335D005A18B6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -115,6 +151,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4E689FDC2343D7C900D6377E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EB740E32343E6F900748B8B /* RxSwift in Frameworks */,
+				4EB740E12343E6F900748B8B /* RxRelay in Frameworks */,
+				4EB740DF2343E6F900748B8B /* RxCocoa in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E705FA7231821EC00D1CE56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,8 +234,6 @@
 		4E4F19F9232D486800DD0C57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4E4F1A0C232D496700DD0C57 /* libswiftXCTest.tbd */,
-				4E4F19FA232D486800DD0C57 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -213,10 +257,23 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4E689FE02343D7CA00D6377E /* share */ = {
+			isa = PBXGroup;
+			children = (
+				4E689FE12343D7CA00D6377E /* ShareViewController.swift */,
+				4EB740DA2343E61600748B8B /* SongLink.swift */,
+				4EB740DC2343E63500748B8B /* Alerts.swift */,
+				4E689FE32343D7CA00D6377E /* MainInterface.storyboard */,
+				4E689FE62343D7CA00D6377E /* Info.plist */,
+			);
+			path = share;
+			sourceTree = "<group>";
+		};
 		4E705FA1231821EC00D1CE56 = {
 			isa = PBXGroup;
 			children = (
 				4E705FAC231821EC00D1CE56 /* Music Link */,
+				4E689FE02343D7CA00D6377E /* share */,
 				4E689FD62343B8F900D6377E /* Resources */,
 				4E705FAB231821EC00D1CE56 /* Products */,
 				4E4F19F9232D486800DD0C57 /* Frameworks */,
@@ -227,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */,
+				4E689FDF2343D7C900D6377E /* share.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -382,6 +440,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4E689FDE2343D7C900D6377E /* share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4E689FEA2343D7CA00D6377E /* Build configuration list for PBXNativeTarget "share" */;
+			buildPhases = (
+				4E689FDB2343D7C900D6377E /* Sources */,
+				4E689FDC2343D7C900D6377E /* Frameworks */,
+				4E689FDD2343D7C900D6377E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = share;
+			packageProductDependencies = (
+				4EB740DE2343E6F900748B8B /* RxCocoa */,
+				4EB740E02343E6F900748B8B /* RxRelay */,
+				4EB740E22343E6F900748B8B /* RxSwift */,
+			);
+			productName = share;
+			productReference = 4E689FDF2343D7C900D6377E /* share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4E705FA9231821EC00D1CE56 /* Music Link - Sharing Streams */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E705FC1231821F100D1CE56 /* Build configuration list for PBXNativeTarget "Music Link - Sharing Streams" */;
@@ -390,10 +470,12 @@
 				4E705FA7231821EC00D1CE56 /* Frameworks */,
 				4E705FA8231821EC00D1CE56 /* Resources */,
 				4E3A961F232981B8006B187D /* Run Script */,
+				4E689FED2343D7CA00D6377E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4E689FE82343D7CA00D6377E /* PBXTargetDependency */,
 			);
 			name = "Music Link - Sharing Streams";
 			packageProductDependencies = (
@@ -417,6 +499,9 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = uuttff8;
 				TargetAttributes = {
+					4E689FDE2343D7C900D6377E = {
+						CreatedOnToolsVersion = 11.0;
+					};
 					4E705FA9231821EC00D1CE56 = {
 						CreatedOnToolsVersion = 11.0;
 					};
@@ -441,11 +526,20 @@
 			projectRoot = "";
 			targets = (
 				4E705FA9231821EC00D1CE56 /* Music Link - Sharing Streams */,
+				4E689FDE2343D7C900D6377E /* share */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4E689FDD2343D7C900D6377E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4E689FE52343D7CA00D6377E /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E705FA8231821EC00D1CE56 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -484,6 +578,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4E689FDB2343D7C900D6377E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4EB740DB2343E61700748B8B /* SongLink.swift in Sources */,
+				4EB740DD2343E63500748B8B /* Alerts.swift in Sources */,
+				4E689FE22343D7CA00D6377E /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4E705FA6231821EC00D1CE56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -532,7 +636,68 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4E689FE82343D7CA00D6377E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4E689FDE2343D7C900D6377E /* share */;
+			targetProxy = 4E689FE72343D7CA00D6377E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4E689FE32343D7CA00D6377E /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E689FE42343D7CA00D6377E /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		4E689FEB2343D7CA00D6377E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75BBTA9VPU;
+				INFOPLIST_FILE = share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.uuttff.musiclink.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4E689FEC2343D7CA00D6377E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 75BBTA9VPU;
+				INFOPLIST_FILE = share/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.uuttff.musiclink.share;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4E705FBF231821F100D1CE56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -650,6 +815,7 @@
 		4E705FC2231821F100D1CE56 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -674,6 +840,7 @@
 		4E705FC3231821F100D1CE56 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -698,6 +865,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4E689FEA2343D7CA00D6377E /* Build configuration list for PBXNativeTarget "share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4E689FEB2343D7CA00D6377E /* Debug */,
+				4E689FEC2343D7CA00D6377E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4E705FA5231821EC00D1CE56 /* Build configuration list for PBXProject "Music Link - Sharing Streams" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -770,6 +946,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E4F19F6232D466B00DD0C57 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		4EB740DE2343E6F900748B8B /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		4EB740E02343E6F900748B8B /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		4EB740E22343E6F900748B8B /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 

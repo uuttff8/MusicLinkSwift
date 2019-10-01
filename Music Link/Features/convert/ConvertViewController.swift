@@ -68,6 +68,10 @@ extension ConvertViewController: ConvertView {
     }
     
     func onConvertedLink(links: LinksResponse) {
-        self.navigationController?.pushViewController(ScreenRouter.shared.getInfoController(links: links), animated: true)
+        let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: links))
+        if #available(iOS 13.0, *) {
+            vc.isModalInPresentation = true
+        }
+        self.present(vc, animated: true)
     }
 }
