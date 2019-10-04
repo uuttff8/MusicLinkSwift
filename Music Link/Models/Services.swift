@@ -8,8 +8,15 @@
 
 import UIKit
 
-struct Services {
-    var response: LinksResponse!
-    var images: [UIImage]!
-    var links: [String]!
+struct ServiceProvider {
+    var image: UIImage!
+    var link: String!
+    
+    mutating func create(title: String, link: GenericPlatform?) -> ServiceProvider? {
+        guard let link = link else { return nil }
+        let image  = UIImage(named: title)!
+        let linkk = link.url
+        
+        return ServiceProvider(image: image, link: linkk)
+    }
 }

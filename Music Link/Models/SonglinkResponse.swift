@@ -6,7 +6,7 @@
 //  Copyright © 2019 uuttff8. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct LinksResponse: Codable {
     let entityUniqueId: String

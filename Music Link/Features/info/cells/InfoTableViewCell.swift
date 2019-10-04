@@ -23,12 +23,11 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     
     private var longpressToListen = UILongPressGestureRecognizer()
     private var longpressToBuy = UILongPressGestureRecognizer()
-    private var servicesToListen  = Services()
-    private var servicesToBuy  = Services()
     private var presenter = InfoPresenter()
     
     var baseVC: InfoViewController!
-    var links: LinksResponse!
+    var servicesToListen: [ServiceProvider]!
+    var servicesToBuy: [ServiceProvider]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,8 +49,6 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        servicesToListen = presenter.checkListenServices(links)
-        servicesToBuy = presenter.checkBuyServices(links)
         // Configure the view for the selected state
     }
     
@@ -74,7 +71,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             let locationInTableView = longPress.location(in: collectionViewListen)
             let indexPath = collectionViewListen.indexPathForItem(at: locationInTableView)
             
-            let url = URL(string: servicesToListen.links[indexPath!.item])
+            let url = URL(string: servicesToListen[indexPath!.item].link)
             let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
             baseVC.present(activityVC, animated: true, completion: nil)
             print(indexPath?.row ?? "-0")
@@ -87,7 +84,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             let locationInTableView = longPress.location(in: collectionViewBuy)
             let indexPath = collectionViewBuy.indexPathForItem(at: locationInTableView)
             
-            let url = URL(string: servicesToBuy.links[indexPath!.item])
+            let url = URL(string: servicesToBuy[indexPath!.item].link)
             let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
             baseVC.present(activityVC, animated: true, completion: nil)
             print(indexPath?.row ?? "-0")
@@ -103,12 +100,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
         newUser.setValue(data.getThumbnailUrl(), forKey: "image")
         
-        do {
-            try context.save()
-            print("\n Saving Core Data context is done. writeSongToCoreData(data:) \n")
-        } catch {
-            print("Failed saving")
-        }
+        CoreDataManager.tryToSave(with: context)
     }
     
     // MARK: - UICollectionViewDataSource protocol
@@ -116,9 +108,9 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
-            return self.servicesToListen.images.count
+            return self.servicesToListen.count
         } else {
-            return self.servicesToBuy.images.count
+            return self.servicesToBuy.count
         }
     }
     
@@ -131,7 +123,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             
-            cell.imageViewService.image = servicesToListen.images[indexPath.item]
+            cell.imageViewService.image = servicesToListen[indexPath.item].image
             cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
             return cell
         } else if collectionView.tag == 1 {
@@ -140,7 +132,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             
-            cell.imageViewService.image = servicesToBuy.images[indexPath.item]
+            cell.imageViewService.image = servicesToBuy[indexPath.item].image
             cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
             return cell
         }
@@ -153,14 +145,14 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         if collectionView.tag == 0 {
-            let url = URL(string: servicesToListen.links[indexPath.item])!
+            let url = URL(string: servicesToListen[indexPath.item].link)!
             UIApplication.shared.open(url)
             debugPrint("\n")
             NSLog("\(url)")
             debugPrint("\n")
             
         } else if collectionView.tag == 1 {
-            let url = URL(string: servicesToBuy.links[indexPath.item])!
+            let url = URL(string: servicesToBuy[indexPath.item].link)!
             UIApplication.shared.open(url)
             debugPrint("\n")
             NSLog("\(url)")

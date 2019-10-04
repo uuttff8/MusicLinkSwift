@@ -7,95 +7,43 @@
 //
 
 import UIKit
-import CoreData
 
 class InfoPresenter: BasePresenter<InfoView> {
     
-    func checkListenServices(_ links: LinksResponse) -> Services {
-        var services = Services()
+    func checkListenServices(_ links: LinksResponse) -> [ServiceProvider] {
         
-        var images: Array<UIImage> = []
-        var linker: Array<String> = []
+        var genCell = ServiceProvider()
         
-        if let appleMusic = links.linksByPlatform.appleMusic {
-            images.append(UIImage(named: "apple_music")!)
-            linker.append(appleMusic.url)
-        }
-        if let amazonMusic = links.linksByPlatform.amazonMusic {
-            images.append(UIImage(named: "amazon_music")!)
-            linker.append(amazonMusic.url)
-        }
-        if let deezer = links.linksByPlatform.deezer {
-            images.append(UIImage(named: "deezer")!)
-            linker.append(deezer.url)
-        }
-        if let googleMusic = links.linksByPlatform.google {
-            images.append(UIImage(named: "google_music")!)
-            linker.append(googleMusic.url)
-        }
-        if let napster = links.linksByPlatform.napster {
-            images.append(UIImage(named: "napster")!)
-            linker.append(napster.url)
-        }
-        if let pandora = links.linksByPlatform.pandora {
-            images.append(UIImage(named: "pandora")!)
-            linker.append(pandora.url)
-        }
-        if let spotify = links.linksByPlatform.spotify {
-            images.append(UIImage(named: "spotify")!)
-            linker.append(spotify.url)
-        }
-        if let tidal = links.linksByPlatform.tidal {
-            images.append(UIImage(named: "tidal")!)
-            linker.append(tidal.url)
-        }
-        if let yandex = links.linksByPlatform.yandex {
-            images.append(UIImage(named: "yandex_music")!)
-            linker.append(yandex.url)
-        }
-        if let yt = links.linksByPlatform.youtube {
-            images.append(UIImage(named: "yt")!)
-            linker.append(yt.url)
-        }
-        if let yt_music = links.linksByPlatform.youtubeMusic {
-            images.append(UIImage(named: "yt_music")!)
-            linker.append(yt_music.url)
-        }
+        let listen: [ServiceProvider?] = [
+            genCell.create(title: "apple_music", link: links.linksByPlatform.appleMusic),
+            genCell.create(title: "amazon_music", link: links.linksByPlatform.amazonMusic),
+            genCell.create(title: "deezer", link: links.linksByPlatform.deezer),
+            genCell.create(title: "google_music", link: links.linksByPlatform.google),
+            genCell.create(title: "napster", link: links.linksByPlatform.napster),
+            genCell.create(title: "pandora", link: links.linksByPlatform.pandora),
+            genCell.create(title: "spotify", link: links.linksByPlatform.spotify),
+            genCell.create(title: "yandex_music", link: links.linksByPlatform.yandex),
+            genCell.create(title: "yt", link: links.linksByPlatform.youtube),
+            genCell.create(title: "yt_music", link: links.linksByPlatform.youtubeMusic),
+        ]
         
-        services.response = links
-        services.links = linker
-        services.images = images
-        
-        return services
+        return listen.compactMap{ $0 }
     }
     
-    func checkBuyServices(_ links: LinksResponse) -> Services {
-        var services = Services()
+    func checkBuyServices(_ links: LinksResponse) -> [ServiceProvider] {
         
-        var images: Array<UIImage> = []
-        var linker: Array<String> = []
+        var genCell = ServiceProvider()
         
-        if let itunes = links.linksByPlatform.itunes {
-            images.append(UIImage(named: "itunes_store")!)
-            linker.append(itunes.url)
-        }
-        if let googleStore = links.linksByPlatform.googleStore {
-            images.append(UIImage(named: "google_play_store")!)
-            linker.append(googleStore.url)
-        }
-        if let amazonStore = links.linksByPlatform.amazonStore {
-            images.append(UIImage(named: "amazon")!)
-            linker.append(amazonStore.url)
-        }
+        let buy: [ServiceProvider?] = [
+            genCell.create(title: "itunes_store", link: links.linksByPlatform.itunes),
+            genCell.create(title: "google_play_store", link: links.linksByPlatform.googleStore),
+            genCell.create(title: "amazon", link: links.linksByPlatform.amazonStore)
+        ]
         
-        services.response = links
-        services.links = linker
-        services.images = images
-        
-        return services
+        return buy.compactMap { $0 }
     }
-    
 }
+
 
 protocol InfoView: BaseView {
 }

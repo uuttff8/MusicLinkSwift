@@ -11,5 +11,9 @@ import CoreData
 
 class CoreDataManager {
     static let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    static let context = appDelegate.persistentContainer.viewContext
+    static let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+    
+    static func tryToSave(with context: NSManagedObjectContext) {
+        
+    }
 }
