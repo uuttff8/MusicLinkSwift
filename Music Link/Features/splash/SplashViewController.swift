@@ -1,21 +1,65 @@
-//
-//  SplashViewController.swift
-//  Music Link
-//
-//  Created by uuttff8 on 9/11/19.
-//  Copyright © 2019 uuttff8. All rights reserved.
-//
-
 import UIKit
+import RxSwift
+import SnapKit
 import AVKit
 import AVFoundation
 
-class SplashViewController: BaseViewController {
+class SplashViewController: BaseViewController, BindableType {
     
-    private var presenter = SplashPresenter()
+    //MARK: - ViewModel
+    var viewModel: SplashViewModelType!
     
+    // MARK: - Properties
+    lazy var explainLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Play the video below and you will know how to use this app"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        
+        view.addSubview(label)
+        return label
+    }()
+    
+    lazy var videoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "screenshot_video"), for: .normal)
+        button.rx.tap.bind {
+            self.playVideo()
+        }
+        .disposed(by: disposeBag)
+        
+        view.addSubview(button)
+        return button
+    }()
+    
+    // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeUI()
+    }
+    
+    @IBAction func videoButtonPressed(_ sender: UIButton) {
+        playVideo()
+    }
+    
+    func bindViewModel() {
+        let inputs = viewModel.inputs
+        let outputs = viewModel.outputs
+        
+        //continueButton.rx.action = inputs.continueAction
+    }
+    
+    // MARK: - Private
+    private func makeUI() {
+        explainLabel.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
+        }
+        videoButton.snp.makeConstraints { (make) in
+            make.height.equalTo(200)
+            make.top.equalTo(explainLabel.snp.bottom).offset(120)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
     }
     
     private func playVideo() {
@@ -26,23 +70,8 @@ class SplashViewController: BaseViewController {
         let player = AVPlayer(url: URL(fileURLWithPath: path))
         let playerController = AVPlayerViewController()
         playerController.player = player
-        present(playerController, animated: true) {
+        self.present(playerController, animated: true) {
             player.play()
         }
     }
-
-    @IBAction func continueButtonPressed(_ sender: RoundButton) {
-       let vc = ScreenRouter.shared.getMainTabBarController()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = vc
-    }
-    
-    @IBAction func videoButtonPressed(_ sender: UIButton) {
-        playVideo()
-    }
-}
-
-
-extension SplashViewController: SplashView {
-    
 }

@@ -44,8 +44,8 @@ class ScreenRouter {
         return initiate(board: getStoryboard(board: .MAIN), name: .CONVERT) as! ConvertViewController
     }
     
-    func getMainTabBarController() -> MainTabBarController {
-        return initiate(board: getStoryboard(board: .MAIN), name: .TAB_BAR) as! MainTabBarController
+    func getHistoryController() -> HistoryViewController {
+        return initiate(board: getStoryboard(board: .MAIN), name: .HISTORY) as! HistoryViewController
     }
     
     func getAboutController() -> AboutViewController {

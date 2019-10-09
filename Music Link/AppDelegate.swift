@@ -16,10 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var orientationLock = UIInterfaceOrientationMask.portrait
     
     var optionallyStoreTheFirstLaunchFlag = false
-
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         optionallyStoreTheFirstLaunchFlag = UIApplication.isFirstLaunch()
+        
+        let sceneCoordinator = SceneCoordinator(window: window!)
+        SceneCoordinator.shared = sceneCoordinator
 
         
         initDeepLinks(application: application)
@@ -53,12 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initControllers(application: UIApplication) {
         if optionallyStoreTheFirstLaunchFlag {
-            // TODO(uuttff8): build splash screen
             print("first run")
             window?.rootViewController = ScreenRouter.shared.getSplashController()
         } else {
             print("not first run")
-            window?.rootViewController = ScreenRouter.shared.getMainTabBarController()
+            SceneCoordinator.shared.transition(to: Scene.musicLink)
         }
         
         window?.makeKeyAndVisible()

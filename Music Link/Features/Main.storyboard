@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="2047.2" y="-267.48768472906403"/>
         </scene>
-        <!--Main Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="qf7-e6-oGG">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="5eI-dc-2N6" customClass="MainTabBarController" customModule="Music_Link___Sharing_Streams" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="5eI-dc-2N6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p0T-V7-Fcj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -142,7 +142,7 @@
                                                 <constraint firstItem="bTz-A3-XGS" firstAttribute="top" secondItem="Bef-H9-1ii" secondAttribute="top" constant="16" id="myE-AB-0YS"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="songImageView" destination="bTz-A3-XGS" id="Qrz-UY-XiO"/>
                                             <outlet property="songLabel" destination="5Wh-lg-0qC" id="mSb-Ji-d4x"/>

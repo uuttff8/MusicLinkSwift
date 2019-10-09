@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E061105234DFB040068EC1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061104234DFB040068EC1A /* Scene.swift */; };
+		4E061107234DFB670068EC1A /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061106234DFB670068EC1A /* SceneTransitionType.swift */; };
+		4E061109234DFB9A0068EC1A /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */; };
+		4E06110B234DFBB80068EC1A /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */; };
+		4E06110D234DFBF60068EC1A /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06110C234DFBF60068EC1A /* ObservableType.swift */; };
 		4E3A961923297738006B187D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961823297738006B187D /* AboutViewController.swift */; };
 		4E3A961C2329775E006B187D /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961B2329775E006B187D /* AboutPresenter.swift */; };
 		4E3A961E23297A36006B187D /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A961D23297A36006B187D /* About.storyboard */; };
 		4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */; };
 		4E3A962423298A89006B187D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962323298A89006B187D /* SplashViewController.swift */; };
-		4E3A962723298A9B006B187D /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962623298A9B006B187D /* SplashPresenter.swift */; };
+		4E3A962723298A9B006B187D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962623298A9B006B187D /* SplashViewModel.swift */; };
 		4E3A962923298B40006B187D /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A962823298B40006B187D /* Splash.storyboard */; };
 		4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962B23298DD2006B187D /* HistoryPresenter.swift */; };
 		4E3A962E23298F7C006B187D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A962D23298F7C006B187D /* CoreDataManager.swift */; };
@@ -56,12 +61,15 @@
 		4E705FF7231AA08800D1CE56 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FF6231AA08800D1CE56 /* Info.storyboard */; };
 		4E705FF9231AA4BD00D1CE56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FF8231AA4BD00D1CE56 /* Main.storyboard */; };
 		4E705FFB231AA4E800D1CE56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E705FFA231AA4E800D1CE56 /* LaunchScreen.storyboard */; };
-		4EAB22CF232518E2003ECA78 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */; };
+		4EAB22CF232518E2003ECA78 /* MusicLinkTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAB22CE232518E2003ECA78 /* MusicLinkTabBarController.swift */; };
+		4EABD5CE234DF8C100F6B3DF /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EABD5CD234DF8C100F6B3DF /* BindableType.swift */; };
 		4EB740DB2343E61700748B8B /* SongLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB740DA2343E61600748B8B /* SongLink.swift */; };
 		4EB740DD2343E63500748B8B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB740DC2343E63500748B8B /* Alerts.swift */; };
 		4EB740DF2343E6F900748B8B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740DE2343E6F900748B8B /* RxCocoa */; };
 		4EB740E12343E6F900748B8B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E02343E6F900748B8B /* RxRelay */; };
 		4EB740E32343E6F900748B8B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E22343E6F900748B8B /* RxSwift */; };
+		4EB740E62348B3F900748B8B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E52348B3F900748B8B /* SnapKit */; };
+		4EB740E9234A00B300748B8B /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E8234A00B300748B8B /* Action */; };
 		4EEC264C232FFB720036627A /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264B232FFB720036627A /* InfoTableViewCell.swift */; };
 		4EEC264E233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264D233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift */; };
 		4EF3CB102320335D005A18B6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB0F2320335D005A18B6 /* Device.swift */; };
@@ -93,12 +101,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E061104234DFB040068EC1A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		4E061106234DFB670068EC1A /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
+		4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
+		4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		4E06110C234DFBF60068EC1A /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		4E3A961823297738006B187D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4E3A961B2329775E006B187D /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
 		4E3A961D23297A36006B187D /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		4E3A962123298444006B187D /* VersionNumberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionNumberTableViewCell.swift; sourceTree = "<group>"; };
 		4E3A962323298A89006B187D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		4E3A962623298A9B006B187D /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		4E3A962623298A9B006B187D /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		4E3A962823298B40006B187D /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		4E3A962B23298DD2006B187D /* HistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
 		4E3A962D23298F7C006B187D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -141,7 +154,8 @@
 		4E705FF6231AA08800D1CE56 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
 		4E705FF8231AA4BD00D1CE56 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		4E705FFA231AA4E800D1CE56 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4EAB22CE232518E2003ECA78 /* MusicLinkTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLinkTabBarController.swift; sourceTree = "<group>"; };
+		4EABD5CD234DF8C100F6B3DF /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		4EB740DA2343E61600748B8B /* SongLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLink.swift; sourceTree = "<group>"; };
 		4EB740DC2343E63500748B8B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4EEC264B232FFB720036627A /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -168,6 +182,8 @@
 				4E4F1A01232D48E600DD0C57 /* RxCocoa in Frameworks */,
 				4E4F1A0B232D48E600DD0C57 /* SDWebImage in Frameworks */,
 				4E4F1A05232D48E600DD0C57 /* RxSwift in Frameworks */,
+				4EB740E9234A00B300748B8B /* Action in Frameworks */,
+				4EB740E62348B3F900748B8B /* SnapKit in Frameworks */,
 				4E4F1A03232D48E600DD0C57 /* RxRelay in Frameworks */,
 				4E4F1A09232D48E600DD0C57 /* RxAlamofire in Frameworks */,
 			);
@@ -176,6 +192,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E061103234DFAF30068EC1A /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				4E061104234DFB040068EC1A /* Scene.swift */,
+				4E061106234DFB670068EC1A /* SceneTransitionType.swift */,
+				4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */,
+				4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		4E3A961723297725006B187D /* about */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,14 +232,6 @@
 				4E3A963A232C57A1006B187D /* AboutVkTableViewCell.swift */,
 			);
 			path = cells;
-			sourceTree = "<group>";
-		};
-		4E3A962523298A8C006B187D /* other */ = {
-			isa = PBXGroup;
-			children = (
-				4E3A962623298A9B006B187D /* SplashPresenter.swift */,
-			);
-			path = other;
 			sourceTree = "<group>";
 		};
 		4E3A962A23298DC3006B187D /* other */ = {
@@ -296,8 +315,9 @@
 				4E705FF4231A9FE500D1CE56 /* Views */,
 				4E705FE9231A847000D1CE56 /* Models */,
 				4E705FDD231A5E8D00D1CE56 /* Networking */,
+				4E061103234DFAF30068EC1A /* Coordinator */,
 				4E705FC4231824FA00D1CE56 /* Features */,
-				4E705FE6231A605400D1CE56 /* Utilities */,
+				4E705FE6231A605400D1CE56 /* Utils */,
 				4E705FF5231A9FFE00D1CE56 /* Support */,
 			);
 			path = "Music Link";
@@ -311,20 +331,20 @@
 				4E705FEC231A988F00D1CE56 /* info */,
 				4E705FD5231960AF00D1CE56 /* base */,
 				4E705FC62318253800D1CE56 /* history */,
-				4E705FC52318252100D1CE56 /* convert */,
+				4E705FC52318252100D1CE56 /* Convert */,
 				4E705FF8231AA4BD00D1CE56 /* Main.storyboard */,
-				4EAB22CE232518E2003ECA78 /* MainTabBarController.swift */,
+				4EAB22CE232518E2003ECA78 /* MusicLinkTabBarController.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		4E705FC52318252100D1CE56 /* convert */ = {
+		4E705FC52318252100D1CE56 /* Convert */ = {
 			isa = PBXGroup;
 			children = (
 				4E705FD62319610D00D1CE56 /* other */,
 				4E705FCC2318457900D1CE56 /* ConvertViewController.swift */,
 			);
-			path = convert;
+			path = Convert;
 			sourceTree = "<group>";
 		};
 		4E705FC62318253800D1CE56 /* history */ = {
@@ -366,18 +386,18 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		4E705FE6231A605400D1CE56 /* Utilities */ = {
+		4E705FE6231A605400D1CE56 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				4EABD5CC234DF89A00F6B3DF /* Extensions */,
 				4E705FD023195F0D00D1CE56 /* Pasteboard.swift */,
-				4E705FE7231A606300D1CE56 /* Extensions.swift */,
 				4E705FF2231A9F9300D1CE56 /* ScreenRouter.swift */,
 				4E52CD4A231EBC6800C51BD1 /* Imager.swift */,
 				4EF3CB0F2320335D005A18B6 /* Device.swift */,
 				4EF3CB1123203501005A18B6 /* Display.swift */,
 				4E3A962D23298F7C006B187D /* CoreDataManager.swift */,
 			);
-			path = Utilities;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		4E705FE9231A847000D1CE56 /* Models */ = {
@@ -430,11 +450,21 @@
 		4EAB22CD232515B9003ECA78 /* splash */ = {
 			isa = PBXGroup;
 			children = (
-				4E3A962523298A8C006B187D /* other */,
 				4E3A962323298A89006B187D /* SplashViewController.swift */,
+				4E3A962623298A9B006B187D /* SplashViewModel.swift */,
 				4E3A962823298B40006B187D /* Splash.storyboard */,
 			);
 			path = splash;
+			sourceTree = "<group>";
+		};
+		4EABD5CC234DF89A00F6B3DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4E705FE7231A606300D1CE56 /* Extensions.swift */,
+				4EABD5CD234DF8C100F6B3DF /* BindableType.swift */,
+				4E06110C234DFBF60068EC1A /* ObservableType.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,6 +514,8 @@
 				4E4F1A04232D48E600DD0C57 /* RxSwift */,
 				4E4F1A08232D48E600DD0C57 /* RxAlamofire */,
 				4E4F1A0A232D48E600DD0C57 /* SDWebImage */,
+				4EB740E52348B3F900748B8B /* SnapKit */,
+				4EB740E8234A00B300748B8B /* Action */,
 			);
 			productName = "Music Link";
 			productReference = 4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */;
@@ -520,6 +552,8 @@
 				4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4E4F19F3232D464200DD0C57 /* XCRemoteSwiftPackageReference "RxAlamofire" */,
 				4E4F19F6232D466B00DD0C57 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				4EB740E42348B3F900748B8B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4EB740E7234A00B300748B8B /* XCRemoteSwiftPackageReference "Action" */,
 			);
 			productRefGroup = 4E705FAB231821EC00D1CE56 /* Products */;
 			projectDirPath = "";
@@ -596,17 +630,18 @@
 				4E3A962423298A89006B187D /* SplashViewController.swift in Sources */,
 				4E705FD123195F0D00D1CE56 /* Pasteboard.swift in Sources */,
 				4E705FE1231A5E9B00D1CE56 /* NetManager.swift in Sources */,
-				4EAB22CF232518E2003ECA78 /* MainTabBarController.swift in Sources */,
+				4EAB22CF232518E2003ECA78 /* MusicLinkTabBarController.swift in Sources */,
 				4E705FEB231A847D00D1CE56 /* SonglinkResponse.swift in Sources */,
 				4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */,
 				4E705FD82319619F00D1CE56 /* BasePresenter.swift in Sources */,
+				4E061109234DFB9A0068EC1A /* SceneCoordinatorType.swift in Sources */,
 				4EEC264E233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift in Sources */,
 				4E705FF1231A98C300D1CE56 /* InfoPresenter.swift in Sources */,
 				4E705FEE231A98A400D1CE56 /* InfoViewController.swift in Sources */,
 				4E52CD49231EB69A00C51BD1 /* InfoServicesToListenCollectionViewCell.swift in Sources */,
 				4EEC264C232FFB720036627A /* InfoTableViewCell.swift in Sources */,
 				4E705FCB23182D9D00D1CE56 /* Button.swift in Sources */,
-				4E3A962723298A9B006B187D /* SplashPresenter.swift in Sources */,
+				4E3A962723298A9B006B187D /* SplashViewModel.swift in Sources */,
 				4E705FB8231821EC00D1CE56 /* Music_Link.xcdatamodeld in Sources */,
 				4E705FCD2318457900D1CE56 /* ConvertViewController.swift in Sources */,
 				4E3A962E23298F7C006B187D /* CoreDataManager.swift in Sources */,
@@ -616,10 +651,12 @@
 				4E705FDC2319654C00D1CE56 /* ConvertPresenter.swift in Sources */,
 				4E705FE5231A5EDE00D1CE56 /* Constants.swift in Sources */,
 				4E705FE8231A606300D1CE56 /* Extensions.swift in Sources */,
+				4EABD5CE234DF8C100F6B3DF /* BindableType.swift in Sources */,
 				4E705FF3231A9F9300D1CE56 /* ScreenRouter.swift in Sources */,
 				4E3A9637232C5777006B187D /* AboutRateAppTableViewCell.swift in Sources */,
 				4E3A9635232C5319006B187D /* AboutContactTableViewCell.swift in Sources */,
 				4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */,
+				4E061107234DFB670068EC1A /* SceneTransitionType.swift in Sources */,
 				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
 				4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */,
 				4E705FDA2319645100D1CE56 /* BaseView.swift in Sources */,
@@ -627,10 +664,13 @@
 				4E705FC82318254C00D1CE56 /* HistoryViewController.swift in Sources */,
 				4EF3CB102320335D005A18B6 /* Device.swift in Sources */,
 				4E3A961923297738006B187D /* AboutViewController.swift in Sources */,
+				4E061105234DFB040068EC1A /* Scene.swift in Sources */,
+				4E06110D234DFBF60068EC1A /* ObservableType.swift in Sources */,
 				4EF3CB1223203501005A18B6 /* Display.swift in Sources */,
 				4E3A9633232C08C0006B187D /* HistoryTableViewCell.swift in Sources */,
 				4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */,
 				4E705FE2231A5E9B00D1CE56 /* MLApi.swift in Sources */,
+				4E06110B234DFBB80068EC1A /* SceneCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -919,6 +959,22 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		4EB740E42348B3F900748B8B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		4EB740E7234A00B300748B8B /* XCRemoteSwiftPackageReference "Action" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/Action.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -961,6 +1017,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E4F19E8232D461500DD0C57 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		4EB740E52348B3F900748B8B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB740E42348B3F900748B8B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		4EB740E8234A00B300748B8B /* Action */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EB740E7234A00B300748B8B /* XCRemoteSwiftPackageReference "Action" */;
+			productName = Action;
 		};
 /* End XCSwiftPackageProductDependency section */
 

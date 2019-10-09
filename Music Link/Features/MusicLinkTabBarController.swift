@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MusicLinkTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

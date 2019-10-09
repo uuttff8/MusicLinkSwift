@@ -20,7 +20,6 @@ class ConvertViewController: BaseViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.onCreate(view: self)
@@ -45,9 +44,11 @@ class ConvertViewController: BaseViewController {
         let vc = ScreenRouter.shared.getAboutController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
     @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
-        let vc = ScreenRouter.shared.getSplashController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        let sceneCoordinator: SceneCoordinatorType = SceneCoordinator.shared
+        let viewModel = SplashViewModel()
+        sceneCoordinator.transition(to: Scene.splash(viewModel))
     }
 }
 

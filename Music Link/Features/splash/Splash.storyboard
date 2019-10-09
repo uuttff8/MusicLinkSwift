@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -36,9 +36,6 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="continueButtonPressed:" destination="xoT-PC-DlN" eventType="touchUpInside" id="cPP-SY-rHb"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0LH-An-HLo" customClass="RoundButton" customModule="Music_Link___Sharing_Streams" customModuleProvider="target">
                                 <rect key="frame" x="16" y="210.5" width="343" height="202"/>
@@ -51,7 +48,7 @@
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" systemColor="separatorColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -72,6 +69,13 @@
                             <constraint firstAttribute="trailing" secondItem="0wW-uT-ivw" secondAttribute="trailing" constant="16" id="eoW-Fx-9tZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="is4-sT-YC1"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0wW-uT-ivw"/>
+                                <exclude reference="fIh-Fi-mAV"/>
+                                <exclude reference="0LH-An-HLo"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ECj-UX-4wK" userLabel="First Responder" sceneMemberID="firstResponder"/>
