@@ -64,7 +64,7 @@ extension Scene: TargetScene {
         case let .splash(viewModel):
             var vc = ScreenRouter.shared.getSplashController()
             vc.bind(to: viewModel)
-            return .push(vc)
+            return .present(vc)
         }
     }
 }

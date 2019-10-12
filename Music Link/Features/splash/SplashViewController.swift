@@ -32,6 +32,20 @@ class SplashViewController: BaseViewController, BindableType {
         return button
     }()
     
+    lazy var continueButton: RoundButton = {
+        let cnb = RoundButton()
+        cnb.setTitle("Continue", for: .normal)
+        cnb.cornerRadius = 8
+        cnb.backgroundColor = .systemBlue
+        cnb.rx.tap.bind {
+            self.dismiss(animated: true, completion: nil)
+        }
+        .disposed(by: disposeBag)
+        
+        view.addSubview(cnb)
+        return cnb
+    }()
+    
     // MARK: - Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +65,12 @@ class SplashViewController: BaseViewController, BindableType {
     
     // MARK: - Private
     private func makeUI() {
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
+        
         explainLabel.snp.makeConstraints { (make) in
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
@@ -60,6 +80,12 @@ class SplashViewController: BaseViewController, BindableType {
             make.top.equalTo(explainLabel.snp.bottom).offset(120)
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
+        continueButton.snp.makeConstraints { (make) in
+            make.trailing.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
+            make.height.equalTo(50)
+        }
+        
     }
     
     private func playVideo() {

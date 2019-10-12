@@ -46,9 +46,8 @@ class ConvertViewController: BaseViewController {
     }
     
     @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
-        let sceneCoordinator: SceneCoordinatorType = SceneCoordinator.shared
-        let viewModel = SplashViewModel()
-        sceneCoordinator.transition(to: Scene.splash(viewModel))
+        SceneCoordinator.shared.transition(to: Scene.splash(SplashViewModel()))
+        
     }
 }
 

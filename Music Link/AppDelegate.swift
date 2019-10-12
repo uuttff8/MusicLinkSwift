@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initControllers(application: UIApplication) {
         if optionallyStoreTheFirstLaunchFlag {
             print("first run")
-            window?.rootViewController = ScreenRouter.shared.getSplashController()
+            SceneCoordinator.shared.transition(to: Scene.splash(SplashViewModel()))
         } else {
             print("not first run")
             SceneCoordinator.shared.transition(to: Scene.musicLink)
