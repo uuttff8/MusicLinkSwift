@@ -4,11 +4,7 @@ import SnapKit
 import AVKit
 import AVFoundation
 
-class SplashViewController: BaseViewController, BindableType {
-    
-    //MARK: - ViewModel
-    var viewModel: SplashViewModelType!
-    
+class SplashViewController: BaseViewController {
     // MARK: - Properties
     lazy var explainLabel: UILabel = {
         let label = UILabel()
@@ -50,17 +46,6 @@ class SplashViewController: BaseViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeUI()
-    }
-    
-    @IBAction func videoButtonPressed(_ sender: UIButton) {
-        playVideo()
-    }
-    
-    func bindViewModel() {
-        let inputs = viewModel.inputs
-        let outputs = viewModel.outputs
-        
-        //continueButton.rx.action = inputs.continueAction
     }
     
     // MARK: - Private

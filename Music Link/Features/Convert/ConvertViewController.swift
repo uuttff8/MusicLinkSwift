@@ -46,8 +46,8 @@ class ConvertViewController: BaseViewController {
     }
     
     @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
-        SceneCoordinator.shared.transition(to: Scene.splash(SplashViewModel()))
-        
+        //SceneCoordinator.shared.transition(to: Scene.splash)
+        Navigator.default.show(segue: .splash, sender: self, transition: .alert)
     }
 }
 

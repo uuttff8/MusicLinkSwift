@@ -1,0 +1,23 @@
+//
+//  ViewController.swift
+//  Music Link - Sharing Streams
+//
+//  Created by uuttff8 on 10/19/19.
+//  Copyright © 2019 uuttff8. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    var viewModel: ViewModel?
+    var navigator: Navigator!
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+
+}

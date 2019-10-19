@@ -24,22 +24,22 @@ private enum TabBarControllers: Int {
 }
 
 enum Scene {
-    case musicLink
-    case splash(SplashViewModel)
+    case tabs
+    case splash
 }
 
 extension Scene: TargetScene {
     var transition: SceneTransitionType {
         switch self {
-        case .musicLink:
+        case .tabs:
             let musicLinkTabBarController = MusicLinkTabBarController()
             
             // ConvertViewController
-            var convertVC = ScreenRouter.shared.getConvertController()
+            let convertVC = ScreenRouter.shared.getConvertController()
             let rootConvertVC = UINavigationController(rootViewController: convertVC)
             
             // HistoryViewController
-            var historyVC = ScreenRouter.shared.getHistoryController()
+            let historyVC = ScreenRouter.shared.getHistoryController()
             
             let convertTabBarItem = UITabBarItem(
                 title: "Convert",
@@ -61,9 +61,8 @@ extension Scene: TargetScene {
             ]
             
             return .tabBar(musicLinkTabBarController)
-        case let .splash(viewModel):
-            var vc = ScreenRouter.shared.getSplashController()
-            vc.bind(to: viewModel)
+        case .splash:
+            let vc = SplashViewController()
             return .present(vc)
         }
     }

@@ -82,7 +82,12 @@ class SceneCoordinator: NSObject, SceneCoordinatorType {
             currentViewController.present(viewController, animated: true) {
                 subject.onCompleted()
             }
-            // currentViewController = SceneCoordinator.actualViewController(for: viewController)
+            
+            // because it's not whole view controller showing, just modal in ios 13
+//            if #available(iOS 13, *) { } else {
+//                currentViewController = SceneCoordinator.actualViewController(for: viewController)
+//            }
+            
         case let .alert(viewController):
             currentViewController.present(viewController, animated: true) {
                 subject.onCompleted()
