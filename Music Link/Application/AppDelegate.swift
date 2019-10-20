@@ -16,18 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var orientationLock = UIInterfaceOrientationMask.portrait
-    var logger = Logger(label: "com.uuttff.musiclink")
+    let logger = Logger(label: "com.uuttff.musiclink")
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let optionallyStoreTheFirstLaunchFlag = UIApplication.isFirstLaunch()
         
-        //let sceneCoordinator = SceneCoordinator(window: window!)
-        //SceneCoordinator.shared = sceneCoordinator
-
-        
         initDeepLinks(application: application)
         initControllers(application: application, isFirst: optionallyStoreTheFirstLaunchFlag)
-        
         
         return true
     }
@@ -56,13 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initControllers(application: UIApplication, isFirst: Bool) {
         
-        guard isFirst else {
-            logger.info("Most First Launch")
-            Navigator.default.show(segue: .tabs, sender: nil, transition: .root(in: window!))
+        guard isFirst == false else {
+            logger.info("not first run")
+            Navigator.default.show(segue: .splash, sender: nil, transition: .root(in: window!))
             return
         }
-        logger.info("not first run")
-        Navigator.default.show(segue: .splash, sender: nil, transition: .root(in: window!))
+        logger.info("Most First run")
+        Navigator.default.show(segue: .tabs, sender: nil, transition: .root(in: window!))
 
         window?.makeKeyAndVisible()
     }

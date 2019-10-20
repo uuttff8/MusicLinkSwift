@@ -63,7 +63,7 @@ class Navigator {
             ]
             
             return musicLinkTabBarController
-        case .splash: return SplashViewController()
+        case .splash: return SplashViewController(viewModel: nil, navigator: self)
         }
     }
     

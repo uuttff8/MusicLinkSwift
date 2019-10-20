@@ -52,10 +52,6 @@ class ScreenRouter {
         return initiate(board: getStoryboard(board: .ABOUT), name: .ABOUT) as! AboutViewController
     }
     
-    func getSplashController() -> SplashViewController {
-        return SplashViewController()
-    }
-    
     private func getStoryboard(board: STORYBOARDS) -> UIStoryboard {
         return UIStoryboard(name: board.rawValue, bundle: nil)
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConvertViewController: BaseViewController {
+class ConvertViewController: UIViewController {
     private var presenter = ConvertPresenter()
     
     @IBOutlet weak var pasteButton: LoadingButton!
@@ -47,7 +47,7 @@ class ConvertViewController: BaseViewController {
     
     @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
         //SceneCoordinator.shared.transition(to: Scene.splash)
-        Navigator.default.show(segue: .splash, sender: self, transition: .alert)
+        Navigator.default.show(segue: .splash, sender: self, transition: .present)
     }
 }
 

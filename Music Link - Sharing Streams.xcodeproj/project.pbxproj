@@ -7,16 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E061105234DFB040068EC1A /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061104234DFB040068EC1A /* Scene.swift */; };
-		4E061107234DFB670068EC1A /* SceneTransitionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061106234DFB670068EC1A /* SceneTransitionType.swift */; };
-		4E061109234DFB9A0068EC1A /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */; };
-		4E06110B234DFBB80068EC1A /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */; };
 		4E06110D234DFBF60068EC1A /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06110C234DFBF60068EC1A /* ObservableType.swift */; };
 		4E24E3BD2358EA98005AD3CA /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3BC2358EA98005AD3CA /* ViewModelType.swift */; };
 		4E24E3C02358ECCC005AD3CA /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = 4E24E3BF2358ECCC005AD3CA /* Logging */; };
 		4E24E3C3235B2381005AD3CA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C2235B2381005AD3CA /* ActivityIndicator.swift */; };
 		4E24E3C5235B2955005AD3CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C4235B2955005AD3CA /* ViewController.swift */; };
 		4E24E3C8235B2AFA005AD3CA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C7235B2AFA005AD3CA /* Navigator.swift */; };
+		4E24E3CA235C9714005AD3CA /* HasDisposeBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C9235C9714005AD3CA /* HasDisposeBag.swift */; };
+		4E24E3CC235C9734005AD3CA /* NSObject+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3CB235C9734005AD3CA /* NSObject+Rx.swift */; };
 		4E3A961923297738006B187D /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961823297738006B187D /* AboutViewController.swift */; };
 		4E3A961C2329775E006B187D /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3A961B2329775E006B187D /* AboutPresenter.swift */; };
 		4E3A961E23297A36006B187D /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E3A961D23297A36006B187D /* About.storyboard */; };
@@ -104,15 +102,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4E061104234DFB040068EC1A /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		4E061106234DFB670068EC1A /* SceneTransitionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneTransitionType.swift; sourceTree = "<group>"; };
-		4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		4E06110C234DFBF60068EC1A /* ObservableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableType.swift; sourceTree = "<group>"; };
 		4E24E3BC2358EA98005AD3CA /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		4E24E3C2235B2381005AD3CA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4E24E3C4235B2955005AD3CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E24E3C7235B2AFA005AD3CA /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		4E24E3C9235C9714005AD3CA /* HasDisposeBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasDisposeBag.swift; sourceTree = "<group>"; };
+		4E24E3CB235C9734005AD3CA /* NSObject+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Rx.swift"; sourceTree = "<group>"; };
 		4E3A961823297738006B187D /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4E3A961B2329775E006B187D /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
 		4E3A961D23297A36006B187D /* About.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
@@ -198,17 +194,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E061103234DFAF30068EC1A /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				4E061104234DFB040068EC1A /* Scene.swift */,
-				4E061106234DFB670068EC1A /* SceneTransitionType.swift */,
-				4E061108234DFB9A0068EC1A /* SceneCoordinatorType.swift */,
-				4E06110A234DFBB80068EC1A /* SceneCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		4E24E3BB2358EA8A005AD3CA /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				4E24E3C2235B2381005AD3CA /* ActivityIndicator.swift */,
+				4E24E3C9235C9714005AD3CA /* HasDisposeBag.swift */,
+				4E24E3CB235C9734005AD3CA /* NSObject+Rx.swift */,
 			);
 			path = "Third Party";
 			sourceTree = "<group>";
@@ -229,6 +216,7 @@
 		4E24E3C6235B2A56005AD3CA /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				4E705FAD231821EC00D1CE56 /* AppDelegate.swift */,
 				4E24E3C7235B2AFA005AD3CA /* Navigator.swift */,
 			);
 			path = Application;
@@ -344,11 +332,9 @@
 			children = (
 				4E24E3C6235B2A56005AD3CA /* Application */,
 				4E24E3BB2358EA8A005AD3CA /* Common */,
-				4E705FAD231821EC00D1CE56 /* AppDelegate.swift */,
 				4E705FF4231A9FE500D1CE56 /* Views */,
 				4E705FE9231A847000D1CE56 /* Models */,
 				4E705FDD231A5E8D00D1CE56 /* Networking */,
-				4E061103234DFAF30068EC1A /* Coordinator */,
 				4E705FC4231824FA00D1CE56 /* Features */,
 				4E705FE6231A605400D1CE56 /* Utils */,
 				4E705FF5231A9FFE00D1CE56 /* Support */,
@@ -660,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3A9639232C5797006B187D /* AboutTelegramTableViewCell.swift in Sources */,
+				4E24E3CA235C9714005AD3CA /* HasDisposeBag.swift in Sources */,
 				4E3A962423298A89006B187D /* SplashViewController.swift in Sources */,
 				4E705FD123195F0D00D1CE56 /* Pasteboard.swift in Sources */,
 				4E705FE1231A5E9B00D1CE56 /* NetManager.swift in Sources */,
@@ -668,7 +655,6 @@
 				4E705FEB231A847D00D1CE56 /* SonglinkResponse.swift in Sources */,
 				4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */,
 				4E705FD82319619F00D1CE56 /* BasePresenter.swift in Sources */,
-				4E061109234DFB9A0068EC1A /* SceneCoordinatorType.swift in Sources */,
 				4EEC264E233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift in Sources */,
 				4E705FF1231A98C300D1CE56 /* InfoPresenter.swift in Sources */,
 				4E705FEE231A98A400D1CE56 /* InfoViewController.swift in Sources */,
@@ -687,10 +673,10 @@
 				4E705FE8231A606300D1CE56 /* Extensions.swift in Sources */,
 				4EABD5CE234DF8C100F6B3DF /* BindableType.swift in Sources */,
 				4E705FF3231A9F9300D1CE56 /* ScreenRouter.swift in Sources */,
+				4E24E3CC235C9734005AD3CA /* NSObject+Rx.swift in Sources */,
 				4E3A9637232C5777006B187D /* AboutRateAppTableViewCell.swift in Sources */,
 				4E3A9635232C5319006B187D /* AboutContactTableViewCell.swift in Sources */,
 				4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */,
-				4E061107234DFB670068EC1A /* SceneTransitionType.swift in Sources */,
 				4E24E3C5235B2955005AD3CA /* ViewController.swift in Sources */,
 				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
 				4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */,
@@ -700,13 +686,11 @@
 				4E705FC82318254C00D1CE56 /* HistoryViewController.swift in Sources */,
 				4EF3CB102320335D005A18B6 /* Device.swift in Sources */,
 				4E3A961923297738006B187D /* AboutViewController.swift in Sources */,
-				4E061105234DFB040068EC1A /* Scene.swift in Sources */,
 				4E06110D234DFBF60068EC1A /* ObservableType.swift in Sources */,
 				4EF3CB1223203501005A18B6 /* Display.swift in Sources */,
 				4E3A9633232C08C0006B187D /* HistoryTableViewCell.swift in Sources */,
 				4E3A962223298444006B187D /* VersionNumberTableViewCell.swift in Sources */,
 				4E705FE2231A5E9B00D1CE56 /* MLApi.swift in Sources */,
-				4E06110B234DFBB80068EC1A /* SceneCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,7 +4,7 @@ import SnapKit
 import AVKit
 import AVFoundation
 
-class SplashViewController: BaseViewController {
+class SplashViewController: ViewController {
     // MARK: - Properties
     lazy var explainLabel: UILabel = {
         let label = UILabel()
@@ -22,7 +22,7 @@ class SplashViewController: BaseViewController {
         button.rx.tap.bind {
             self.playVideo()
         }
-        .disposed(by: disposeBag)
+        .disposed(by: rx.disposeBag)
         
         view.addSubview(button)
         return button
@@ -33,11 +33,11 @@ class SplashViewController: BaseViewController {
         cnb.setTitle("Continue", for: .normal)
         cnb.cornerRadius = 8
         cnb.backgroundColor = .systemBlue
-        cnb.rx.tap.bind {
+        cnb.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
             self.dismiss(animated: true, completion: nil)
         }
-        .disposed(by: disposeBag)
-        
+        .disposed(by: rx.disposeBag)
         view.addSubview(cnb)
         return cnb
     }()
