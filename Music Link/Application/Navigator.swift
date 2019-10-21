@@ -75,8 +75,8 @@ class Navigator {
         }
     }
 
-    func dismiss(sender: UIViewController?) {
-        sender?.navigationController?.dismiss(animated: true, completion: nil)
+    func dismiss(sender: UIViewController) {
+        sender.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - invoke a single segue

@@ -51,12 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initControllers(application: UIApplication, isFirst: Bool) {
         
-        guard isFirst == false else {
-            logger.info("not first run")
+        if isFirst {
+            logger.info("Most first run")
             Navigator.default.show(segue: .splash, sender: nil, transition: .root(in: window!))
             return
         }
-        logger.info("Most First run")
+        
+        logger.info("not First run")
         Navigator.default.show(segue: .tabs, sender: nil, transition: .root(in: window!))
 
         window?.makeKeyAndVisible()
