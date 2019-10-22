@@ -8,24 +8,30 @@ class SplashViewController: ViewController {
     // MARK: - Properties
     lazy var explainLabel: UILabel = {
         let label = UILabel()
-        label.text = "Play the video below and you will know how to use this app"
+        label.text = "HOW TO"
         label.numberOfLines = 2
         label.textAlignment = .center
-        
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         view.addSubview(label)
         return label
     }()
     
-    lazy var videoButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "screenshot_video"), for: .normal)
-        button.rx.tap.bind {
-            self.playVideo()
-        }
-        .disposed(by: rx.disposeBag)
-        
-        view.addSubview(button)
-        return button
+    lazy var howToFirst: MLCircleNumberLabel = {
+        let label = MLCircleNumberLabel(index: 1, text: "Copy song link from streaming service such as Apple Music", width: Int(self.view.frame.size.width))
+        view.addSubview(label)
+        return label
+    }()
+    
+    lazy var howToSecond: MLCircleNumberLabel = {
+        let label = MLCircleNumberLabel(index: 2, text: "Press Paste button", width: Int(self.view.frame.size.width))
+        view.addSubview(label)
+        return label
+    }()
+    
+    lazy var howToThird: MLCircleNumberLabel = {
+        let label = MLCircleNumberLabel(index: 3, text: "You're done! Get links to all streaming services in the world", width: Int(self.view.frame.size.width))
+        view.addSubview(label)
+        return label
     }()
     
     lazy var continueButton: RoundButton = {
@@ -60,11 +66,23 @@ class SplashViewController: ViewController {
             make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.top.equalTo(view.safeAreaLayoutGuide).offset(40)
         }
-        videoButton.snp.makeConstraints { (make) in
-            make.height.equalTo(200)
-            make.top.equalTo(explainLabel.snp.bottom).offset(120)
-            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        
+        howToFirst.snp.makeConstraints { (make) in
+            make.top.equalTo(explainLabel).inset(100)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.height.equalTo(60)
         }
+        howToSecond.snp.makeConstraints { (make) in
+            make.top.equalTo(howToFirst).inset(80)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.height.equalTo(60)
+        }
+        howToThird.snp.makeConstraints { (make) in
+            make.top.equalTo(howToSecond).inset(80)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.height.equalTo(60)
+        }
+        
         continueButton.snp.makeConstraints { (make) in
             make.trailing.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
