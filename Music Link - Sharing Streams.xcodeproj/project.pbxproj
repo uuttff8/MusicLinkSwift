@@ -71,6 +71,7 @@
 		4EB740E32343E6F900748B8B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E22343E6F900748B8B /* RxSwift */; };
 		4EB740E62348B3F900748B8B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E52348B3F900748B8B /* SnapKit */; };
 		4EB740E9234A00B300748B8B /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB740E8234A00B300748B8B /* Action */; };
+		4EE49533235F734F00AF8486 /* MLCircleNumberLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE49532235F734F00AF8486 /* MLCircleNumberLabel.swift */; };
 		4EEC264C232FFB720036627A /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264B232FFB720036627A /* InfoTableViewCell.swift */; };
 		4EEC264E233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEC264D233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift */; };
 		4EF3CB102320335D005A18B6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3CB0F2320335D005A18B6 /* Device.swift */; };
@@ -159,6 +160,7 @@
 		4EABD5CD234DF8C100F6B3DF /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
 		4EB740DA2343E61600748B8B /* SongLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLink.swift; sourceTree = "<group>"; };
 		4EB740DC2343E63500748B8B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		4EE49532235F734F00AF8486 /* MLCircleNumberLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLCircleNumberLabel.swift; sourceTree = "<group>"; };
 		4EEC264B232FFB720036627A /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		4EEC264D233006D60036627A /* InfoServicesToBuyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoServicesToBuyCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EF3CB0F2320335D005A18B6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				4E705FCA23182D9D00D1CE56 /* Button.swift */,
+				4EE49532235F734F00AF8486 /* MLCircleNumberLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -677,6 +680,7 @@
 				4E3A9637232C5777006B187D /* AboutRateAppTableViewCell.swift in Sources */,
 				4E3A9635232C5319006B187D /* AboutContactTableViewCell.swift in Sources */,
 				4E3A963B232C57A1006B187D /* AboutVkTableViewCell.swift in Sources */,
+				4EE49533235F734F00AF8486 /* MLCircleNumberLabel.swift in Sources */,
 				4E24E3C5235B2955005AD3CA /* ViewController.swift in Sources */,
 				4E52CD4B231EBC6800C51BD1 /* Imager.swift in Sources */,
 				4E3A962C23298DD2006B187D /* HistoryPresenter.swift in Sources */,
@@ -884,7 +888,7 @@
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -909,7 +913,7 @@
 				DEVELOPMENT_TEAM = 75BBTA9VPU;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/**";
 				INFOPLIST_FILE = "Music Link/support/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
