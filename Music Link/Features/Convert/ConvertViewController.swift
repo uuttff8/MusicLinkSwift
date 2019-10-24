@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ConvertViewController: UIViewController {
-    private var presenter = ConvertPresenter()
+class ConvertViewController: ViewController {
     
     @IBOutlet weak var pasteButton: LoadingButton!
     @IBOutlet weak var justLabel: UILabel!
@@ -22,7 +21,6 @@ class ConvertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.onCreate(view: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,29 +28,56 @@ class ConvertViewController: UIViewController {
         self.setupContraints()
     }
     
-    deinit {
-        presenter.onDestroy()
-    }
+    lazy var convertButton: LoadingButton = {
+        let button = LoadingButton()
+        button.backgroundColor = UIColor.systemBlue
+        button.originalButtonText = "Convert"
+        button.layer.cornerRadius = 8
+        view.addSubview(button)
+        return button
+    }()
     
-    @IBAction func pasteButtonPressed(_ sender: LoadingButton) {
-        pasteButton.isEnabled = false
-        sender.showLoading()
-        presenter.startConvertingToLink()
-    }
+    lazy var aboutNavBarAction: UIBarButtonItem = {
+        let item = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(self.navigateToAbout))
+        return item
+    }()
     
-    @IBAction func aboutNavBarActionPressed(_ sender: UIBarButtonItem) {
+    @objc func navigateToAbout() {
         let vc = ScreenRouter.shared.getAboutController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
-        //SceneCoordinator.shared.transition(to: Scene.splash)
-        Navigator.default.show(segue: .splash, sender: self, transition: .present)
+    lazy var startNavBarAction: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(self.navigateToStart))
+        return item
+    }()
+    
+    @objc func navigateToStart() {
+        navigator.show(segue: .splash, sender: self, transition: .present)
     }
+    
+    override func makeUI() {
+        super.makeUI()
+        
+        navigationItem.rightBarButtonItem = aboutNavBarAction
+        navigationItem.leftBarButtonItem = startNavBarAction
+        
+        convertButton.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+    }
+    
+    override func bindViewModel() {
+        super.bindViewModel()
+    }
+    
+    
 }
 
 // MARK: - Extension
-extension ConvertViewController: ConvertView {
+extension ConvertViewController {
     func showError(title: String, message: String?) {
         let alert = UIAlertController.createOkAlert(title: title, message: message)
         self.present(alert, animated: true, completion: nil)

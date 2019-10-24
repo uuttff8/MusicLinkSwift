@@ -37,7 +37,8 @@ class Navigator {
             let musicLinkTabBarController = MusicLinkTabBarController()
             
             // ConvertViewController
-            let convertVC = ScreenRouter.shared.getConvertController()
+            let convertVM = ConvertViewModel()
+            let convertVC = ConvertViewController(viewModel: convertVM, navigator: self)
             let rootConvertVC = UINavigationController(rootViewController: convertVC)
             
             // HistoryViewController
