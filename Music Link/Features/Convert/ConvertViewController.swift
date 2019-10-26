@@ -80,6 +80,12 @@ class ConvertViewController: ViewController {
         
         output.data.drive(onNext: { [weak self] (linksResponse) in
             //TODO: USE NAVIGATOR
+            print("aaa")
+            if linksResponse == nil {
+                let alert = UIAlertController(title: "Oops!", message: "Login failed", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                self!.present(alert, animated: true, completion: nil)
+            }
             
             // BAD: Works only if linksReponse is not nil
             let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: linksResponse))

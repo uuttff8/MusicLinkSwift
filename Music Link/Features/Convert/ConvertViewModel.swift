@@ -36,15 +36,16 @@ class ConvertViewModel: ViewModel, ViewModelType {
         
         let links = input.convertTriggered
             .asObservable()
-            .flatMap { _ in
-                // should be fixed UIPasteboard.general.getUrlFromPasteboard()! to handle logic, same as userCountry
-                self.dependencies.api.fetchLinks(url: UIPasteboard.general.getUrlFromPasteboard()!, userCountry: "RU")
+            .flatMap { _ -> Observable<LinksResponse?> in
+                let url = UIPasteboard.general.getUrlFromPasteboard()
+                
+                return self.dependencies.api.fetchLinks(url: url ?? "", userCountry: "RU")
         }.map { (links) -> LinksResponse? in
             guard let links = links else { return nil }
             return links
         }.asDriver(onErrorJustReturn: nil)
-
-            
+        
+        
         return Output(data: links)
     }
 }
