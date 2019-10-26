@@ -28,11 +28,12 @@ class ConvertViewController: ViewController {
         self.setupContraints()
     }
     
+    // in rxswift version, i dont release loading button with loading action
     lazy var convertButton: LoadingButton = {
         let button = LoadingButton()
         button.backgroundColor = UIColor.systemBlue
-        button.originalButtonText = "Convert"
-        button.layer.cornerRadius = 8
+        button.setTitle("Convert", for: .normal)
+        button.layer.cornerRadius = 8   
         view.addSubview(button)
         return button
     }()
@@ -71,6 +72,23 @@ class ConvertViewController: ViewController {
     
     override func bindViewModel() {
         super.bindViewModel()
+        
+        
+        guard let viewModel = viewModel as? ConvertViewModel else { return }
+        let input = ConvertViewModel.Input(convertTriggered: convertButton.rx.tap.asDriver())
+        let output = viewModel.transform(input)
+        
+        output.data.drive(onNext: { [weak self] (linksResponse) in
+            //TODO: USE NAVIGATOR
+            
+            // BAD: Works only if linksReponse is not nil
+            let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: linksResponse))
+            if #available(iOS 13.0, *) {
+                vc.isModalInPresentation = true
+            }
+            self?.present(vc, animated: true)
+        }).disposed(by: rx.disposeBag)
+        
     }
     
     

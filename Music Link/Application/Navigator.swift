@@ -37,7 +37,7 @@ class Navigator {
             let musicLinkTabBarController = MusicLinkTabBarController()
             
             // ConvertViewController
-            let convertVM = ConvertViewModel()
+            let convertVM = ConvertViewModel(dependencies: ConvertViewModel.Dependencies(api: MLApi(), navigator: self))
             let convertVC = ConvertViewController(viewModel: convertVM, navigator: self)
             let rootConvertVC = UINavigationController(rootViewController: convertVC)
             
