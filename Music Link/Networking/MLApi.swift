@@ -29,12 +29,12 @@ final class MLApi: MLApiProvider {
     }
     
     func fetchLinks(url: String, userCountry: String) -> Observable<LinksResponse?> {
-        return httpClient.get(url: "\(Constants.songlinkApiUrl)links?url=\(url)?key=\(Constants.apiKey)&userCountry=\(userCountry)").map { data -> LinksResponse? in
+        return httpClient.get(url: "\(Constants.songlinkApiUrl)links?url=\(url)?key=\(Constants.apiKey)&userCountry=\(userCountry)")
+            .map { data -> LinksResponse? in
                 guard let data = data,
                 let response = try? JSONDecoder().decode(LinksResponse.self, from: data) else {
                     return nil
             }
-            
             return response
         }
     }

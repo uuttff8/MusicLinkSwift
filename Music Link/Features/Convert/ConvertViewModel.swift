@@ -12,7 +12,7 @@ import UIKit
 
 class ConvertViewModel: ViewModel, ViewModelType {
     struct Input {
-        let convertTriggered: Driver<Void>
+        let convertTriggered: Signal<Void>
     }
     
     struct Output {
@@ -32,17 +32,17 @@ class ConvertViewModel: ViewModel, ViewModelType {
     
     func transform(_ input: ConvertViewModel.Input) -> ConvertViewModel.Output {
         
-        
-        
         let links = input.convertTriggered
             .asObservable()
             .flatMap { _ -> Observable<LinksResponse?> in
-                let url = UIPasteboard.general.getUrlFromPasteboard()
+                let url: String = UIPasteboard.general.getUrlFromPasteboard() ?? ""
+                let location: String = Locale.current.regionCode ?? "RU"
                 
-                return self.dependencies.api.fetchLinks(url: url ?? "", userCountry: "RU")
-        }.map { (links) -> LinksResponse? in
-            guard let links = links else { return nil }
-            return links
+                return self.dependencies.api.fetchLinks(url: url , userCountry: location)
+        }
+        .map { (response) -> LinksResponse? in
+            guard let response = response else { return nil }
+            return response
         }.asDriver(onErrorJustReturn: nil)
         
         
