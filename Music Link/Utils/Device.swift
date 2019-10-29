@@ -40,8 +40,9 @@ class Device {
         return versionCode
     }
     
-    static var statusBarHeight = UIApplication.shared.statusBarFrame.height
-    
+    //static var statusBarHeight = UIApplication.shared.statusBarFrame.height
+    static var statusBarHeight = UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+
     static fileprivate func getVersion(code: String) -> Version {
         switch code {
             /*** iPhone ***/

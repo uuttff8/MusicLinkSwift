@@ -51,7 +51,7 @@ class ConvertViewController: ViewController {
     }()
     
     @objc func navigateToStart() {
-        navigator.show(segue: .splash, sender: self, transition: .present)
+        navigator.show(segue: .splash, sender: self, transition: .present(false))
     }
     
     fileprivate func setupContraints() {
@@ -95,13 +95,13 @@ class ConvertViewController: ViewController {
             guard let self = self else { return }
             
             if let response = response {
-                print("some response")
+                self.navigator.show(segue: .info(response), sender: self, transition: .present(true))
             } else {
                 let alert = UIAlertController(title: "Oops!", message: "Login failed", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
                 self.present(alert, animated: true, completion: nil)
             }
-        })
+        }).disposed(by: rx.disposeBag)
         
         viewModel.error.asDriver().drive(onNext: { [weak self] (error) in
             let alert = UIAlertController(title: "!", message: error.localizedDescription, preferredStyle: .alert)
@@ -109,35 +109,5 @@ class ConvertViewController: ViewController {
             self!.present(alert, animated: true, completion: nil)
             
         }).disposed(by: rx.disposeBag)
-        
-    }
-}
-
-//let alert = UIAlertController(title: "!", message: error.localizedDescription, preferredStyle: .alert)
-//alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
-//self!.present(alert, animated: true, completion: nil)
-
-// MARK: - Extension
-extension ConvertViewController {
-    func showError(title: String, message: String?) {
-        let alert = UIAlertController.createOkAlert(title: title, message: message)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func isLoading(_ isLoading: Bool) {
-        
-    }
-    
-    func hidePasteButtonLoading() {
-        pasteButton.hideLoading()
-        pasteButton.isEnabled = true
-    }
-    
-    func onConvertedLink(links: LinksResponse) {
-        let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: links))
-        if #available(iOS 13.0, *) {
-            vc.isModalInPresentation = true
-        }
-        self.present(vc, animated: true)
     }
 }

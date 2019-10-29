@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias isInPresentation = Bool
+
 protocol Navigatable {
     var navigator: Navigator! { get set }
 }
@@ -27,7 +29,7 @@ class Navigator {
         case navigation
         case modal
         case detail
-        case present
+        case present(isInPresentation)
         case custom
     }
     
@@ -131,7 +133,8 @@ class Navigator {
                 let nav = UINavigationController(rootViewController: target)
                 sender.showDetailViewController(nav, sender: nil)
             }
-        case .present:
+        case let .present(isInPresentation):
+            target.isModalInPresentation = isInPresentation
             DispatchQueue.main.async {
                 sender.present(target, animated: true, completion: nil)
             }

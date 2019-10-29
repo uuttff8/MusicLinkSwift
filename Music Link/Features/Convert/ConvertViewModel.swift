@@ -45,7 +45,6 @@ class ConvertViewModel: ViewModel, ViewModelType {
             return response
         }.asDriver(onErrorJustReturn: nil)
         
-        
         return Output(data: links)
     }
 }
