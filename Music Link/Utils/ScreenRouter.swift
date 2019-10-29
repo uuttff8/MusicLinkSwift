@@ -39,11 +39,7 @@ class ScreenRouter {
         controller.links = links
         return controller
     }
-    
-    func getConvertController() -> ConvertViewController {
-        return initiate(board: getStoryboard(board: .MAIN), name: .CONVERT) as! ConvertViewController
-    }
-    
+        
     func getHistoryController() -> HistoryViewController {
         return initiate(board: getStoryboard(board: .MAIN), name: .HISTORY) as! HistoryViewController
     }

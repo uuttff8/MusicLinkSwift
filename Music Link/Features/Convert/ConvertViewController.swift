@@ -7,12 +7,52 @@
 //
 
 import UIKit
+import RxSwift
 
-class ConvertViewController: UIViewController {
-    private var presenter = ConvertPresenter()
+class ConvertViewController: ViewController {
     
     @IBOutlet weak var pasteButton: LoadingButton!
-    @IBOutlet weak var justLabel: UILabel!
+        
+    lazy var justLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = UIFont.systemFont(ofSize: 90)
+        lbl.text = "Just Paste Link"
+        lbl.textColor = UIColor.label
+        lbl.sizeToFit()
+        lbl.numberOfLines = 0
+        lbl.textAlignment = .center
+        view.addSubview(lbl)
+        return lbl
+    }()
+    
+    // in rxswift version, i dont release loading button with loading action
+    lazy var convertButton: LoadingButton = {
+        let button = LoadingButton()
+        button.backgroundColor = UIColor.systemBlue
+        button.setTitle("Convert", for: .normal)
+        button.layer.cornerRadius = 8   
+        view.addSubview(button)
+        return button
+    }()
+    
+    lazy var aboutNavBarAction: UIBarButtonItem = {
+        let item = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(self.navigateToAbout))
+        return item
+    }()
+    
+    @objc func navigateToAbout() {
+        let vc = ScreenRouter.shared.getAboutController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    lazy var startNavBarAction: UIBarButtonItem = {
+        let item = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(self.navigateToStart))
+        return item
+    }()
+    
+    @objc func navigateToStart() {
+        navigator.show(segue: .splash, sender: self, transition: .present(false))
+    }
     
     fileprivate func setupContraints() {
         if (Display.typeIsLike == DisplayType.iphone5) {
@@ -22,56 +62,52 @@ class ConvertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.onCreate(view: self)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setupContraints()
-    }
-    
-    deinit {
-        presenter.onDestroy()
-    }
-    
-    @IBAction func pasteButtonPressed(_ sender: LoadingButton) {
-        pasteButton.isEnabled = false
-        sender.showLoading()
-        presenter.startConvertingToLink()
-    }
-    
-    @IBAction func aboutNavBarActionPressed(_ sender: UIBarButtonItem) {
-        let vc = ScreenRouter.shared.getAboutController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func startNavBarActionPressed(_ sender: UIBarButtonItem) {
-        //SceneCoordinator.shared.transition(to: Scene.splash)
-        Navigator.default.show(segue: .splash, sender: self, transition: .present)
-    }
-}
-
-// MARK: - Extension
-extension ConvertViewController: ConvertView {
-    func showError(title: String, message: String?) {
-        let alert = UIAlertController.createOkAlert(title: title, message: message)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func isLoading(_ isLoading: Bool) {
+    override func makeUI() {
+        super.makeUI()
+        setupContraints()
+        navigationItem.rightBarButtonItem = aboutNavBarAction
+        navigationItem.leftBarButtonItem = startNavBarAction
         
-    }
-    
-    func hidePasteButtonLoading() {
-        pasteButton.hideLoading()
-        pasteButton.isEnabled = true
-    }
-    
-    func onConvertedLink(links: LinksResponse) {
-        let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: links))
-        if #available(iOS 13.0, *) {
-            vc.isModalInPresentation = true
+        justLabel.snp.makeConstraints { (make) in
+            make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
-        self.present(vc, animated: true)
+        
+        convertButton.snp.makeConstraints { (make) in
+            make.height.equalTo(50)
+            make.leading.equalTo(justLabel.snp.leading)
+            make.trailing.equalTo(justLabel.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(60)
+        }
+    }
+    
+    override func bindViewModel() {
+        super.bindViewModel()
+        
+        guard let viewModel = viewModel as? ConvertViewModel else { return }
+        let input = ConvertViewModel.Input(convertTriggered: convertButton.rx.tap.asSignal())
+        let output = viewModel.transform(input)
+        
+        output.data.drive(onNext: { [weak self] response in
+            guard let self = self else { return }
+            
+            if let response = response {
+                self.navigator.show(segue: .info(response), sender: self, transition: .present(true))
+            } else {
+                let alert = UIAlertController(title: "Oops!", message: "Login failed", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                self.present(alert, animated: true, completion: nil)
+            }
+        }).disposed(by: rx.disposeBag)
+        
+        viewModel.error.asDriver().drive(onNext: { [weak self] (error) in
+            let alert = UIAlertController(title: "!", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+            self!.present(alert, animated: true, completion: nil)
+            
+        }).disposed(by: rx.disposeBag)
     }
 }

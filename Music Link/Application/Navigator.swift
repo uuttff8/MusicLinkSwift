@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias isInPresentation = Bool
+
 protocol Navigatable {
     var navigator: Navigator! { get set }
 }
@@ -19,6 +21,7 @@ class Navigator {
     enum Scene {
         case tabs
         case splash
+        case info(LinksResponse)
     }
     
     enum Transition {
@@ -26,7 +29,7 @@ class Navigator {
         case navigation
         case modal
         case detail
-        case present
+        case present(isInPresentation)
         case custom
     }
     
@@ -37,7 +40,8 @@ class Navigator {
             let musicLinkTabBarController = MusicLinkTabBarController()
             
             // ConvertViewController
-            let convertVC = ScreenRouter.shared.getConvertController()
+            let convertVM = ConvertViewModel(dependencies: ConvertViewModel.Dependencies(api: MLApi(), navigator: self))
+            let convertVC = ConvertViewController(viewModel: convertVM, navigator: self)
             let rootConvertVC = UINavigationController(rootViewController: convertVC)
             
             // HistoryViewController
@@ -64,6 +68,12 @@ class Navigator {
             
             return musicLinkTabBarController
         case .splash: return SplashViewController(viewModel: nil, navigator: self)
+        case .info(let linksResponse):
+            let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: linksResponse))
+            if #available(iOS 13.0, *) {
+                vc.isModalInPresentation = true
+            }
+            return vc
         }
     }
     
@@ -123,7 +133,8 @@ class Navigator {
                 let nav = UINavigationController(rootViewController: target)
                 sender.showDetailViewController(nav, sender: nil)
             }
-        case .present:
+        case let .present(isInPresentation):
+            target.isModalInPresentation = isInPresentation
             DispatchQueue.main.async {
                 sender.present(target, animated: true, completion: nil)
             }

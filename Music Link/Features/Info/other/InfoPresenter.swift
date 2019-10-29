@@ -27,7 +27,7 @@ class InfoPresenter: BasePresenter<InfoView> {
             genCell.create(title: "yt_music", link: links.linksByPlatform.youtubeMusic),
         ]
         
-        return listen.compactMap{ $0 }
+        return listen.compactMap { $0 }
     }
     
     func checkBuyServices(_ links: LinksResponse) -> [ServiceProvider] {

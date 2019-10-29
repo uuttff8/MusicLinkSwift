@@ -19,9 +19,8 @@ protocol ViewModelType {
 
 class ViewModel: NSObject {
     
-    let loading = ActivityIndicator()
-    
     let logger = Logger(label: "com.uuttff.musiclink")
+    let error = ErrorTracker()
     
     deinit {
         logger.info("\(type(of: self)): Deinited")
