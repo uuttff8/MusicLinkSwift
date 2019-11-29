@@ -46,19 +46,15 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 let imageText = data.value(forKey: "image") as! String
                 
                 items.insert(.init(label: labelText, image: imageText), at: 0)
-                
-                // Why i don't use Array(Set(items))?
-                // answer: that method can randomly sort the array
                 items = items.removeDuplicates()
-                print(items)
             }
         } catch {
             print("Failed")
         }
+        tableView.reloadData()
     }
     
     @objc func refreshAllVc() {
-        items.removeAll()
         unwrapDataFromCoreData()
         
         tableView.reloadData()
@@ -73,7 +69,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         refreshControl.addTarget(self, action: #selector(refreshAllVc), for: .valueChanged)
         tableView.refreshControl = refreshControl
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
