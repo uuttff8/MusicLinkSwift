@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import Combine
 import RxSwift
 import RxCocoa
 
 protocol MLApiLinksProvider {
-    func fetchLinks(url: String, userCountry: String) -> Observable<LinksResponse?>
+    func fetchLinks(url: String, userCountry: String) -> AnyPublisher<LinksResponse?, Never>
 }
 
 protocol MLApiProvider: MLApiLinksProvider { }
@@ -28,8 +29,9 @@ final class MLApi: MLApiProvider {
         self.httpClient = httpClient
     }
     
-    func fetchLinks(url: String, userCountry: String) -> Observable<LinksResponse?> {
-        return httpClient.get(url: "\(Constants.songlinkApiUrl)links?url=\(url)?key=\(Constants.apiKey)&userCountry=\(userCountry)")
+    func fetchLinks(url: String, userCountry: String) -> AnyPublisher<LinksResponse?, Never> {
+        let url = URL(string: "\(Constants.songlinkApiUrl)links?url=\(url)?key=\(Constants.apiKey)&userCountry=\(userCountry)")
+        return httpClient.get(url: url!)
             .map { data -> LinksResponse? in
                 guard let data = data,
                 let response = try? JSONDecoder().decode(LinksResponse.self, from: data) else {
@@ -37,6 +39,7 @@ final class MLApi: MLApiProvider {
             }
             return response
         }
+        .eraseToAnyPublisher()
     }
 }
 

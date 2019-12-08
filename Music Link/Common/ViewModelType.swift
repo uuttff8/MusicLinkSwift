@@ -8,7 +8,7 @@
 
 import Foundation
 import Logging
-import RxSwift
+import Combine
 
 protocol ViewModelType {
     associatedtype Input
@@ -24,8 +24,8 @@ class ViewModel: NSObject {
     
     deinit {
         logger.info("\(type(of: self)): Deinited")
-        #if DEBUG
-        logger.info("RxSwift resources count: \("N") \(#line)") // RxSwift should supprt RxSwiftTest framework
-        #endif
+//        #if DEBUG
+//        logger.info("RxSwift resources count: \("N") \(#line)") // RxSwift should supprt RxSwiftTest framework
+//        #endif
     }
 }

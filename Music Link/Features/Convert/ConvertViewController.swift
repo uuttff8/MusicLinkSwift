@@ -7,13 +7,15 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
+import CombineCocoa
+import Combine
 
 class ConvertViewController: ViewController {
     
     @IBOutlet weak var pasteButton: LoadingButton!
-        
+    
+    private var cancellable = Set<AnyCancellable>()
+    
     lazy var justLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 90)
@@ -89,10 +91,12 @@ class ConvertViewController: ViewController {
         super.bindViewModel()
         
         guard let viewModel = viewModel as? ConvertViewModel else { return }
-        let input = ConvertViewModel.Input(convertTriggered: convertButton.rx.tap.asSignal())
+        let input = ConvertViewModel.Input(convertTriggered: convertButton.tapPublisher)
         let output = viewModel.transform(input)
         
-        output.data.drive(onNext: { [weak self] response in
+        output.data
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { [weak self] response in
             guard let self = self else { return }
             
             if let response = response {
@@ -102,13 +106,6 @@ class ConvertViewController: ViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
                 self.present(alert, animated: true, completion: nil)
             }
-        }).disposed(by: rx.disposeBag)
-        
-        viewModel.error.asDriver().drive(onNext: { [weak self] (error) in
-            let alert = UIAlertController(title: "!", message: error.localizedDescription, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
-            self!.present(alert, animated: true, completion: nil)
-            
-        }).disposed(by: rx.disposeBag)
+        }).store(in: &cancellable)
     }
 }

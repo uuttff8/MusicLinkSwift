@@ -6,17 +6,16 @@
 //  Copyright © 2019 uuttff8. All rights reserved.
 //
 
-import RxSwift
-import RxCocoa
+import Combine
 import UIKit
 
 class ConvertViewModel: ViewModel, ViewModelType {
     struct Input {
-        let convertTriggered: Signal<Void>
+        let convertTriggered: AnyPublisher<Void, Never>
     }
     
     struct Output {
-        let data: Driver<LinksResponse?>
+        let data: AnyPublisher<LinksResponse?, Never>
     }
     
     struct Dependencies {
@@ -33,8 +32,8 @@ class ConvertViewModel: ViewModel, ViewModelType {
     func transform(_ input: ConvertViewModel.Input) -> ConvertViewModel.Output {
         
         let links = input.convertTriggered
-            .asObservable()
-            .flatMap { _ -> Observable<LinksResponse?> in
+            .receive(on: RunLoop.main)
+            .flatMap { _ -> AnyPublisher<LinksResponse?, Never> in
                 let url: String = UIPasteboard.general.getUrlFromPasteboard() ?? ""
                 let location: String = Locale.current.regionCode ?? "RU"
                 
@@ -43,7 +42,7 @@ class ConvertViewModel: ViewModel, ViewModelType {
         .map { (response) -> LinksResponse? in
             guard let response = response else { return nil }
             return response
-        }.asDriver(onErrorJustReturn: nil)
+        }.eraseToAnyPublisher()
         
         return Output(data: links)
     }

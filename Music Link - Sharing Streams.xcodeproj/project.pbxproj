@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E01105E2364582400013571 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E01105D2364582400013571 /* HttpClient.swift */; };
 		4E06110D234DFBF60068EC1A /* ObservableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E06110C234DFBF60068EC1A /* ObservableType.swift */; };
+		4E0D997B239D7F510082D26E /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E0D997A239D7F510082D26E /* CombineCocoa */; };
 		4E24E3BD2358EA98005AD3CA /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3BC2358EA98005AD3CA /* ViewModelType.swift */; };
 		4E24E3C5235B2955005AD3CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C4235B2955005AD3CA /* ViewController.swift */; };
 		4E24E3C8235B2AFA005AD3CA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24E3C7235B2AFA005AD3CA /* Navigator.swift */; };
@@ -181,6 +182,7 @@
 				4E414FE9238305E7001B5871 /* SnapKit in Frameworks */,
 				4E414FE4238305BF001B5871 /* RxSwift in Frameworks */,
 				4E414FE2238305BF001B5871 /* RxRelay in Frameworks */,
+				4E0D997B239D7F510082D26E /* CombineCocoa in Frameworks */,
 				4E414FF22383064F001B5871 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +520,7 @@
 				4E414FE8238305E7001B5871 /* SnapKit */,
 				4E414FF12383064F001B5871 /* SDWebImage */,
 				4E414FF42383067C001B5871 /* Logging */,
+				4E0D997A239D7F510082D26E /* CombineCocoa */,
 			);
 			productName = "Music Link";
 			productReference = 4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */;
@@ -555,6 +558,7 @@
 				4E414FE7238305E7001B5871 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				4E414FF02383064F001B5871 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				4E414FF32383067C001B5871 /* XCRemoteSwiftPackageReference "swift-log" */,
+				4E0D9979239D7F510082D26E /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 4E705FAB231821EC00D1CE56 /* Products */;
 			projectDirPath = "";
@@ -937,6 +941,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4E0D9979239D7F510082D26E /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 		4E414FE0238305BF001B5871 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -972,6 +984,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4E0D997A239D7F510082D26E /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E0D9979239D7F510082D26E /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
 		4E414FE1238305BF001B5871 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4E414FE0238305BF001B5871 /* XCRemoteSwiftPackageReference "RxSwift" */;

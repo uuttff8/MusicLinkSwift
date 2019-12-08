@@ -8,20 +8,21 @@
 
 import RxSwift
 import RxCocoa
+import Combine
 import Foundation
 
 protocol HTTPClientProvider {
-    func get(url: String) -> Observable<Data?>
+    func get(url: URL) -> AnyPublisher<Data?, Never>
     func post(url: String, params: [String: Any]) -> Observable<Data?>
 }
 
 final class HTTPClient: HTTPClientProvider {
-    func get(url: String) -> Observable<Data?> {
-        guard let url = URL(string: url) else { return Observable.empty() }
+    func get(url: URL) -> AnyPublisher<Data?, Never> {
         let request = URLRequest(url: url)
-        return URLSession.shared.rx.data(request: request)
-            .map { Optional.init($0) }
-            .catchErrorJustReturn(nil)
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .map { Optional.init($0.data) }
+            .replaceError(with: nil)
+            .eraseToAnyPublisher()
     }
     
     func post(url: String, params: [String: Any]) -> Observable<Data?> {
