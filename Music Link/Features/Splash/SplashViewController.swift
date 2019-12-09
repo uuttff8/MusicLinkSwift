@@ -49,7 +49,9 @@ class SplashViewController: ViewController {
     }()
     
     lazy var continueButton: RoundButton = {
-        let cnb = RoundButton()
+        let cnb = RoundButton(type: UIButton.ButtonType.system)
+        cnb.titleLabel?.font = UIFont().withSize(18)
+        cnb.setTitleColor(UIColor.white, for: .normal)
         cnb.setTitle("Continue", for: .normal)
         cnb.cornerRadius = 8
         cnb.backgroundColor = .systemBlue

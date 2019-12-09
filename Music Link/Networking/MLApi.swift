@@ -32,6 +32,7 @@ final class MLApi: MLApiProvider {
     func fetchLinks(url: String, userCountry: String) -> AnyPublisher<LinksResponse?, Never> {
         let url = URL(string: "\(Constants.songlinkApiUrl)links?url=\(url)?key=\(Constants.apiKey)&userCountry=\(userCountry)")
         return httpClient.get(url: url!)
+            .retry(1)
             .map { data -> LinksResponse? in
                 guard let data = data,
                 let response = try? JSONDecoder().decode(LinksResponse.self, from: data) else {
@@ -39,6 +40,7 @@ final class MLApi: MLApiProvider {
             }
             return response
         }
+        .replaceError(with: nil)
         .eraseToAnyPublisher()
     }
 }

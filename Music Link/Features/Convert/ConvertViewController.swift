@@ -28,9 +28,10 @@ class ConvertViewController: ViewController {
         return lbl
     }()
     
-    // in rxswift version, i dont release loading button with loading action
     lazy var convertButton: LoadingButton = {
-        let button = LoadingButton()
+        let button = LoadingButton(type: UIButton.ButtonType.system)
+        button.titleLabel?.font = UIFont().withSize(18)
+        button.tintColor = UIColor.white
         button.backgroundColor = UIColor.systemBlue
         button.setTitle("Convert", for: .normal)
         button.layer.cornerRadius = 8   
