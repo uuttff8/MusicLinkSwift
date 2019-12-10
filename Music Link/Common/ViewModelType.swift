@@ -20,12 +20,8 @@ protocol ViewModelType {
 class ViewModel: NSObject {
     
     let logger = Logger(label: "com.uuttff.musiclink")
-    let error = ErrorTracker()
     
     deinit {
         logger.info("\(type(of: self)): Deinited")
-//        #if DEBUG
-//        logger.info("RxSwift resources count: \("N") \(#line)") // RxSwift should supprt RxSwiftTest framework
-//        #endif
     }
 }

@@ -8,8 +8,6 @@
 
 import Foundation
 import Combine
-import RxSwift
-import RxCocoa
 
 protocol MLApiLinksProvider {
     func fetchLinks(url: String, userCountry: String) -> AnyPublisher<LinksResponse?, Never>
@@ -44,30 +42,3 @@ final class MLApi: MLApiProvider {
         .eraseToAnyPublisher()
     }
 }
-
-
-//extension MLAPI: MLApiMethod {
-// 
-//    public var methodURL: String {
-//        switch self {
-//        case .getLinks(_, _): return "links"
-//        }
-//    }
-//    
-//    public var httpMethod: HTTPMethod {
-//        switch self {
-//        case .getLinks(_, _): return .get
-//        }
-//    }
-//    
-//    public var parameters: [String:Any] {
-//        switch self {
-//        case .getLinks(let url, let userCountry): return ["url": url, "userCountry": userCountry, "key": ApiConstants.KEY.rawValue,]
-//        }
-//        
-//    }
-//}
-
-
-
-
