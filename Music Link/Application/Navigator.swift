@@ -66,6 +66,8 @@ class Navigator {
                 historyVC
             ]
             
+            musicLinkTabBarController.modalPresentationStyle = .fullScreen
+            
             return musicLinkTabBarController
         case .splash: return SplashViewController(viewModel: nil, navigator: self)
         case .info(let linksResponse):
