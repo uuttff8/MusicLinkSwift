@@ -264,13 +264,6 @@
 			path = cells;
 			sourceTree = "<group>";
 		};
-		4E4F19F9232D486800DD0C57 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4E52CD47231EB5BD00C51BD1 /* cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,7 +301,6 @@
 				4E689FE02343D7CA00D6377E /* share */,
 				4E689FD62343B8F900D6377E /* Resources */,
 				4E705FAB231821EC00D1CE56 /* Products */,
-				4E4F19F9232D486800DD0C57 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

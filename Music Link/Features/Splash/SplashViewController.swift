@@ -89,17 +89,4 @@ class SplashViewController: ViewController {
         }
         
     }
-    
-    private func playVideo() {
-        guard let path = Bundle.main.path(forResource: "start_video", ofType:"MP4") else {
-            debugPrint("video.m4v not found")
-            return
-        }
-        let player = AVPlayer(url: URL(fileURLWithPath: path))
-        let playerController = AVPlayerViewController()
-        playerController.player = player
-        self.present(playerController, animated: true) {
-            player.play()
-        }
-    }
 }
