@@ -13,4 +13,12 @@ class MusicLinkTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if UIApplication.isFirstLaunch() {
+            Navigator.default.show(segue: .splash, sender: self, transition: .present(true))
+        }
+    }
 }

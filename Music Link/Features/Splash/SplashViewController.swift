@@ -56,7 +56,7 @@ class SplashViewController: ViewController {
         cnb.backgroundColor = .systemBlue
         cnb.rx.tap.bind { [weak self] in
             guard let self = self else { return }
-            Navigator.default.show(segue: .tabs, sender: self, transition: .present(true))
+            Navigator.default.dismiss(sender: self)
         }
         .disposed(by: rx.disposeBag)
         view.addSubview(cnb)

@@ -19,10 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let logger = Logger(label: "com.uuttff.musiclink")
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let optionallyStoreTheFirstLaunchFlag = UIApplication.isFirstLaunch()
         
         initDeepLinks(application: application)
-        initControllers(application: application, isFirst: optionallyStoreTheFirstLaunchFlag)
+        initControllers(application: application)
         
         return true
     }
@@ -49,17 +48,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func initControllers(application: UIApplication, isFirst: Bool) {
-        
-        if isFirst {
-            logger.info("Most first run")
-            Navigator.default.show(segue: .splash, sender: nil, transition: .root(in: window!))
-            return
-        }
-        
-        logger.info("not First run")
+    private func initControllers(application: UIApplication) {
         Navigator.default.show(segue: .tabs, sender: nil, transition: .root(in: window!))
-
+        
         window?.makeKeyAndVisible()
     }
     
