@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,18 +19,18 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="44" id="jC5-eQ-Vwr" customClass="InfoTableViewCell" customModule="Music_Link___Sharing_Streams" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoTableViewCell" rowHeight="602" id="jC5-eQ-Vwr" customClass="InfoTableViewCell" customModule="Music_Link___Sharing_Streams" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="602"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jC5-eQ-Vwr" id="SIG-pD-lEi">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="602"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-3P-IOq">
-                                                    <rect key="frame" x="20" y="164" width="378" height="300"/>
+                                                    <rect key="frame" x="20" y="163.5" width="378" height="300"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="300" id="0u8-3m-dwN"/>
+                                                        <constraint firstAttribute="height" constant="300" id="OTI-aQ-SSc"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1VC-oX-fwg">
                                                         <size key="itemSize" width="64" height="64"/>
@@ -83,22 +82,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LISTEN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPR-yI-Enu">
-                                                    <rect key="frame" x="20" y="121" width="57" height="21"/>
+                                                    <rect key="frame" x="20" y="121" width="57" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kc-lB-3if">
-                                                    <rect key="frame" x="20" y="472" width="34" height="21"/>
+                                                    <rect key="frame" x="20" y="471.5" width="34" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cHK-Hs-8JO">
-                                                    <rect key="frame" x="20" y="501" width="374" height="76"/>
+                                                    <rect key="frame" x="20" y="500" width="374" height="93"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="76" id="L2B-UB-bYM"/>
+                                                        <constraint firstAttribute="height" constant="93" id="OEO-gq-zgk"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D8b-M9-75L">
                                                         <size key="itemSize" width="64" height="64"/>
@@ -143,6 +142,7 @@
                                                 <constraint firstItem="wcz-bP-ufz" firstAttribute="top" secondItem="sKT-gC-uOr" secondAttribute="top" id="HeO-1L-94H"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yoi-3P-IOq" secondAttribute="trailing" constant="16" id="IDl-px-9A4"/>
                                                 <constraint firstItem="Yoi-3P-IOq" firstAttribute="leading" secondItem="SIG-pD-lEi" secondAttribute="leading" constant="20" id="IZa-dm-LaQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="cHK-Hs-8JO" secondAttribute="bottom" constant="9" id="Ise-XB-zPV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cHK-Hs-8JO" secondAttribute="trailing" id="SFu-Yh-yBG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wcz-bP-ufz" secondAttribute="trailing" id="SxB-Zp-lwu"/>
                                                 <constraint firstItem="Yoi-3P-IOq" firstAttribute="top" secondItem="jPR-yI-Enu" secondAttribute="bottom" constant="22" id="brM-sh-1Jx"/>
@@ -155,10 +155,11 @@
                                         <connections>
                                             <outlet property="collectionViewBuy" destination="cHK-Hs-8JO" id="PfY-cx-EEc"/>
                                             <outlet property="collectionViewListen" destination="Yoi-3P-IOq" id="GhQ-Ky-9mw"/>
-                                            <outlet property="collectionViewToBuyHeight" destination="L2B-UB-bYM" id="CvF-xq-KNF"/>
-                                            <outlet property="collectionViewToListenHeight" destination="0u8-3m-dwN" id="Lie-I1-zgF"/>
+                                            <outlet property="collectionViewToBuyHeight" destination="OEO-gq-zgk" id="d6X-jD-udg"/>
+                                            <outlet property="collectionViewToListenHeight" destination="OTI-aQ-SSc" id="kLs-z9-eOi"/>
                                             <outlet property="imageSong" destination="sKT-gC-uOr" id="uhE-my-S7W"/>
                                             <outlet property="labelSong" destination="wcz-bP-ufz" id="obI-S5-V3F"/>
+                                            <outlet property="listenCollectionViewFlowLayout" destination="1VC-oX-fwg" id="k0q-yH-9NH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

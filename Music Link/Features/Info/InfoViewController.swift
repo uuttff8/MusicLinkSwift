@@ -12,7 +12,12 @@ class InfoViewController: BaseViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            self.tableView.estimatedRowHeight = 640.0;
+            self.tableView.rowHeight = UITableView.automaticDimension
+        }
+    }
     
     var links: LinksResponse!
     
@@ -22,13 +27,8 @@ class InfoViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tableView.estimatedRowHeight = 640.0; // set to whatever your "average" cell height is
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "more_horiz"), style: .done, target: self, action: #selector(showAlertWithAllLinks))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissVC))
-        
-        // Please refer to viewWillAppear to know when collection view cells is updated
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissVC))        
     }
     
     deinit {
@@ -76,10 +76,6 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.servicesToListen = presenter.checkListenServices(links)
         cell.servicesToBuy = presenter.checkBuyServices(links)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
     }
     
 }

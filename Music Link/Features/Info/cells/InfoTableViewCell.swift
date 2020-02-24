@@ -16,7 +16,6 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var collectionViewToListenHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionViewToBuyHeight: NSLayoutConstraint!
     
-    
     // TODO(uuttff8): Refactor to be as one (1) collection view
     @IBOutlet weak var collectionViewListen: UICollectionView!
     @IBOutlet weak var collectionViewBuy: UICollectionView!
@@ -120,20 +119,16 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         if collectionView.tag == 0 {
             let cell = collectionViewListen.dequeueReusableCell(withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
                                                                 for: indexPath as IndexPath) as! InfoServicesToListenCollectionViewCell
-            
-            // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            
+                        
             cell.imageViewService.image = servicesToListen[indexPath.item].image
-            cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
+            //cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
             return cell
         } else if collectionView.tag == 1 {
             let cell = collectionViewBuy.dequeueReusableCell(withReuseIdentifier: InfoServicesToBuyCollectionViewCell.reuseId,
                                                              for: indexPath as IndexPath) as! InfoServicesToBuyCollectionViewCell
             
-            // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            
             cell.imageViewService.image = servicesToBuy[indexPath.item].image
-            cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
+            //cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
             return cell
         }
         
@@ -158,7 +153,6 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             NSLog("\(url)")
             debugPrint("\n")
         }
-        
     }
     
     // make collection views autoresize
@@ -173,12 +167,6 @@ extension InfoTableViewCell: UICollectionViewDelegateFlowLayout {
     //MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if collectionView.tag == 0 {
-            return CGSize(width: 64.0, height: 64.0)
-        } else if collectionView.tag == 1 {
-            return CGSize(width: 64.0, height: 64.0)
-        }
         
         return CGSize(width: 64.0, height: 64.0)
     }
