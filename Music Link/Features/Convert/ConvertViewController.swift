@@ -13,9 +13,7 @@ import Combine
 class ConvertViewController: ViewController {
     
     @IBOutlet weak var pasteButton: LoadingButton!
-    
-    private var cancellable = Set<AnyCancellable>()
-    
+        
     lazy var justLabel: UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 90)

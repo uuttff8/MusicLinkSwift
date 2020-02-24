@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Combine
 
 class ViewController: UIViewController {
     
     var viewModel: ViewModel?
     var navigator: Navigator!
+    
+    var cancellable = Set<AnyCancellable>()
 
     init(viewModel: ViewModel?, navigator: Navigator) {
         self.viewModel = viewModel

@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
-import AVKit
-import AVFoundation
+import Combine
+import CombineCocoa
 
 class SplashViewController: ViewController {
     // MARK: - Properties
@@ -54,11 +54,11 @@ class SplashViewController: ViewController {
         cnb.setTitle("Continue", for: .normal)
         cnb.cornerRadius = 8
         cnb.backgroundColor = .systemBlue
-        cnb.rx.tap.bind { [weak self] in
+        cnb.tapPublisher.sink { [weak self] in
             guard let self = self else { return }
             Navigator.default.dismiss(sender: self)
         }
-        .disposed(by: rx.disposeBag)
+        .store(in: &self.cancellable)
         view.addSubview(cnb)
         return cnb
     }()
@@ -87,6 +87,5 @@ class SplashViewController: ViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(50)
             make.height.equalTo(50)
         }
-        
     }
 }
