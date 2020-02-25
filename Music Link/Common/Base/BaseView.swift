@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol BaseView {
     func showError(title: String, message: String?)
@@ -17,3 +18,6 @@ protocol NetView {
     func isLoading(_ isLoading: Bool)
 }
 
+class View: UIView {
+    var cancellable = Set<AnyCancellable>()
+}

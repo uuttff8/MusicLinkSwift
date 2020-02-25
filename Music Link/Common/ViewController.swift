@@ -25,18 +25,4 @@ class ViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(nibName: nil, bundle: nil)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        makeUI()
-        bindViewModel()
-    }
-    
-    func makeUI() {
-        view.backgroundColor = UIColor.systemBackground
-    }
-    
-    func bindViewModel() {
-        
-    }
 }

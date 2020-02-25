@@ -70,7 +70,7 @@ class SplashViewController: ViewController {
     }
     
     // MARK: - Private
-    override func makeUI() {
+     func makeUI() {
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
         } else {

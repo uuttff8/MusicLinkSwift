@@ -1,80 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5eI-dc-2N6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5eI-dc-2N6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Convert View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="ConvertViewController" id="BYZ-38-t0r" customClass="ConvertViewController" customModule="Music_Link___Sharing_Streams" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just Paste Link" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc8-PD-u8e">
-                                <rect key="frame" x="60" y="128" width="294" height="319"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="89"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSN-ep-yAe" customClass="LoadingButton" customModule="Music_Link___Sharing_Streams" customModuleProvider="target">
-                                <rect key="frame" x="60" y="699" width="294" height="47"/>
-                                <color key="backgroundColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="bML-Un-HgI"/>
-                                </constraints>
-                                <state key="normal" title="Paste">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="pasteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E0a-hN-Y3e"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GSN-ep-yAe" secondAttribute="bottom" constant="67" id="2aq-va-aqb"/>
-                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3nF-CN-9S2"/>
-                            <constraint firstAttribute="trailing" secondItem="Zc8-PD-u8e" secondAttribute="trailing" constant="60" id="3ux-hm-fdo"/>
-                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="60" id="6Pf-Y0-1bL"/>
-                            <constraint firstItem="GSN-ep-yAe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cof-f7-u5j"/>
-                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="LH6-yA-gze"/>
-                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="trailing" secondItem="GSN-ep-yAe" secondAttribute="trailing" id="Ohe-l7-ftH"/>
-                            <constraint firstItem="Zc8-PD-u8e" firstAttribute="leading" secondItem="GSN-ep-yAe" secondAttribute="leading" id="dNT-UR-tNF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="IKe-ZA-vcI">
-                        <barButtonItem key="leftBarButtonItem" title="Start" id="WaZ-cr-nht">
-                            <connections>
-                                <action selector="startNavBarActionPressed:" destination="BYZ-38-t0r" id="GfN-6W-0I0"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="about" landscapeImage="about" largeContentSizeImage="about" id="52N-8D-71J">
-                            <connections>
-                                <action selector="aboutNavBarActionPressed:" destination="BYZ-38-t0r" id="Ky6-K1-zAZ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="justLabel" destination="Zc8-PD-u8e" id="2L9-it-43F"/>
-                        <outlet property="pasteButton" destination="GSN-ep-yAe" id="ig2-ep-kEm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2047.2" y="-267.48768472906403"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qf7-e6-oGG">
             <objects>
@@ -183,9 +115,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="euL-jL-zEt"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAF-IY-Rrf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,7 +122,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="about" width="24" height="24"/>
         <image name="format_list_bulleted" width="25" height="25"/>
         <image name="itunes" width="25" height="25"/>
     </resources>
