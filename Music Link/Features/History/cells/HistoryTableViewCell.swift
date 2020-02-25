@@ -12,4 +12,14 @@ class HistoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var songImageView: UIImageView!
+    
+    func configure(with item: HistoryCellModel) {
+        songLabel.text = item.label
+        
+        layer.cornerRadius = 20
+        layer.borderWidth = CGFloat(5)
+        layer.borderColor = UIColor.systemBackground.cgColor
+        
+        Imager.shared.loadImage(into: songImageView, link: item.image)
+    }
 }

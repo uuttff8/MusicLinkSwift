@@ -40,6 +40,7 @@
 		4E52CD4D231FF3EC00C51BD1 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52CD4C231FF3EC00C51BD1 /* Services.swift */; };
 		4E641F752405A54A008DE81D /* ConvertViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E641F742405A54A008DE81D /* ConvertViewUI.swift */; };
 		4E641F782405BF50008DE81D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 4E641F772405BF50008DE81D /* Nuke */; };
+		4E641F7B2405C2AE008DE81D /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E641F7A2405C2AE008DE81D /* SwipeCellKit */; };
 		4E689FE22343D7CA00D6377E /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689FE12343D7CA00D6377E /* ShareViewController.swift */; };
 		4E689FE52343D7CA00D6377E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E689FE32343D7CA00D6377E /* MainInterface.storyboard */; };
 		4E689FE92343D7CA00D6377E /* share.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4E689FDF2343D7C900D6377E /* share.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -181,6 +182,7 @@
 				4E414FE6238305BF001B5871 /* RxCocoa in Frameworks */,
 				4E641F782405BF50008DE81D /* Nuke in Frameworks */,
 				4E414FE9238305E7001B5871 /* SnapKit in Frameworks */,
+				4E641F7B2405C2AE008DE81D /* SwipeCellKit in Frameworks */,
 				4E414FE4238305BF001B5871 /* RxSwift in Frameworks */,
 				4E414FE2238305BF001B5871 /* RxRelay in Frameworks */,
 				4E0D997B239D7F510082D26E /* CombineCocoa in Frameworks */,
@@ -513,6 +515,7 @@
 				4E414FF42383067C001B5871 /* Logging */,
 				4E0D997A239D7F510082D26E /* CombineCocoa */,
 				4E641F772405BF50008DE81D /* Nuke */,
+				4E641F7A2405C2AE008DE81D /* SwipeCellKit */,
 			);
 			productName = "Music Link";
 			productReference = 4E705FAA231821EC00D1CE56 /* Music Link - Sharing Streams.app */;
@@ -551,6 +554,7 @@
 				4E414FF32383067C001B5871 /* XCRemoteSwiftPackageReference "swift-log" */,
 				4E0D9979239D7F510082D26E /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 				4E641F762405BF50008DE81D /* XCRemoteSwiftPackageReference "Nuke" */,
+				4E641F792405C2AE008DE81D /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = 4E705FAB231821EC00D1CE56 /* Products */;
 			projectDirPath = "";
@@ -973,6 +977,14 @@
 				minimumVersion = 8.4.0;
 			};
 		};
+		4E641F792405C2AE008DE81D /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1025,6 +1037,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E641F762405BF50008DE81D /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
+		};
+		4E641F7A2405C2AE008DE81D /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E641F792405C2AE008DE81D /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
