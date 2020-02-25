@@ -26,5 +26,53 @@
             type = "1">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F50A1245-67B7-4317-9610-B3E8FF83E2D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Music Link/Features/History/HistoryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "unwrapDataFromCoreData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F50A1245-67B7-4317-9610-B3E8FF83E2D2 - 9ee2263e1d3a0b8d"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Music_Link___Sharing_Streams.HistoryViewController.(unwrapDataFromCoreData in _022FD1268B023873E5E7F358FC264050)() -&gt; ()"
+                  moduleName = "Music Link - Sharing Streams"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/uuttff8/Documents/MusicLinkSwift/Music%20Link/Features/History/HistoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "F50A1245-67B7-4317-9610-B3E8FF83E2D2 - bdb07ff662d7f757"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.String, Swift.String) -&gt; () in closure #1 () -&gt; () in Music_Link___Sharing_Streams.HistoryViewController.(unwrapDataFromCoreData in _022FD1268B023873E5E7F358FC264050)() -&gt; ()"
+                  moduleName = "Music Link - Sharing Streams"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/uuttff8/Documents/MusicLinkSwift/Music%20Link/Features/History/HistoryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

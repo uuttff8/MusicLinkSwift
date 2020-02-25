@@ -159,7 +159,6 @@
                                             <outlet property="collectionViewToListenHeight" destination="OTI-aQ-SSc" id="kLs-z9-eOi"/>
                                             <outlet property="imageSong" destination="sKT-gC-uOr" id="uhE-my-S7W"/>
                                             <outlet property="labelSong" destination="wcz-bP-ufz" id="obI-S5-V3F"/>
-                                            <outlet property="listenCollectionViewFlowLayout" destination="1VC-oX-fwg" id="k0q-yH-9NH"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

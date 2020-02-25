@@ -12,9 +12,8 @@ import Combine
 
 class ConvertViewController: ViewController {
     
-    @IBOutlet weak var pasteButton: LoadingButton!
-        
-    lazy var justLabel: UILabel = {
+    // MARK: - UI
+    var justLabel: UILabel {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 90)
         lbl.text = "Just Paste Link"
@@ -24,9 +23,9 @@ class ConvertViewController: ViewController {
         lbl.textAlignment = .center
         view.addSubview(lbl)
         return lbl
-    }()
+    }
     
-    lazy var convertButton: LoadingButton = {
+    var convertButton: LoadingButton {
         let button = LoadingButton(type: UIButton.ButtonType.system)
         button.titleLabel?.font = UIFont().withSize(18)
         button.tintColor = UIColor.white
@@ -35,40 +34,30 @@ class ConvertViewController: ViewController {
         button.layer.cornerRadius = 8   
         view.addSubview(button)
         return button
-    }()
+    }
     
-    lazy var aboutNavBarAction: UIBarButtonItem = {
-        let item = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(self.navigateToAbout))
+    // NavBar Actions
+    var aboutNavBarAction: UIBarButtonItem {
+        let item = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: nil)
+        item.tapPublisher.sink {
+            let vc = ScreenRouter.shared.getAboutController()
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }.store(in: &cancellable)
         return item
-    }()
-    
-    @objc func navigateToAbout() {
-        let vc = ScreenRouter.shared.getAboutController()
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    lazy var startNavBarAction: UIBarButtonItem = {
-        let item = UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(self.navigateToStart))
+    var startNavBarAction: UIBarButtonItem {
+        let item = UIBarButtonItem(title: "Start", style: .plain, target: self, action: nil)
+        item.tapPublisher.sink {
+            self.navigator.show(segue: .splash, sender: self, transition: .present(false))
+        }.store(in: &cancellable)
         return item
-    }()
-    
-    @objc func navigateToStart() {
-        navigator.show(segue: .splash, sender: self, transition: .present(false))
     }
     
-    fileprivate func setupContraints() {
-        if (Display.typeIsLike == DisplayType.iphone5) {
-            justLabel.font = justLabel.font.withSize(70)
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
+    // MARK: - Lifecycle
     override func makeUI() {
         super.makeUI()
-        setupContraints()
         navigationItem.rightBarButtonItem = aboutNavBarAction
         navigationItem.leftBarButtonItem = startNavBarAction
         
@@ -86,6 +75,11 @@ class ConvertViewController: ViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupContraints()
+    }
+    
     override func bindViewModel() {
         super.bindViewModel()
         
@@ -96,15 +90,22 @@ class ConvertViewController: ViewController {
         output.data
             .receive(on: RunLoop.main)
             .sink(receiveValue: { [weak self] response in
-            guard let self = self else { return }
-            
-            if let response = response {
-                self.navigator.show(segue: .info(response), sender: self, transition: .present(true))
-            } else {
-                let alert = UIAlertController(title: "Oops!", message: "Login failed", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
-                self.present(alert, animated: true, completion: nil)
-            }
-        }).store(in: &cancellable)
+                guard let self = self else { return }
+                
+                if let response = response {
+                    self.navigator.show(segue: .info(response), sender: self, transition: .present(true))
+                } else {
+                    let alert = UIAlertController(title: "Oops!", message: "music link is not found", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }).store(in: &cancellable)
+    }
+    
+    // MARK: - Private UI
+    fileprivate func setupContraints() {
+        if (Display.typeIsLike == DisplayType.iphone5) {
+            justLabel.font = justLabel.font.withSize(70)
+        }
     }
 }

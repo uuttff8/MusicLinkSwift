@@ -12,14 +12,11 @@ import CoreData
 struct HistoryCellModel: Equatable {
     let label: String!
     let image: String!
-}
-
-extension UIViewController {
-    func reloadViewFromNib() {
-        let parent = view.superview
-        view.removeFromSuperview()
-        view = nil
-        parent?.addSubview(view) // This line causes the view to be reloaded
+    
+    var description: String {
+        return
+            "Name: \(String(describing: label))\n" +
+            "image: \(String(describing: image))\n"
     }
 }
 
@@ -32,26 +29,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     private let refreshControl = UIRefreshControl()
     
     fileprivate func unwrapDataFromCoreData() {
-        // TODO: fetch data from CoreData
-        let context = CoreDataManager.context
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
-        request.returnsObjectsAsFaults = false
-        
-        do {
-            let result = try context.fetch(request)
-            for data in result as! [NSManagedObject] {
-                print("\n new value from core data:" + String(data.value(forKey: "name") as! String) + "\n")
-                
-                let labelText = data.value(forKey: "name") as! String
-                let imageText = data.value(forKey: "image") as! String
-                
-                items.insert(.init(label: labelText, image: imageText), at: 0)
-                items = items.removeDuplicates()
+        DispatchQueue.main.async {
+            CoreDataManager.shared.getHistory { (labelText, imageText) in
+                self.items.append(HistoryCellModel(label: labelText, image: imageText))
+                self.items = self.items.removeDuplicates()
             }
-        } catch {
-            print("Failed")
+
         }
-        tableView.reloadData()
     }
     
     @objc func refreshAllVc() {

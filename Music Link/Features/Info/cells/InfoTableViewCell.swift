@@ -91,7 +91,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     }
     
     fileprivate func writeSongToCoreData(data: LinksResponse) {
-        let context = CoreDataManager.context
+        let context = CoreDataManager.shared.context
         
         let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
         let newUser = NSManagedObject(entity: entity!, insertInto: context)
