@@ -34,7 +34,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                 self.items.append(HistoryCellModel(label: labelText, image: imageText))
                 self.items = self.items.removeDuplicates()
             }
-
         }
     }
     
@@ -73,13 +72,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HistoryTableViewCell.reuseId) as! HistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HistoryTableViewCell.self)) as! HistoryTableViewCell
         cell.songLabel.text = items[indexPath.item].label
         
         cell.layer.cornerRadius = 20
         cell.layer.borderWidth = CGFloat(5)
         cell.layer.borderColor = tableView.backgroundColor?.cgColor
-
         
         Imager.shared.loadImage(into: cell.songImageView, link: items[indexPath.item].image)
         return cell

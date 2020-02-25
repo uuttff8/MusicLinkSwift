@@ -12,6 +12,4 @@ class HistoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var songLabel: UILabel!
     @IBOutlet weak var songImageView: UIImageView!
-    
-    static var reuseId: String = "HistoryTableViewCell"
 }

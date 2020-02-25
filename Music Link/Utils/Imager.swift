@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Nuke
 
 class Imager {
     
@@ -17,10 +17,7 @@ class Imager {
         if link == nil { return }
         if let url = URL(string: link!) {
             
-            into.sd_setImage(with: url,
-                             placeholderImage: UIImage(named: "placeholder"),
-                             options: .progressiveLoad)
-            { (image, error, type, url) in
+            Nuke.loadImage(with: url, into: into) { (_) in
                 callBack?()
             }
         }
