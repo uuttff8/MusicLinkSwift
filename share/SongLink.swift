@@ -1,5 +1,6 @@
 import Foundation
 import RxSwift
+import Combine
 
 let BASE_URL = "https://song.link/"
 let INITIAL_STATE_REGEXP = "<script id=\"initialState\".+>\\s+?(.+)\\s+?</script>"
@@ -30,23 +31,23 @@ struct SLData: Decodable {
     let title: String
     let artistName: String
     let nodesByUniqueId: [String: SLNode]
-
+    
     var links: [SLLink] = []
-
+    
     enum CodingKeys: String, CodingKey {
         case title = "title"
         case artistName = "artistName"
         case nodesByUniqueId = "nodesByUniqueId"
     }
-
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-
+        
         title = try container.decode(String.self, forKey: .title)
         artistName = try container.decode(String.self, forKey: .artistName)
         nodesByUniqueId = try container.decode([String: SLNode].self, forKey: .nodesByUniqueId)
     }
-
+    
     init(title: String, artistName: String, nodesByUniqueId: [String: SLNode]) {
         self.title = title
         self.artistName = artistName
@@ -75,66 +76,66 @@ struct SLNode: Decodable {
 class SongLink {
     private var url: String? = nil
     private var providers: [SLProvider] = []
-
-    func load(_ url: String) -> Observable<[SLProvider]> {
+    
+    func load(_ url: String) -> AnyPublisher<[SLProvider], Error> {
         if providers.count > 0 {
-            return Observable.just(providers)
+            return SomePublisher { observer in
+                observer(.value(self.providers))
+                observer(.finished)
+            }.eraseToAnyPublisher()
         }
-
+        
         return requestData(url)
-            .map({
-                self.url = $0.url
-                return $0.data
+            .map({ (response) -> Data in
+                self.url = response.url
+                return response.data
             })
             .flatMap({ self.extractData($0) })
             .flatMap({ self.parseJson($0) })
             .flatMap({ self.fillLinks($0) })
             .flatMap({ self.getProviders(data: $0) })
-            .map({
-                self.providers = $0
-                return $0
-            })
+            .map({ (provider) -> [SLProvider] in
+                self.providers = provider
+                return provider
+            }).eraseToAnyPublisher()
     }
-
-    private func parseJson(_ data: Data) -> Observable<SL> {
-        return Observable.create() { observer in
-            let disposable = Disposables.create()
-
+    
+    private func parseJson(_ data: Data) -> AnyPublisher<SL, Error> {
+        return SomePublisher { observer in
+            
             guard let parsed = try? JSONDecoder().decode(SL.self, from: data) else {
-                observer.onError(NSError(domain: "Error: Couldn't decode data into SL", code: 1, userInfo: nil))
-                observer.onCompleted()
-                return disposable
+                observer(.failure(NSError(domain: "Error: Couldn't decode data into SL", code: 1, userInfo: nil)))
+                observer(.finished)
+                return
             }
-
-            observer.onNext(parsed)
-            observer.onCompleted()
-
-            return disposable
-        }
+            
+            observer(.value(parsed))
+            observer(.finished)
+        }.eraseToAnyPublisher()
     }
-
-    private func fillLinks(_ data: SL) -> Observable<SL> {
+    
+    private func fillLinks(_ data: SL) -> AnyPublisher<SL, Error> {
         var slData = SLData(
             title: data.songlink.title,
             artistName: data.songlink.artistName,
             nodesByUniqueId: data.songlink.nodesByUniqueId
         )
-
+        
         data.songlink.nodesByUniqueId.forEach { key, value in
             guard let entity: String = value.entity else { return }
             guard let listenUrl: String = value.listenUrl else { return }
-
+            
             let listenAppUrl = value.listenAppUrl ?? ""
             let provider = entity
                 .replacingOccurrences(of: "_SONG", with: "")
                 .replacingOccurrences(of: "_VIDEO", with: "")
-
+            
             slData.links.append(SLLink(
                 name: entity,
                 provider: provider,
                 url: listenUrl
             ))
-
+            
             if listenAppUrl.count > 0 && provider == "YOUTUBE" {
                 slData.links.append(SLLink(
                     name: "YOUTUBE_SONG",
@@ -143,89 +144,85 @@ class SongLink {
                 ))
             }
         }
-
-        return Observable.just(SL(songlink: slData))
+        
+        return Just(SL(songlink: slData))
+            .setFailureType(to: Error.self)
+            .eraseToAnyPublisher()
     }
-
-    private func requestData(_ url: String) -> Observable<SLResponse> {
-        return Observable.create() { observer in
+    
+    private func requestData(_ url: String) -> AnyPublisher<SLResponse, Error> {
+        return SomePublisher { observer in
             let targetUrl = URL(string: BASE_URL + url)
-
+            
             let task = URLSession.shared.dataTask(with: targetUrl!) { (data, response, error) in
                 guard let response = response as? HTTPURLResponse else {
-                    observer.onError(NSError(domain: "Cannot decode response", code: 1, userInfo: nil))
-                    observer.onCompleted()
+                    observer(.failure(NSError(domain: "Cannot decode response", code: 1, userInfo: nil)))
+                    observer(.finished)
                     return
                 }
-
+                
                 if response.statusCode != 200 {
                     let message = String(format: "Server returned %d status code", response.statusCode)
-                    observer.onError(NSError(domain: message, code: response.statusCode, userInfo: nil))
-                    observer.onCompleted()
+                    observer(.failure(NSError(domain: message, code: response.statusCode, userInfo: nil)))
+                    observer(.finished)
                     return
                 }
-
+                
                 if let data = data {
-                    observer.onNext(SLResponse(url: response.url!.absoluteString, data: data))
+                    observer(.value(SLResponse(url: response.url!.absoluteString, data: data)))
                 } else if let error = error {
-                    observer.onError(error)
+                    observer(.failure(error))
                 }
-
-                observer.onCompleted()
+                
+                observer(.finished)
             }
-
             task.resume()
-
-            return Disposables.create()
-        }
+        }.eraseToAnyPublisher()
     }
-
-    private func extractData(_ html: Data) -> Observable<Data> {
-        return Observable.create() { observer in
+    
+    private func extractData(_ html: Data) -> AnyPublisher<Data, Error> {
+        return SomePublisher { observer in
             func error(_ error: Error) {
-                observer.onError(error)
-                observer.onCompleted()
+                observer(.failure(error))
+                observer(.finished)
             }
-
-            let disposable = Disposables.create()
-
+            
             guard let htmlString = String(data: html, encoding: .utf8) else {
                 error(NSError(domain: "HTML parsing error", code: 1, userInfo: nil))
-                return disposable
+                return
             }
-
+            
             guard let regex = try? NSRegularExpression(pattern: INITIAL_STATE_REGEXP) else {
                 error(NSError(domain: "NSRegularExpression creating error", code: 1, userInfo: nil))
-                return disposable
+                return
             }
-
+            
             let matches = regex.matches(
                 in: htmlString,
                 options: [],
                 range: NSMakeRange(0, htmlString.count)
             )
-
+            
             guard let match = matches.first, let range = Range(match.range(at: 1), in: htmlString) else {
                 error(NSError(domain: "Initial state not found", code: 1, userInfo: nil))
-                return disposable
+                return
             }
-
+            
             guard let result = String(htmlString[range]).data(using: .utf8) else {
                 error(NSError(domain: "Cannot extract initialState", code: 1, userInfo: nil))
-                return disposable
+                return
             }
-
-            observer.onNext(result)
-            observer.onCompleted()
-
-            return disposable
-        }
+            
+            observer(.value(result))
+            observer(.finished)
+            
+        }.eraseToAnyPublisher()
     }
-
-    private func getProviders(data: SL) -> Observable<[SLProvider]> {
-        return Observable.create { observer in
+    
+    private func getProviders(data: SL) -> AnyPublisher<[SLProvider], Error> {
+        return SomePublisher { observer in
             var services: [SLProvider] = []
-
+            
             SERVICES.forEach() { item in
                 guard let remoteProvider = data.songlink.links.first(where: { link in link.name == item.name }) else { return }
                 let newProvider = SLProvider(
@@ -233,22 +230,22 @@ class SongLink {
                     label: item.label,
                     url: remoteProvider.url
                 )
-
+                
                 services.append(newProvider)
             }
-
+            
             let songlinkProvider = SLProvider(
                 name: SERVICES.last!.name,
                 label: SERVICES.last!.label,
                 url: self.url!
             )
-
+            
             services.append(songlinkProvider)
-
-            observer.onNext(services)
-            observer.onCompleted()
-
-            return Disposables.create()
-        }
+            
+            observer(.value(services))
+            observer(.finished)
+            
+        }.eraseToAnyPublisher()
     }
+    
 }

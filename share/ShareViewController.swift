@@ -2,24 +2,25 @@ import UIKit
 import Social
 import MobileCoreServices
 import RxSwift
+import Combine
 
 class ShareViewController: UIViewController {
     
-    let reload = PublishSubject<Bool>()
-    let disposeBag = DisposeBag()
+    @Published var reload = Bool()
+    var cancellable = Set<AnyCancellable>()
     let songLink = SongLink()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        wrapLoadWithReload()
-            .subscribe(
-                onNext: { self.handleAction(result: $0) },
-                onError: { self.handleError(error: $0) }
-            )
-            .disposed(by: disposeBag)
-        
-        reload.onNext(true)
+//        wrapLoadWithReload()
+//
+////                onNext: { self.handleAction(result: $0) },
+////                onError: { self.handleError(error: $0) }
+////
+//            .store(in: &self.cancellable)
+//
+        self.reload = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,19 +33,23 @@ class ShareViewController: UIViewController {
         }
     }
     
-    private func wrapLoadWithReload() -> Observable<ActionSheetResult> {
-        return reload.flatMap({ _ in
-            self.getIncomingUrl()
-                .flatMap({ self.songLink.load($0.absoluteString) })
-                .observeOn(MainScheduler.instance)
-                .flatMap({ showServicesSheet(root: self, services: $0) })
-                .flatMap({ showActionSheet(root: self, provider: $0) })
-                .do(onCompleted: { self.exit() })
-        })
+    private func wrapLoadWithReload() -> AnyPublisher<ActionSheetResult, Error> {
+        return SomePublisher { observer in
+            observer(.value(ActionSheetResult(action: .BACK, provider: SLProvider(name: "", label: "", url: ""))))
+            
+        }.eraseToAnyPublisher()
+//        $reload.flatMap {_ in
+//                return self.getIncomingUrl()
+//                    .flatMap({ self.songLink.load($0.absoluteString) })
+//                    .receive(on: RunLoop.main)
+//                    .flatMap({ showServicesSheet(root: self, services: $0) })
+//                    .flatMap({ showActionSheet(root: self, provider: $0) })
+//                .eraseToAnyPublisher()
+//        }
     }
     
-    private func getIncomingUrl() -> Observable<URL> {
-        return Observable.create() { observer in
+    private func getIncomingUrl() -> AnyPublisher<URL, Error> {
+        return SomePublisher { publisher in
             let URL_TYPE = kUTTypeURL as String
             
             if let item = self.extensionContext?.inputItems.first as? NSExtensionItem,
@@ -53,18 +58,16 @@ class ShareViewController: UIViewController {
                 
                 itemProvider.loadItem(forTypeIdentifier: URL_TYPE, options: nil) { (url, error) in
                     if let error = error {
-                        observer.onError(error)
-                        observer.onCompleted()
+                        publisher(.failure(error))
+                        publisher(.finished)
                         return
                     }
                     
-                    observer.onNext(url as! URL)
-                    observer.onCompleted()
+                    publisher(.value(url as! URL))
+                    publisher(.finished)
                 }
             }
-            
-            return Disposables.create()
-        }
+        }.eraseToAnyPublisher()
     }
     
     @objc private func openURL(_ url: URL) {
@@ -98,7 +101,7 @@ class ShareViewController: UIViewController {
             
             self.present(shareView, animated: true, completion: nil)
         default:
-            self.reload.onNext(true)
+            self.reload = true
         }
         
         if result.action != .SHARE && result.action != .BACK {
@@ -121,4 +124,57 @@ class ShareViewController: UIViewController {
         self.extensionContext!.completeRequest(returningItems: nil, completionHandler: callback)
     }
     
+}
+
+
+struct SomePublisher<Output, Failure: Swift.Error>: Publisher {
+    enum Event {
+        case value(Output)
+        case finished
+        case failure(Failure)
+    }
+    typealias Handler = (Event) -> Void
+    private let handler: (@escaping Handler) -> Void
+
+    private class Subscription<S: Subscriber>: Combine.Subscription where S.Input == Output, S.Failure == Failure {
+        private var subscriber: S?
+        private let handler: (@escaping Handler) -> Void
+
+        init(subscriber: S, handler: @escaping (@escaping Handler) -> Void) {
+            self.subscriber = subscriber
+            self.handler = handler
+        }
+
+        func request(_ demand: Subscribers.Demand) {
+            self.handler(self.handle)
+        }
+
+        func cancel() {
+            self.subscriber = nil
+        }
+
+        private func handle(_ event: Event) {
+            guard let subscriber = self.subscriber else {
+                return
+            }
+
+            switch event {
+            case .value(let input):
+                _ = subscriber.receive(input)
+            case .finished:
+                subscriber.receive(completion: .finished)
+            case .failure(let error):
+                subscriber.receive(completion: .failure(error))
+            }
+        }
+    }
+
+    init(_ handler: @escaping (@escaping Handler) -> Void) {
+        self.handler = handler
+    }
+
+    func receive<S>(subscriber: S) where S : Subscriber, S.Failure == Failure, S.Input == Output {
+        let subscription = Subscription(subscriber: subscriber, handler: self.handler)
+        subscriber.receive(subscription: subscription)
+    }
 }
