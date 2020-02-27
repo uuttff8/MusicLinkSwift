@@ -12,14 +12,13 @@ class ShareViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wrapLoadWithReload()
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { (_) in },
+                  receiveValue: { (action) in
+                    self.handleAction(result: action)
+            }).store(in: &self.cancellable)
         
-//        wrapLoadWithReload()
-//
-////                onNext: { self.handleAction(result: $0) },
-////                onError: { self.handleError(error: $0) }
-////
-//            .store(in: &self.cancellable)
-//
         self.reload = true
     }
     
@@ -34,18 +33,20 @@ class ShareViewController: UIViewController {
     }
     
     private func wrapLoadWithReload() -> AnyPublisher<ActionSheetResult, Error> {
-        return SomePublisher { observer in
-            observer(.value(ActionSheetResult(action: .BACK, provider: SLProvider(name: "", label: "", url: ""))))
-            
+        //        return SomePublisher { observer in
+        //            observer(.value(ActionSheetResult(action: .BACK, provider: SLProvider(name: "", label: "", url: ""))))
+        //
+        //        }.eraseToAnyPublisher()
+        return $reload
+            .setFailureType(to: Error.self)
+            .flatMap {_ in
+                return self.getIncomingUrl()
+                    .flatMap({ self.songLink.load($0.absoluteString) })
+                    .receive(on: RunLoop.main)
+                    .flatMap({ showServicesSheet(root: self, services: $0) })
+                    .flatMap({ showActionSheet(root: self, provider: $0) })
+                    .eraseToAnyPublisher()
         }.eraseToAnyPublisher()
-//        $reload.flatMap {_ in
-//                return self.getIncomingUrl()
-//                    .flatMap({ self.songLink.load($0.absoluteString) })
-//                    .receive(on: RunLoop.main)
-//                    .flatMap({ showServicesSheet(root: self, services: $0) })
-//                    .flatMap({ showActionSheet(root: self, provider: $0) })
-//                .eraseToAnyPublisher()
-//        }
     }
     
     private func getIncomingUrl() -> AnyPublisher<URL, Error> {
@@ -92,14 +93,17 @@ class ShareViewController: UIViewController {
         case .COPY:
             UIPasteboard.general.string = result.provider.url
         case .SHARE:
-            let shareView = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            
-            shareView.popoverPresentationController?.sourceView = self.view
-            shareView.completionWithItemsHandler = { (_, _, _, _) in
-                self.exit()
+            DispatchQueue.main.async {
+                let shareView = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                
+                shareView.popoverPresentationController?.sourceView = self.view
+                shareView.completionWithItemsHandler = { (_, _, _, _) in
+                    self.exit()
+                }
+                
+                self.present(shareView, animated: true, completion: nil)
+                
             }
-            
-            self.present(shareView, animated: true, completion: nil)
         default:
             self.reload = true
         }
@@ -135,29 +139,29 @@ struct SomePublisher<Output, Failure: Swift.Error>: Publisher {
     }
     typealias Handler = (Event) -> Void
     private let handler: (@escaping Handler) -> Void
-
+    
     private class Subscription<S: Subscriber>: Combine.Subscription where S.Input == Output, S.Failure == Failure {
         private var subscriber: S?
         private let handler: (@escaping Handler) -> Void
-
+        
         init(subscriber: S, handler: @escaping (@escaping Handler) -> Void) {
             self.subscriber = subscriber
             self.handler = handler
         }
-
+        
         func request(_ demand: Subscribers.Demand) {
             self.handler(self.handle)
         }
-
+        
         func cancel() {
             self.subscriber = nil
         }
-
+        
         private func handle(_ event: Event) {
             guard let subscriber = self.subscriber else {
                 return
             }
-
+            
             switch event {
             case .value(let input):
                 _ = subscriber.receive(input)
@@ -168,11 +172,11 @@ struct SomePublisher<Output, Failure: Swift.Error>: Publisher {
             }
         }
     }
-
+    
     init(_ handler: @escaping (@escaping Handler) -> Void) {
         self.handler = handler
     }
-
+    
     func receive<S>(subscriber: S) where S : Subscriber, S.Failure == Failure, S.Input == Output {
         let subscription = Subscription(subscriber: subscriber, handler: self.handler)
         subscriber.receive(subscription: subscription)
