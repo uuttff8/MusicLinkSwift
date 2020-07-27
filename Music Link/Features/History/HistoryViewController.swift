@@ -63,7 +63,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let count = items.count
         
         if(count == 0) {
-            tableView.setEmptyMessage("Не удалось загрузить историю\nили список пуст")
+            tableView.setEmptyMessage("Failed to load history\nor the list is empty")
         } else {
             tableView.restore()
         }

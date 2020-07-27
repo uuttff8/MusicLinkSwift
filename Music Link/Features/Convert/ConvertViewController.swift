@@ -20,7 +20,7 @@ class ConvertViewController: ViewController {
     }
     
     var startNavBarAction: UIBarButtonItem {
-        UIBarButtonItem(title: "Start", style: .plain, target: self, action: #selector(navigateToStart))
+        UIBarButtonItem(title: "Splash", style: .plain, target: self, action: #selector(navigateToStart))
     }
     
     override func loadView() {
