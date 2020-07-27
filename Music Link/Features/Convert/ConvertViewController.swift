@@ -60,8 +60,7 @@ class ConvertViewController: ViewController {
     }
     
     @objc private func navigateToStart() {
-        let vc = ScreenRouter.shared.getAboutController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        Navigator.default.show(segue: .splash, sender: self, transition: .present(false))
     }
     
     @objc func navigateToAbout() {
