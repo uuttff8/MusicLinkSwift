@@ -53,7 +53,8 @@ class ConvertViewUI: View {
         }
     }
     
-    func makeUI() {        
+    func makeUI() {
+        self.backgroundColor = UIColor.systemBackground
         justLabel.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide).inset(20)
             make.leading.trailing.equalTo(safeAreaLayoutGuide).inset(40)

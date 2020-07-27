@@ -52,7 +52,7 @@ class ConvertViewController: ViewController {
                 if let response = response {
                     self.navigator.show(segue: .info(response), sender: self, transition: .present(true))
                 } else {
-                    let alert = UIAlertController(title: "Oops!", message: "Music link is not found", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Oops!", message: "Music link is not found in your pasteboard", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in })
                     self.present(alert, animated: true, completion: nil)
                 }
