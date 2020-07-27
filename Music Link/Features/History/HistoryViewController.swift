@@ -16,7 +16,7 @@ struct HistoryCellModel: Equatable {
     var description: String {
         return
             "Name: \(String(describing: label))\n" +
-            "image: \(String(describing: image))\n"
+        "image: \(String(describing: image))\n"
     }
 }
 
@@ -88,30 +88,36 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     // TOOD(uuttff8): make delete button action
-    /*
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let deleteButton = UISwipeActionsConfiguration(actions: [UIContextualAction(style: .normal, title: "Delete", handler: { (action, view, bool) in
-            
-            let context = CoreDataManager.context
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
-            request.returnsObjectsAsFaults = false
-            
-            do {
-                var result = try context.fetch(request)
-                print("\(result[indexPath.item]) is deleted")
-            } catch {
-                
-            }
-            
-            self.items.removeAll()
-            self.unwrapDataFromCoreData()
-            tableView.reloadData()
-        })])
+        let deleteButton = UISwipeActionsConfiguration(
+            actions:
+            [
+                UIContextualAction(
+                    style: .normal,
+                    title: "Delete",
+                    handler: { (action, view, bool) in
+                        
+                        let context = CoreDataManager.shared.context
+                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+                        
+                        request.returnsObjectsAsFaults = false
+                        
+                        do {
+//                            print("\(result[indexPath.item]) is deleted")
+                        } catch let error as NSError {
+                            debugPrint(error)
+                        }
+                        
+                        self.items.removeAll()
+                        self.unwrapDataFromCoreData()
+                        tableView.reloadData()
+                })
+            ]
+        )
         
         return deleteButton
     }
- */
 }
 
 extension HistoryViewController: HistoryView {
