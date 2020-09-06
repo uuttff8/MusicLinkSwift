@@ -99,20 +99,31 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     handler: { (action, view, bool) in
                         
                         let context = CoreDataManager.shared.context
-                        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
                         
-                        request.returnsObjectsAsFaults = false
+                        let label = self.items[indexPath.row].label ?? ""
+                        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+                        fetchRequest.predicate = NSPredicate(format: "name = %@", label)
+                        fetchRequest.returnsObjectsAsFaults = false
+                        
+                        
                         
                         do {
-//                            print("\(result[indexPath.item]) is deleted")
+                            let test = try context.fetch(fetchRequest)
+                            
+                            let objectToDelete = test[0] as! NSManagedObject
+                            context.delete(objectToDelete)
+                            
+                            
+                            do {
+                                try context.save()
+                            } catch {
+                                print(error)
+                            }
+                            
                         } catch let error as NSError {
                             debugPrint(error)
                         }
-                        
-                        self.items.removeAll()
-                        self.unwrapDataFromCoreData()
-                        tableView.reloadData()
-                })
+                    })
             ]
         )
         
