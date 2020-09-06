@@ -60,8 +60,6 @@ class InfoViewController: BaseViewController {
         
         print("alert called")
     }
-    
-
 }
 
 extension InfoViewController: UITableViewDelegate, UITableViewDataSource {

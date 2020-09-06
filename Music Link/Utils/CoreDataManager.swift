@@ -16,7 +16,11 @@ class CoreDataManager {
     lazy var context: NSManagedObjectContext = { appDelegate.persistentContainer.viewContext }()
     
     static func tryToSave(with context: NSManagedObjectContext) {
-        
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
     
     func getHistory(completion: ((String, String) -> ())) {

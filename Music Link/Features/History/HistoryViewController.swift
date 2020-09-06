@@ -31,6 +31,8 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     fileprivate func unwrapDataFromCoreData() {
         DispatchQueue.main.async {
             CoreDataManager.shared.getHistory { (labelText, imageText) in
+                print("---")
+                print(labelText, imageText)
                 self.items.append(HistoryCellModel(label: labelText, image: imageText))
                 self.items = self.items.removeDuplicates()
             }
@@ -52,11 +54,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 0)
         refreshControl.addTarget(self, action: #selector(refreshAllVc), for: .valueChanged)
         tableView.refreshControl = refreshControl
+        tableView.allowsSelection = false
+        
+        refreshAllVc()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        unwrapDataFromCoreData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,6 +101,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     style: .normal,
                     title: "Delete",
                     handler: { (action, view, bool) in
+                        
                         
                         let context = CoreDataManager.shared.context
                         
