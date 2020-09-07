@@ -23,19 +23,23 @@ class CoreDataManager {
         }
     }
     
-    func getHistory(completion: ((String, String) -> ())) {
+    func getHistory(completion: ((Array<HistoryCellModel>) -> ())) {
         let context = self.context
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
         request.returnsObjectsAsFaults = false
         
         do {
             let result = try context.fetch(request) as! [NSManagedObject]
+            
+            var models: Array<HistoryCellModel> = Array()
             for data in result {
                 let labelText = data.value(forKey: "name") as! String
                 let imageText = data.value(forKey: "image") as! String
                 
-                completion(labelText, imageText)
+                models.append(HistoryCellModel(label: labelText, image: imageText))
             }
+            
+            completion(models)
         } catch {
             print(error)
         }

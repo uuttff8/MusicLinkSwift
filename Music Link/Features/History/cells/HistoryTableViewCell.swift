@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct HistoryCellModel: Equatable {
+struct HistoryCellModel: Equatable, Hashable {
     let label: String!
     let image: String!
     

@@ -17,23 +17,25 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var items: Array<HistoryCellModel> = []
     private let refreshControl = UIRefreshControl()
     
-    fileprivate func unwrapDataFromCoreData() {
+    fileprivate func unwrapDataFromCoreData(completion: @escaping (() -> Void)) {
         DispatchQueue.main.async {
-            CoreDataManager.shared.getHistory { (labelText, imageText) in
+            CoreDataManager.shared.getHistory { (models) in
                 print("---")
-                print(labelText, imageText)
-                self.items.append(HistoryCellModel(label: labelText, image: imageText))
-                self.items = self.items.removeDuplicates()
+                print(models)
+                self.items = models.uniques
+                completion()
             }
         }
     }
     
     @objc func refreshAllVc() {
-        unwrapDataFromCoreData()
-        tableView.reloadData()
-        
-        if refreshControl.isRefreshing {
-            refreshControl.endRefreshing()
+        unwrapDataFromCoreData { [weak self] in
+            guard let self = self else { return }
+            self.tableView.reloadData()
+            
+            if self.refreshControl.isRefreshing {
+                self.refreshControl.endRefreshing()
+            }
         }
     }
     
@@ -47,12 +49,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.refreshControl = refreshControl
         tableView.allowsSelection = false
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshAllVc()
+    }
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = items.count
         
-        
-        if(count == 0) {
+        if count == 0 {
             tableView.setEmptyMessage("Failed to load history\nor the list is empty")
         } else {
             tableView.restore()
@@ -75,13 +81,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteButton = UISwipeActionsConfiguration(
+            
             actions:
             [
                 UIContextualAction(
-                    style: .normal,
+                    style: .destructive,
                     title: "Delete",
                     handler: { (action, view, bool) in
                         CoreDataManager.shared.deleteConcreteSong(label: self.items[indexPath.row].label)
+                        self.items.remove(at: indexPath.row)
+                        tableView.deleteRows(at: [indexPath], with: .fade)
                     })
             ]
         )
