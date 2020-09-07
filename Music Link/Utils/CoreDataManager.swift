@@ -24,7 +24,6 @@ class CoreDataManager {
     }
     
     func getHistory(completion: ((String, String) -> ())) {
-        // TODO: fetch data from CoreData
         let context = self.context
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
         request.returnsObjectsAsFaults = false
@@ -35,12 +34,30 @@ class CoreDataManager {
                 let labelText = data.value(forKey: "name") as! String
                 let imageText = data.value(forKey: "image") as! String
                 
-                print("\n new value from core data:" + HistoryCellModel(label: labelText, image: imageText).description + "\n")
-                
                 completion(labelText, imageText)
             }
         } catch {
-            print("Failed")
+            print(error)
         }
+    }
+    
+    func deleteConcreteSong(label: String) {
+        let context = CoreDataManager.shared.context
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", label)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let test = try context.fetch(fetchRequest)
+            
+            let objectToDelete = test[0] as! NSManagedObject
+            context.delete(objectToDelete)
+            
+            CoreDataManager.tryToSave(with: context)
+        } catch let error {
+            print(error)
+        }
+
     }
 }

@@ -9,17 +9,6 @@
 import UIKit
 import CoreData
 
-struct HistoryCellModel: Equatable {
-    let label: String!
-    let image: String!
-    
-    var description: String {
-        return
-            "Name: \(String(describing: label))\n" +
-        "image: \(String(describing: image))\n"
-    }
-}
-
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     private var presenter = HistoryPresenter()
@@ -41,9 +30,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @objc func refreshAllVc() {
         unwrapDataFromCoreData()
-        
         tableView.reloadData()
-        refreshControl.endRefreshing()
+        
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
     }
     
     override func viewDidLoad() {
@@ -55,16 +46,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         refreshControl.addTarget(self, action: #selector(refreshAllVc), for: .valueChanged)
         tableView.refreshControl = refreshControl
         tableView.allowsSelection = false
+    }
         
-        refreshAllVc()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = items.count
+        
         
         if(count == 0) {
             tableView.setEmptyMessage("Failed to load history\nor the list is empty")
@@ -77,13 +63,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HistoryTableViewCell.self)) as! HistoryTableViewCell
-        cell.songLabel.text = items[indexPath.item].label
-        
-        cell.layer.cornerRadius = 20
-        cell.layer.borderWidth = CGFloat(5)
-        cell.layer.borderColor = tableView.backgroundColor?.cgColor
-        
-        Imager.shared.loadImage(into: cell.songImageView, link: items[indexPath.item].image)
+        cell.bind(data: items[indexPath.row])
         return cell
     }
     
@@ -101,33 +81,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                     style: .normal,
                     title: "Delete",
                     handler: { (action, view, bool) in
-                        
-                        
-                        let context = CoreDataManager.shared.context
-                        
-                        let label = self.items[indexPath.row].label ?? ""
-                        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
-                        fetchRequest.predicate = NSPredicate(format: "name = %@", label)
-                        fetchRequest.returnsObjectsAsFaults = false
-                        
-                        
-                        
-                        do {
-                            let test = try context.fetch(fetchRequest)
-                            
-                            let objectToDelete = test[0] as! NSManagedObject
-                            context.delete(objectToDelete)
-                            
-                            
-                            do {
-                                try context.save()
-                            } catch {
-                                print(error)
-                            }
-                            
-                        } catch let error as NSError {
-                            debugPrint(error)
-                        }
+                        CoreDataManager.shared.deleteConcreteSong(label: self.items[indexPath.row].label)
                     })
             ]
         )
@@ -142,5 +96,4 @@ extension HistoryViewController: HistoryView {
         let alert = UIAlertController.createOkAlert(title: title, message: message)
         self.present(alert, animated: true)
     }
-    
 }
