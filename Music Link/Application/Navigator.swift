@@ -73,7 +73,7 @@ class Navigator {
         case .info(let linksResponse):
             let vc = UINavigationController(rootViewController: ScreenRouter.shared.getInfoController(links: linksResponse))
             if #available(iOS 13.0, *) {
-                vc.isModalInPresentation = true
+                vc.isModalInPresentation = false
             }
             return vc
         }
