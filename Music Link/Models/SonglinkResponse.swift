@@ -20,7 +20,14 @@ struct LinksResponse: Codable {
         return (entitiesByUniqueId[entityUniqueId]?.thumbnailUrl ?? "")
     }
     
-    func getTitleAndArtistName() -> String {
+    func getTitleAndArtistName() -> (String, String) {
+        let songTitle = entitiesByUniqueId[entityUniqueId]?.title ?? ""
+        let artistName = entitiesByUniqueId[entityUniqueId]?.artistName ?? ""
+        
+        return (songTitle, artistName)
+    }
+    
+    func getSongName() -> String {
         return "\(entitiesByUniqueId[entityUniqueId]?.title ?? "")" + "\n" + "\(entitiesByUniqueId[entityUniqueId]?.artistName ?? "")"
     }
 }

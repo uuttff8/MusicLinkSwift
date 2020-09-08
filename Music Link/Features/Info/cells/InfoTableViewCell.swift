@@ -73,7 +73,21 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         handleCollectionViewHeight()
         
         Imager.shared.loadImage(into: imageSong, link: data.getThumbnailUrl())
-        labelSong.text = data.getTitleAndArtistName()
+        
+        let titleAndArtist = data.getTitleAndArtistName()
+        let attrTitleStr = NSMutableAttributedString(string: titleAndArtist.0 + " \n",
+                                                attributes:
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
+        )
+        let attrArtistStr = NSMutableAttributedString(string: titleAndArtist.1,
+                                                      attributes:
+            [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
+        )
+        
+        attrTitleStr.append(attrArtistStr)
+    
+        
+        labelSong.attributedText = attrTitleStr
         
         writeSongToCoreData(data: data)
     }
@@ -220,13 +234,13 @@ extension InfoTableViewCell {
         
         // if already in database, then do nothing
         if result.firstIndex(where: { (dataObject) -> Bool in
-            (dataObject.value(forKey: "name") as! String) == data.getTitleAndArtistName()
+            (dataObject.value(forKey: "name") as! String) == data.getSongName()
         }) == nil {
             
             let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
             let newUser = NSManagedObject(entity: entity!, insertInto: context)
             
-            newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
+            newUser.setValue(data.getSongName(), forKey: "name")
             newUser.setValue(data.getThumbnailUrl(), forKey: "image")
             
             CoreDataManager.tryToSave(with: context)
