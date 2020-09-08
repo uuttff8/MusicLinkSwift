@@ -18,13 +18,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     private let refreshControl = UIRefreshControl()
     
     fileprivate func unwrapDataFromCoreData(completion: @escaping (() -> Void)) {
-        DispatchQueue.main.async {
-            CoreDataManager.shared.getHistory { (models) in
-                print("---")
-                print(models)
-                self.items = models.uniques
-                completion()
-            }
+        CoreDataManager.shared.getHistory { (models) in
+            print("---")
+            print(models)
+            self.items = models
+            completion()
         }
     }
     
@@ -54,7 +52,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewWillAppear(animated)
         refreshAllVc()
     }
-        
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = items.count
         
@@ -91,7 +89,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
                         CoreDataManager.shared.deleteConcreteSong(label: self.items[indexPath.row].label)
                         self.items.remove(at: indexPath.row)
                         tableView.deleteRows(at: [indexPath], with: .fade)
-                    })
+                })
             ]
         )
         

@@ -93,13 +93,26 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     fileprivate func writeSongToCoreData(data: LinksResponse) {
         let context = CoreDataManager.shared.context
         
-        let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
-        let newUser = NSManagedObject(entity: entity!, insertInto: context)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
+        guard let result = try? context.fetch(request) as? [NSManagedObject]
+            else {
+                print("\(#file) \(#line) History CoreData NSManagedObject is not found")
+                return
+        }
         
-        newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
-        newUser.setValue(data.getThumbnailUrl(), forKey: "image")
-        
-        CoreDataManager.tryToSave(with: context)
+        // if already in database, then do nothing
+        if result.firstIndex(where: { (dataObject) -> Bool in
+            (dataObject.value(forKey: "name") as! String) == data.getTitleAndArtistName()
+        }) == nil {
+            
+            let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
+            let newUser = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newUser.setValue(data.getTitleAndArtistName(), forKey: "name")
+            newUser.setValue(data.getThumbnailUrl(), forKey: "image")
+            
+            CoreDataManager.tryToSave(with: context)
+        }
     }
     
     // MARK: - UICollectionViewDataSource protocol
@@ -119,7 +132,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         if collectionView.tag == 0 {
             let cell = collectionViewListen.dequeueReusableCell(withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
                                                                 for: indexPath as IndexPath) as! InfoServicesToListenCollectionViewCell
-                        
+            
             cell.imageViewService.image = servicesToListen[indexPath.item].image
             //cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
             return cell
