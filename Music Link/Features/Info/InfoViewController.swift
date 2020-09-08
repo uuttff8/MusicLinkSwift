@@ -69,10 +69,12 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: InfoTableViewCell.reuseId) as! InfoTableViewCell
-        cell.bind(data: links)
+        cell.bind(
+            data: links,
+            listen: presenter.checkListenServices(links),
+            buy: presenter.checkBuyServices(links)
+        )
         cell.baseVC = self
-        cell.servicesToListen = presenter.checkListenServices(links)
-        cell.servicesToBuy = presenter.checkBuyServices(links)
         return cell
     }
     

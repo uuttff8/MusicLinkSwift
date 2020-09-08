@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-3P-IOq">
-                                                    <rect key="frame" x="20" y="163.5" width="378" height="300"/>
+                                                    <rect key="frame" x="20" y="149.5" width="378" height="300"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="OTI-aQ-SSc"/>
@@ -88,13 +88,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kc-lB-3if">
-                                                    <rect key="frame" x="20" y="471.5" width="34" height="20.5"/>
+                                                    <rect key="frame" x="20" y="457.5" width="34" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cHK-Hs-8JO">
-                                                    <rect key="frame" x="20" y="500" width="374" height="93"/>
+                                                    <rect key="frame" x="20" y="486" width="374" height="93"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="93" id="OEO-gq-zgk"/>
@@ -137,15 +137,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7Kc-lB-3if" firstAttribute="top" secondItem="Yoi-3P-IOq" secondAttribute="bottom" constant="8" id="4Rd-nh-Sma"/>
+                                                <constraint firstAttribute="bottom" secondItem="cHK-Hs-8JO" secondAttribute="bottom" constant="23" id="7rI-3n-Nda"/>
                                                 <constraint firstItem="wcz-bP-ufz" firstAttribute="leading" secondItem="sKT-gC-uOr" secondAttribute="trailing" constant="8" id="FVp-Ku-IHh"/>
                                                 <constraint firstItem="jPR-yI-Enu" firstAttribute="top" secondItem="sKT-gC-uOr" secondAttribute="bottom" constant="8" id="HMf-Ah-aoo"/>
                                                 <constraint firstItem="wcz-bP-ufz" firstAttribute="top" secondItem="sKT-gC-uOr" secondAttribute="top" id="HeO-1L-94H"/>
                                                 <constraint firstAttribute="trailing" secondItem="Yoi-3P-IOq" secondAttribute="trailing" constant="16" id="IDl-px-9A4"/>
                                                 <constraint firstItem="Yoi-3P-IOq" firstAttribute="leading" secondItem="SIG-pD-lEi" secondAttribute="leading" constant="20" id="IZa-dm-LaQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="cHK-Hs-8JO" secondAttribute="bottom" constant="9" id="Ise-XB-zPV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cHK-Hs-8JO" secondAttribute="trailing" id="SFu-Yh-yBG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wcz-bP-ufz" secondAttribute="trailing" id="SxB-Zp-lwu"/>
-                                                <constraint firstItem="Yoi-3P-IOq" firstAttribute="top" secondItem="jPR-yI-Enu" secondAttribute="bottom" constant="22" id="brM-sh-1Jx"/>
+                                                <constraint firstItem="Yoi-3P-IOq" firstAttribute="top" secondItem="jPR-yI-Enu" secondAttribute="bottom" constant="8" id="brM-sh-1Jx"/>
                                                 <constraint firstItem="cHK-Hs-8JO" firstAttribute="top" secondItem="7Kc-lB-3if" secondAttribute="bottom" constant="8" id="e2e-3q-NcA"/>
                                                 <constraint firstItem="7Kc-lB-3if" firstAttribute="leading" secondItem="SIG-pD-lEi" secondAttribute="leadingMargin" id="oCS-6F-rAU"/>
                                                 <constraint firstItem="cHK-Hs-8JO" firstAttribute="leading" secondItem="SIG-pD-lEi" secondAttribute="leadingMargin" id="qIr-Tg-edN"/>

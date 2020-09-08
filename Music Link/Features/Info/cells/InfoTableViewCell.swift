@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
+    // MARK: - Outlets
     @IBOutlet weak var imageSong: UIImageView!
     @IBOutlet weak var labelSong: UILabel!
     
@@ -20,14 +21,20 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     @IBOutlet weak var collectionViewListen: UICollectionView!
     @IBOutlet weak var collectionViewBuy: UICollectionView!
     
+    // MARK: - Private Vars
     private var longpressToListen = UILongPressGestureRecognizer()
     private var longpressToBuy = UILongPressGestureRecognizer()
     private var presenter = InfoPresenter()
     
+    private let cellHeightDivider: CGFloat = 11
+    private let cellWidthDivider: CGFloat = 7
+    
+    // MARK: - Dynamic Public Variables
     var baseVC: InfoViewController!
     var servicesToListen: [ServiceProvider]!
     var servicesToBuy: [ServiceProvider]!
     
+    // MARK: - Init
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -36,13 +43,12 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         collectionViewBuy.delegate = self
         collectionViewBuy.dataSource = self
-        
+                
         longpressToListen = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognizedToListen))
         collectionViewListen.addGestureRecognizer(longpressToListen)
         
         longpressToBuy = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognizedToBuy))
         collectionViewBuy.addGestureRecognizer(longpressToBuy)
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,19 +57,58 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         // Configure the view for the selected state
     }
     
+    // MARK: - Deinit
     deinit {
         presenter.onDestroy()
     }
     
     static var reuseId = "InfoTableViewCell"
     
-    func bind(data: LinksResponse) {
+    // MARK: - Data binding
+    func bind(data: LinksResponse, listen: [ServiceProvider], buy: [ServiceProvider]) {
+        self.servicesToListen = listen
+        self.servicesToBuy = buy
+
+        
+        handleCollectionViewHeight()
+        
         Imager.shared.loadImage(into: imageSong, link: data.getThumbnailUrl())
         labelSong.text = data.getTitleAndArtistName()
         
         writeSongToCoreData(data: data)
     }
     
+    // MARK: - UI
+    
+    fileprivate func handleCollectionViewHeight() {
+        let size = UIScreen.main.bounds
+        let height = size.height / self.cellHeightDivider
+        
+        if servicesToListen.count <= 5 {
+            collectionViewToListenHeight.constant = height
+            
+        } else if servicesToListen.count <= 10 {
+            collectionViewToListenHeight.constant = height * 2
+            
+        } else if servicesToListen.count <= 15 {
+            collectionViewToListenHeight.constant = height * 3
+            
+        }
+        
+        if servicesToBuy.count <= 5 {
+            collectionViewToBuyHeight.constant = height
+            
+        } else if servicesToBuy.count <= 10 {
+            collectionViewToBuyHeight.constant = height * 2
+            
+        } else if servicesToBuy.count <= 15 {
+            collectionViewToBuyHeight.constant = height * 3
+            
+        }
+    }
+
+    
+    // MARK: - Longpress handling
     @objc func longPressGestureRecognizedToListen(gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         if longPress.state == UIGestureRecognizer.State.began {
@@ -90,7 +135,80 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         }
     }
     
-    fileprivate func writeSongToCoreData(data: LinksResponse) {
+    // MARK: - UICollectionViewDataSource protocol
+    
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView.tag == 0 {
+            return self.servicesToListen.count
+        } else {
+            return self.servicesToBuy.count
+        }
+    }
+    
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        if collectionView.tag == 0 {
+            let cell = collectionViewListen.dequeueReusableCell(withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
+                                                                for: indexPath as IndexPath) as! InfoServicesToListenCollectionViewCell
+            
+            cell.imageViewService.image = servicesToListen[indexPath.item].image
+            return cell
+        } else if collectionView.tag == 1 {
+            let cell = collectionViewBuy.dequeueReusableCell(withReuseIdentifier: InfoServicesToBuyCollectionViewCell.reuseId,
+                                                             for: indexPath as IndexPath) as! InfoServicesToBuyCollectionViewCell
+            
+            cell.imageViewService.image = servicesToBuy[indexPath.item].image
+            return cell
+        }
+        
+        return UICollectionViewCell()
+    }
+    
+    // MARK: - UICollectionViewDelegate protocol
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        if collectionView.tag == 0 {
+            let url = URL(string: servicesToListen[indexPath.item].link)!
+            UIApplication.shared.open(url)
+            debugPrint("\n")
+            NSLog("\(url)")
+            debugPrint("\n")
+            
+        } else if collectionView.tag == 1 {
+            let url = URL(string: servicesToBuy[indexPath.item].link)!
+            UIApplication.shared.open(url)
+            print("\n")
+            NSLog("\(url)")
+            print("\n")
+        }
+    }    
+}
+
+
+extension InfoTableViewCell: UICollectionViewDelegateFlowLayout {
+    //MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        
+        let size = UIScreen.main.bounds
+        
+        let height = size.height / cellHeightDivider
+        let width = size.width / cellWidthDivider
+        
+        return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: - CoreData entities
+extension InfoTableViewCell {
+    private func writeSongToCoreData(data: LinksResponse) {
         let context = CoreDataManager.shared.context
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "History")
@@ -114,73 +232,5 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             CoreDataManager.tryToSave(with: context)
         }
     }
-    
-    // MARK: - UICollectionViewDataSource protocol
-    
-    // tell the collection view how many cells to make
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == 0 {
-            return self.servicesToListen.count
-        } else {
-            return self.servicesToBuy.count
-        }
-    }
-    
-    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView.tag == 0 {
-            let cell = collectionViewListen.dequeueReusableCell(withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
-                                                                for: indexPath as IndexPath) as! InfoServicesToListenCollectionViewCell
-            
-            cell.imageViewService.image = servicesToListen[indexPath.item].image
-            //cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
-            return cell
-        } else if collectionView.tag == 1 {
-            let cell = collectionViewBuy.dequeueReusableCell(withReuseIdentifier: InfoServicesToBuyCollectionViewCell.reuseId,
-                                                             for: indexPath as IndexPath) as! InfoServicesToBuyCollectionViewCell
-            
-            cell.imageViewService.image = servicesToBuy[indexPath.item].image
-            //cell.imageViewService.adjustsImageSizeForAccessibilityContentSizeCategory = true
-            return cell
-        }
-        
-        return UICollectionViewCell()
-    }
-    
-    // MARK: - UICollectionViewDelegate protocol
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        if collectionView.tag == 0 {
-            let url = URL(string: servicesToListen[indexPath.item].link)!
-            UIApplication.shared.open(url)
-            debugPrint("\n")
-            NSLog("\(url)")
-            debugPrint("\n")
-            
-        } else if collectionView.tag == 1 {
-            let url = URL(string: servicesToBuy[indexPath.item].link)!
-            UIApplication.shared.open(url)
-            debugPrint("\n")
-            NSLog("\(url)")
-            debugPrint("\n")
-        }
-    }
-    
-    // make collection views autoresize
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        collectionViewToListenHeight.constant = collectionViewListen.contentSize.height
-        collectionViewToBuyHeight.constant = collectionViewBuy.contentSize.height
-    }
-}
 
-
-extension InfoTableViewCell: UICollectionViewDelegateFlowLayout {
-    //MARK: - UICollectionViewDelegateFlowLayout
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: 64.0, height: 64.0)
-    }
 }
