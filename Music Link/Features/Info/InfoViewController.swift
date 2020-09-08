@@ -74,10 +74,15 @@ extension InfoViewController: UITableViewDelegate, UITableViewDataSource {
             listen: presenter.checkListenServices(links),
             buy: presenter.checkBuyServices(links)
         )
-        cell.baseVC = self
+        cell.delegate = self
         return cell
     }
-    
+}
+
+extension InfoViewController: InfoTableViewCellDelegate {
+    func onLongPressed(activity: UIActivityViewController) {
+        self.present(activity, animated: true, completion: nil)
+    }
 }
 
 extension InfoViewController: InfoView {

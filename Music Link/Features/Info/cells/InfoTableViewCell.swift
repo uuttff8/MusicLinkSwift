@@ -9,6 +9,14 @@
 import UIKit
 import CoreData
 
+func nilFoundHere(_ object: Any? = nil) {
+    print("nil found in \(object)")
+}
+
+protocol InfoTableViewCellDelegate: NSObject {
+    func onLongPressed(activity: UIActivityViewController)
+}
+
 class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     // MARK: - Outlets
     @IBOutlet weak var imageSong: UIImageView!
@@ -30,11 +38,15 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     private let cellWidthDivider: CGFloat = 7
     
     // MARK: - Dynamic Public Variables
-    var baseVC: InfoViewController!
+    weak var delegate: InfoTableViewCellDelegate?
     var servicesToListen: [ServiceProvider]!
     var servicesToBuy: [ServiceProvider]!
     
     // MARK: - Init
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -43,7 +55,7 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         collectionViewBuy.delegate = self
         collectionViewBuy.dataSource = self
-                
+        
         longpressToListen = UILongPressGestureRecognizer(target: self, action: #selector(self.longPressGestureRecognizedToListen))
         collectionViewListen.addGestureRecognizer(longpressToListen)
         
@@ -68,7 +80,6 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     func bind(data: LinksResponse, listen: [ServiceProvider], buy: [ServiceProvider]) {
         self.servicesToListen = listen
         self.servicesToBuy = buy
-
         
         handleCollectionViewHeight()
         
@@ -76,16 +87,17 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         let titleAndArtist = data.getTitleAndArtistName()
         let attrTitleStr = NSMutableAttributedString(string: titleAndArtist.0 + " \n",
-                                                attributes:
+                                                     attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
         )
+        
         let attrArtistStr = NSMutableAttributedString(string: titleAndArtist.1,
                                                       attributes:
             [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
         )
         
         attrTitleStr.append(attrArtistStr)
-    
+        
         
         labelSong.attributedText = attrTitleStr
         
@@ -120,32 +132,34 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             
         }
     }
-
+    
     
     // MARK: - Longpress handling
-    @objc func longPressGestureRecognizedToListen(gestureRecognizer: UIGestureRecognizer) {
+    @objc private func longPressGestureRecognizedToListen(gestureRecognizer: UIGestureRecognizer) {
+        handleLongPress(for: collectionViewListen, data: servicesToListen, gestureRecognizer: gestureRecognizer)
+    }
+    
+    @objc private func longPressGestureRecognizedToBuy(gestureRecognizer: UIGestureRecognizer) {
+        handleLongPress(for: collectionViewBuy, data: servicesToBuy, gestureRecognizer: gestureRecognizer)
+    }
+    
+    private func handleLongPress(
+        for collection: UICollectionView,
+        data service: [ServiceProvider],
+        gestureRecognizer: UIGestureRecognizer
+    ) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
         if longPress.state == UIGestureRecognizer.State.began {
             let locationInTableView = longPress.location(in: collectionViewListen)
-            let indexPath = collectionViewListen.indexPathForItem(at: locationInTableView)
             
-            let url = URL(string: servicesToListen[indexPath!.item].link)
-            let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-            baseVC.present(activityVC, animated: true, completion: nil)
-            print(indexPath?.row ?? "-0")
-        }
-    }
-    
-    @objc func longPressGestureRecognizedToBuy(gestureRecognizer: UIGestureRecognizer) {
-        let longPress = gestureRecognizer as! UILongPressGestureRecognizer
-        if longPress.state == UIGestureRecognizer.State.began {
-            let locationInTableView = longPress.location(in: collectionViewBuy)
-            let indexPath = collectionViewBuy.indexPathForItem(at: locationInTableView)
+            guard let indexPath = collection.indexPathForItem(at: locationInTableView)
+                else { nilFoundHere(); return }
             
-            let url = URL(string: servicesToBuy[indexPath!.item].link)
-            let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
-            baseVC.present(activityVC, animated: true, completion: nil)
-            print(indexPath?.row ?? "-0")
+            guard let url = URL(string: service[indexPath.item].link)
+                else { nilFoundHere(); return}
+            
+            let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            self.delegate?.onLongPressed(activity: activityVC)
         }
     }
     
@@ -153,52 +167,70 @@ class InfoTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView.tag == 0 {
+        switch collectionView {
+        case collectionViewListen:
             return self.servicesToListen.count
-        } else {
+        case collectionViewBuy:
             return self.servicesToBuy.count
+        default:
+            return 0
         }
     }
     
     // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        if collectionView.tag == 0 {
-            let cell = collectionViewListen.dequeueReusableCell(withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
-                                                                for: indexPath as IndexPath) as! InfoServicesToListenCollectionViewCell
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        switch collectionView {
+        case collectionViewListen:
+            let cell = collectionViewListen
+                .dequeueReusableCell(
+                    withReuseIdentifier: InfoServicesToListenCollectionViewCell.reuseId,
+                    for: indexPath as IndexPath
+                ) as! InfoServicesToListenCollectionViewCell
             
-            cell.imageViewService.image = servicesToListen[indexPath.item].image
+            cell.bind(service: servicesToListen[indexPath.row])
+
             return cell
-        } else if collectionView.tag == 1 {
-            let cell = collectionViewBuy.dequeueReusableCell(withReuseIdentifier: InfoServicesToBuyCollectionViewCell.reuseId,
-                                                             for: indexPath as IndexPath) as! InfoServicesToBuyCollectionViewCell
+        case collectionViewBuy:
+            let cell = collectionViewBuy
+                .dequeueReusableCell(
+                    withReuseIdentifier: InfoServicesToBuyCollectionViewCell.reuseId,
+                    for: indexPath as IndexPath
+                ) as! InfoServicesToBuyCollectionViewCell
             
-            cell.imageViewService.image = servicesToBuy[indexPath.item].image
+            cell.bind(service: servicesToBuy[indexPath.row])
             return cell
+            
+        default: return UICollectionViewCell()
         }
-        
-        return UICollectionViewCell()
     }
     
     // MARK: - UICollectionViewDelegate protocol
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        if collectionView.tag == 0 {
-            let url = URL(string: servicesToListen[indexPath.item].link)!
+        switch collectionView {
+        case collectionViewListen:
+            guard let url = URL(string: servicesToListen[indexPath.item].link) else { return }
             UIApplication.shared.open(url)
-            debugPrint("\n")
-            NSLog("\(url)")
-            debugPrint("\n")
+            logLongPress(url: url)
+
+        case collectionViewBuy:
+            guard let url = URL(string: servicesToBuy[indexPath.item].link) else { return }
+            UIApplication.shared.open(url)
+            logLongPress(url: url)
             
-        } else if collectionView.tag == 1 {
-            let url = URL(string: servicesToBuy[indexPath.item].link)!
-            UIApplication.shared.open(url)
-            print("\n")
-            NSLog("\(url)")
-            print("\n")
+        default: break
         }
-    }    
+    }
+    
+    private func logLongPress(url: URL) {
+        print("long press is active \n")
+        NSLog("\(url)")
+        print("\n")
+    }
 }
 
 
@@ -234,7 +266,9 @@ extension InfoTableViewCell {
         
         // if already in database, then do nothing
         if result.firstIndex(where: { (dataObject) -> Bool in
-            (dataObject.value(forKey: "name") as! String) == data.getSongName()
+            guard let songName = dataObject.value(forKey: "name") as? String else { return false }
+            
+            return songName == data.getSongName()
         }) == nil {
             
             let entity = NSEntityDescription.entity(forEntityName: "History", in: context)
@@ -246,5 +280,5 @@ extension InfoTableViewCell {
             CoreDataManager.tryToSave(with: context)
         }
     }
-
+    
 }
